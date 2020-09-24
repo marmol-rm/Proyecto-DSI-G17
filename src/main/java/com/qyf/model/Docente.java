@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="docente")
+public class Docente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_docente;
 	private Integer id_user;
 }

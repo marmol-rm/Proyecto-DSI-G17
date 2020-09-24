@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="materia")
+public class Materia {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_materia;
+	private Integer id_depto;
 }
