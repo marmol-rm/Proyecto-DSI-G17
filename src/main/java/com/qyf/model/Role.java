@@ -1,5 +1,6 @@
 package com.qyf.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +12,11 @@ import javax.persistence.Table;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID_ROL")
 	private Integer id_rol;
+	@Column(name="NOMBRE")
 	private String nombre;
+	@Column(name="DESCRIPCION")
 	private String descripcion;
 	
 	@Override
