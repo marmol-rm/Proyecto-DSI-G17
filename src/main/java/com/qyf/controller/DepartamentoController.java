@@ -1,4 +1,5 @@
 package com.qyf.controller;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,8 @@ public class DepartamentoController {
 		model.addAttribute("depto", new Departamento());
 		return "agregarDepartamento";
 	}
-
+	
+	@PostMapping
 	public String agregar(@Validated Departamento d, Model model) {
 		serv.save(d);
 		return "redirect:/listaDepartamentos";
