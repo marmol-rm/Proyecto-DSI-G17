@@ -13,7 +13,7 @@ public class Departamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_DEPTO")
-	private Integer id;
+	private int id;
 	@Column(name="DEPARTAMENTO", length = 255)
 	private String departamento;
 	
@@ -21,18 +21,18 @@ public class Departamento {
 		super();
 	}
 
-	public Departamento(Integer id, String departamento) {
+	public Departamento(int id, String departamento) {
 		super();
 		this.id = id;
 		this.departamento = departamento;
 	}
 
-	public Integer getId_depto() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId_depto(Integer id_depto) {
-		this.id = id_depto;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDepartamento() {
