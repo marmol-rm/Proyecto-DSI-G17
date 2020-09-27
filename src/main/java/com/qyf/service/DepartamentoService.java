@@ -21,8 +21,7 @@ public class DepartamentoService implements IDepartamentoServ{
 	}
 	@Override
 	public Optional<Departamento> listarId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return data.findById(id);
 	}
 	@Override
 	public int save(Departamento depto) {

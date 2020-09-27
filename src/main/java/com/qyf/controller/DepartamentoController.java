@@ -24,15 +24,15 @@ public class DepartamentoController {
 		return "listaDepartamentos";
 	}
 	
-	@GetMapping("/agregarDepartamento")
-	public String save(Model model) {
+	@GetMapping("/nuevoDepartamento")
+	public String agregar(Model model) {
 		model.addAttribute("depto", new Departamento());
 		return "agregarDepartamento";
 	}
 	
-	@PostMapping
-	public String agregar(@Validated Departamento d, Model model) {
+	@PostMapping("/save")
+	public String save(@Validated Departamento d, Model model) {
 		serv.save(d);
-		return "redirect:/listaDepartamentos";
+		return "redirect:/departamentos";
 	}
 }

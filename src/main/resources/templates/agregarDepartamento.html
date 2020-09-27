@@ -9,28 +9,28 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Departamentos</h1>
-	<div class="container mt-5">
-		<div class="col-sm-6"></div>
-		<form th:action="@{/new}" th:object=${departamento} method="POST">
+		<div class="container mt-5">
+		<div class="col-sm-6">
+		<form th:action="@{/save}" th:object=${depto} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
 				<h3>Ingresar Departamento</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>ID</label> <input th:field="{id}" type="text"/>
-						class="form-control" />
+					<label>ID</label>
+					<input type="text" class="form-control" th:field="*{id}"/>
 				</div>
 				<div class="form-group">
-					<label>NOMBRE</label> <input th:field="{departamento}" type="text"/>
-						class="form-control" />
+					<label>NOMBRE DEL DEPARTAMENTO</label>
+					<input type="text" class="form-control" th:field="*{departamento}"/>
 				</div>
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-success" />
 			</div>
 		</form>
+		</div>
 	</div>
 </body>
 </html>

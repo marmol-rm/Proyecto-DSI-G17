@@ -35,15 +35,16 @@
 			</thead>
 			<tbody>
 				<tr th:each="d:${departamentos}">
-					<td th="${d.id}"></td>
-					<td th="${d.departamento}"></td>
+					<td th:text="${d.getId_depto()}"></td>
+					<td th:text="${d.getDepartamento()}"></td>
 				</tr>
 			</tbody>
 		</table>
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><button id="agregarDepto" th:href="@{/agregarDepartamento}" class="btn btn-primary ml-5">Crear</button></div>
+	  <div class="col"><a th:href="@{/nuevoDepartamento}"
+	  	class="btn btn-primary ml-5">+Crear</a></div>
 	  <div class="col"></div>
 	</div>
 	</div>
