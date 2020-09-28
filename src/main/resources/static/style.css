@@ -1,12 +1,15 @@
 @charset "ISO-8859-1";
-
+h1{
+	text-align   : center;
+}
 div {
 	text-align : center;
 }
 
 table {
-    border     : 2px solid gray;
-    width      : 25%;
+    border     : 1px solid gray;
+    width      : 60%;
+    font-size  : 120%;
     text-align : center;
 }
  

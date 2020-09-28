@@ -11,11 +11,11 @@ import javax.persistence.Table;
 @Table(name="departamento")
 public class Departamento {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(name="ID_DEPTO")
 	private int id;
-	@Column(name="DEPARTAMENTO", length = 255)
-	private String departamento;
+	@Column(name="DEPARTAMENTO")
+	private String nombre_departamento;
 	
 	public Departamento() {
 		super();
@@ -24,7 +24,7 @@ public class Departamento {
 	public Departamento(int id, String departamento) {
 		super();
 		this.id = id;
-		this.departamento = departamento;
+		this.nombre_departamento = departamento;
 	}
 
 	public int getId() {
@@ -36,10 +36,10 @@ public class Departamento {
 	}
 
 	public String getDepartamento() {
-		return departamento;
+		return nombre_departamento;
 	}
 
 	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
+		this.nombre_departamento = departamento;
 	}
 }
