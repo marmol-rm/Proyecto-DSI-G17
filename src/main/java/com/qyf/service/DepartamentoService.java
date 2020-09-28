@@ -22,7 +22,11 @@ public class DepartamentoService implements IDepartamentoServ{
 	private IDepartamento data;
 	
 	@Override
-	public List<Departamento> listar() {
+	public List<Departamento> listar(String key) {
+		if(key!=null) {
+			return (List<Departamento>) data.findAll(key);
+		}
+		else
 		return (List<Departamento>) data.findAll();
 	}
 	
@@ -46,5 +50,4 @@ public class DepartamentoService implements IDepartamentoServ{
 		// TODO Auto-generated method stub
 		data.deleteById(id);
 	}
-
 }
