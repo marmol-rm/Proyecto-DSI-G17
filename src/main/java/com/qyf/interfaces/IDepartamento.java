@@ -7,5 +7,4 @@ import com.qyf.model.Departamento;
 
 @Repository
 public interface IDepartamento extends CrudRepository<Departamento, Integer>{
-
 }
