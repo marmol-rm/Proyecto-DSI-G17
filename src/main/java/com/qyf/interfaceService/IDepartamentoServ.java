@@ -3,8 +3,6 @@ package com.qyf.interfaceService;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.Query;
-
 import com.qyf.model.Departamento;
 
 public interface IDepartamentoServ {

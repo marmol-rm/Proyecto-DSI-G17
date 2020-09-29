@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Departamentos</title>
+<title>Administracion Ciclos</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,10 +12,10 @@
 <body>
 		<div class="container mt-5">
 		<div class="col-sm-5">
-		<form th:action="@{/guardarDepto}" th:object=${depto} method="POST">
+		<form th:action="@{/guardarCiclo}" th:object=${ciclo} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Ingresar Departamento</h3>
+				<h3>Ingresar Ciclo</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
@@ -24,8 +24,8 @@
 					<h6>*Si ingresa un ID ya existente, este se editara!</h6>
 				</div>
 				<div class="form-group">
-					<label>NOMBRE DEL DEPARTAMENTO</label>
-					<input required th:field="*{departamento}" type="text" class="form-control"/>
+					<label>TITULO</label>
+					<input required th:field="*{titulo}" type="text" class="form-control"/>
 				</div>
 			</div>
 			<div class="card-footer">
