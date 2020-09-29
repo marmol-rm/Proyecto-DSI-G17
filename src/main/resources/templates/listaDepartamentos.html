@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:href="@{/editar/}+${d.id}" th:each="d:${departamentos}">
+				<tr th:each="d:${departamentos}">
 					<td th:text="${d.getId()}"></td>
 					<td th:text="${d.getDepartamento()}"></td>
 					<td> <a class="btn btn-primary" th:href="@{/editar/}+${d.id}"></a></td>

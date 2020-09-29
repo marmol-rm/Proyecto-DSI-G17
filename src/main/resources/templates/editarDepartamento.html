@@ -18,8 +18,8 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>ID</label>
-					<input type="number" min="1" class="form-control" th:field="*{id}"/>
+					<label>CODIGO</label>
+					<input th:field="*{id}" oninput="check(this)" type="number" min="1" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>NOMBRE DEL DEPARTAMENTO</label>
