@@ -12,15 +12,16 @@
 <body>
 	<div class="row" >
 	  <div class="col"></div>
-	  <div class="col"><h2 >Departamentos</h2></div>
-	  <div class="col"></div>
+	  <div class="col">
+		<h2>Departamentos</h2></div>  
+	<div class="col"></div>
 	</div>
 	<br/>
 	<div class="row">
   <div class="col"></div>
   <div class="col">
   	<form th:action="@{/departamentos}">
-      	<input required type="text" placeholder="Buscar..." name="buscar" size="30%">
+      	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-primary">Buscar</button>
     </form>
   </div>
@@ -39,7 +40,7 @@
 				<tr th:each="d:${departamentos}">
 					<td th:text="${d.getId()}"></td>
 					<td th:text="${d.getDepartamento()}"></td>
-					<td> <a class="btn btn-primary" th:href="@{/editar/}+${d.id}"></a></td>
+					<td> <a class="btn btn-primary" th:href="@{/editar/}+${d.id}">Editar</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -47,7 +48,7 @@
         <div class="row">
 	  <div class="col"></div>
 	  <div class="col"><a th:href="@{/nuevoDepartamento}"
-	  	class="btn btn-primary">+Crear</a></div>
+	  	class="btn btn-danger">+Crear</a></div>
 	  <div class="col"></div>
 	</div>
 	</br>
