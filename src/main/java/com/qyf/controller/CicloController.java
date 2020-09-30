@@ -49,7 +49,7 @@ public class CicloController {
 	public String edit(@Validated Ciclo c, Model model) {
 		model.getAttribute("ciclo");
 		service.guardar(c);
-		return "redirect:/departamentos";
+		return "redirect:/ciclos";
 	}
 	
 	@GetMapping("eliminarCiclo/{id}")

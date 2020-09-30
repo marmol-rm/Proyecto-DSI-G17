@@ -1,9 +1,9 @@
 package com.qyf.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,32 +11,34 @@ import javax.persistence.Table;
 @Table(name="ciclo")
 public class Ciclo {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="ID_CICLO")
 	private int id;
 	@Column(name="TITULO")
 	private String titulo;
 	@Column(name="NUMERO")
 	private int numero;
+	@Column(name="ANIO")
+	private int anio;
 	@Column(name="ACTIVO")
-	private Boolean activo;
+	private String activo;
 	@Column(name="FECHA_INI")
-	private Date fecha_inicio;
+	private String fechaInicio;
 	@Column(name="FECHA_FIN")
-	private Date fecha_final;
+	private String fechaFinal;
 	
 	public Ciclo() {
 		super();
 	}
 	
-	public Ciclo(int id, String titulo, int num, Boolean activo, Date fecha_inicio, Date fecha_final) {
+	public Ciclo(int id, String titulo, int num, String activo, String fecha_inicio, String fecha_final) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.numero = num;
 		this.activo = activo;
-		this.fecha_inicio = fecha_inicio;
-		this.fecha_final = fecha_final;
+		this.fechaInicio = fecha_inicio;
+		this.fechaFinal = fecha_final;
 	}
 
 	public int getId() {
@@ -55,35 +57,43 @@ public class Ciclo {
 		this.titulo = titulo;
 	}
 
-	public int getNum() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNum(int num) {
+	public void setNumero(int num) {
 		this.numero = num;
 	}
+	
+	public int getAnio() {
+		return anio;
+	}
 
-	public Boolean getActivo() {
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+	public String getActivo() {
 		return activo;
 	}
 
-	public void setActivo(Boolean activo) {
+	public void setActivo(String activo) {
 		this.activo = activo;
 	}
 
-	public Date getFechaInicio() {
-		return fecha_inicio;
+	public String getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+	public void setFechaInicio(String fecha_inicio) {
+		this.fechaInicio = fecha_inicio;
 	}
 
-	public Date getFechaFinal() {
-		return fecha_final;
+	public String getFechaFinal() {
+		return fechaFinal;
 	}
 
-	public void setFechaFinal(Date fecha_final) {
-		this.fecha_final = fecha_final;
+	public void setFechaFinal(String fecha_final) {
+		this.fechaFinal = fecha_final;
 	}
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Administracion Ciclos</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -32,17 +32,20 @@
 			<thead>
 				<tr>
 					<th>CODIGO</th>
-					<th>NUMERO</th>
-					<th>AÑO</th>
+					<th>ESTADO</th>
+					<th>CICLO</th>
+					<th>TITULO</th>
 					<th>INICIO</th>
 					<th>FINALIZACION</th>
+					<th>EDITAR</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="v:${ciclos}">
 					<td th:text="${v.getId()}"></td>
+					<td th:text="${v.getActivo()}"></td>
 					<td th:text="${v.getNumero()}"></td>
-					<td th:text="${v.getAnio()}"></td>
+					<td th:text="${v.getTitulo()}"></td>
 					<td th:text="${v.getFechaInicio()}"></td>
 					<td th:text="${v.getFechaFinal()}"></td>
 					<td> <a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id}">Editar</a></td>

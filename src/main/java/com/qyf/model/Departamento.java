@@ -2,6 +2,8 @@ package com.qyf.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,10 +11,10 @@ import javax.persistence.Table;
 @Table(name="departamento")
 public class Departamento {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="ID_DEPTO")
 	private int id;
-	@Column(name="DEPARTAMENTO")
+	@Column(name="DEPARTAMENTO", length=255)
 	private String nombre_departamento;
 	
 	public Departamento() {
