@@ -12,11 +12,11 @@ import javax.persistence.Table;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="ID_ROL")
+	@Column(name="ID_ROLE")
 	private int id;
-	@Column(name="NOMBRE")
+	@Column(name="NOMBRE_ROLE")
 	private String rol;
-	@Column(name="DESCRIPCION")
+	@Column(name="DESCRIPCION_ROLE")
 	private String descripcion;
 	
 	public Role() {

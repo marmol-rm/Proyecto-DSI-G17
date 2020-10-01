@@ -31,24 +31,21 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>CODIGO</th>
 					<th>ESTADO</th>
 					<th>CICLO</th>
 					<th>TITULO</th>
 					<th>INICIO</th>
 					<th>FINALIZACION</th>
-					<th>EDITAR</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="v:${ciclos}">
-					<td th:text="${v.getId()}"></td>
 					<td th:text="${v.getActivo()}"></td>
 					<td th:text="${v.getNumero()}"></td>
 					<td th:text="${v.getTitulo()}"></td>
 					<td th:text="${v.getFechaInicio()}"></td>
 					<td th:text="${v.getFechaFinal()}"></td>
-					<td> <a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id}">Editar</a></td>
+					<td> <a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id}">Ver</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -59,8 +56,8 @@
 	  	class="btn btn-danger">+Crear</a></div>
 	  <div class="col"></div>
 	</div>
-	</br>
-	</br>
+	<br>
+	<br>
 	</div>
 </body>
 </html>

@@ -7,34 +7,35 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="src/main/resources/static/style.css">
 </head>
 <body>
 		<div class="container mt-5">
-		<div class="col-sm-6">
-		<form th:action="@{/edit}" th:object=${depto} method="POST">
+		<div class="col-sm-5">
+		<form th:action="@{/editDepto}" th:object=${depto} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
 				<h3>Editar Departamento</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>CODIGO</label>
-					<input th:field="*{id}" oninput="check(this)" type="number" min="1" class="form-control"/>
+					<label>CODIGO:</label>
+					<input th:text="${id}" th:field="*{id}" oninput="check(this)" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>NOMBRE DEL DEPARTAMENTO</label>
+					<label>NOMBRE DEL DEPARTAMENTO:</label>
 					<input required type="text" class="form-control" th:field="*{departamento}"/>
 				</div>
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Editar" class="btn btn-primary" />
-				<a th:href="@{/eliminar/}+${id}" class="btn btn-danger">Eliminar</a>
+				<a th:href="@{/eliminarDepartamento/}+${id}" class="btn btn-danger">Eliminar</a>
 			</div>
 	  <div class="col"></div>
 		</form>
 		</div>
 	</div>
-	<script src="funciones.js" language="javascript"></script>
+	<script src="static/funciones.js" language="javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -31,16 +31,13 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>CODIGO</th>
 					<th>NOMBRE</th>
-					<th>EDITAR</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="v:${departamentos}">
-					<td th:text="${v.getId()}"></td>
 					<td th:text="${v.getDepartamento()}"></td>
-					<td> <a class="btn btn-primary" th:href="@{/editar/}+${v.id}">Editar</a></td>
+					<td><a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id}">Ver</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -51,8 +48,8 @@
 	  	class="btn btn-danger">+Crear</a></div>
 	  <div class="col"></div>
 	</div>
-	</br>
-	</br>
+	<br>
+	<br>
 	</div>
 </body>
 </html>

@@ -19,9 +19,7 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>CODIGO</label>
-					<input oninput="check(this)" th:field="*{id}" type="number" min="1" class="form-control"/>
-					<h6>*Si ingresa un ID ya existente, este se editara!</h6>
+					<input oninput="check(this)" th:field="*{id}" type="hidden"class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>TITULO</label>

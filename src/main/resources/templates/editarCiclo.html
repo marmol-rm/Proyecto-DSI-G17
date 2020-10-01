@@ -19,23 +19,23 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>CODIGO</label>
-					<input th:field="*{id}" oninput="check(this)" type="number" min="1" class="form-control"/>
+					<label>CODIGO:</label>
+					<input th:text="${id}" th:field="*{id}" oninput="check(this)" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>TITULO</label>
+					<label>TITULO:</label>
 					<input required type="text" class="form-control" th:field="*{titulo}"/>
 				</div>
 				<div class="form-group">
-					<label>AÑO</label>
+					<label>AÑO:</label>
 					<input oninput="check(this)" th:field="*{anio}" type="number" min="1" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>INICIO</label>
+					<label>INICIO:</label>
 					<input th:field="*{fechaInicio}" type="date" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>FINALIZACION</label>
+					<label>FINALIZACION:</label>
 					<input th:field="*{fechaFinal}" type="date" class="form-control"/>
 				</div>
 				<div class="form-group">
