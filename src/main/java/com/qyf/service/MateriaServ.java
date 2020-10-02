@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IMateriaServ;
 import com.qyf.interfaces.IMateria;
-import com.qyf.model.Departamento;
 import com.qyf.model.Materia;
 
 @Service

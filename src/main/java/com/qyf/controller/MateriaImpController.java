@@ -12,58 +12,54 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.qyf.interfaceService.IDepartamentoServ;
-import com.qyf.interfaceService.IMateriaServ;
-import com.qyf.model.Departamento;
-import com.qyf.model.Materia;
+import com.qyf.interfaceService.IMateriaImpServ;
+import com.qyf.model.Materia_Imp;
 
 @Controller
 @RequestMapping
-public class MateriaController {
+public class MateriaImpController {
 	@Autowired
-	private IMateriaServ service;
-	@Autowired
-	private IDepartamentoServ dservice;
+	private IMateriaImpServ service;
 	
-	@RequestMapping("/materias")
+	@RequestMapping("/materiasImpartidas")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		//System.out.println(palabra);
-		List<Materia> lista = service.listar(palabra);
+		List<Materia_Imp> lista = service.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("materias",lista);
-		return "listaMaterias";
+		return "listaMatImpartidas";
 	}
 	
-	@GetMapping("/nuevaMateria")
+	@GetMapping("/nuevaMateriaImp")
 	public String agregar(Model model) {
-		model.addAttribute("materia", new Materia());
-		return "agregarMateria";
+		model.addAttribute("materia", new Materia_Imp());
+		return "agregarMateriaImp";
 	}
 	
-	@PostMapping("/guardarMateria")
-	public String save(@Validated Materia m, Model model) {
+	@PostMapping("/guardarMateriaImp")
+	public String save(@Validated Materia_Imp m, Model model) {
 		model.getAttribute("materia");
 		service.guardar(m);
-		return "redirect:/materias";
+		return "redirect:/materiasImpartidas";
 	}
 	
-	@GetMapping("/editarMateria/{id}")
+	@GetMapping("/editarMateriaImp/{id}")
 	public String editar(@PathVariable int id, Model model) {
-		java.util.Optional<Materia> m = service.listarId(id);
+		java.util.Optional<Materia_Imp> m = service.listarId(id);
 		model.addAttribute("materia", m);
-		return "editarMateria";
+		return "editarMateriaImp";
 	}
 	
-	@PostMapping("/editMateria")
-	public String edit(@Validated Materia m, Model model) {
+	@PostMapping("/editMateriaImp")
+	public String edit(@Validated Materia_Imp m, Model model) {
 		model.getAttribute("materia");
 		service.guardar(m);
-		return "redirect:/materias";
+		return "redirect:/materiasImpartidas";
 	}
 	
-	@GetMapping("eliminarMateria/{id}")
+	@GetMapping("eliminarMateriaImp/{id}")
 	public String delete(@PathVariable int id, Model model) {
 		service.delete(id);
-		return "redirect:/materias";
+		return "redirect:/materiasImpartidas";
 	}
 }
