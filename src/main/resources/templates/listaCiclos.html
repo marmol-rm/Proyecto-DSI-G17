@@ -43,9 +43,9 @@
 					<td th:text="${v.getActivo()}"></td>
 					<td th:text="${v.getNumero()}"></td>
 					<td th:text="${v.getTitulo()}"></td>
-					<td th:text="${v.getFechaInicio()}"></td>
-					<td th:text="${v.getFechaFinal()}"></td>
-					<td> <a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id}">Ver</a></td>
+					<td th:text="${v.getFecha_ini()}"></td>
+					<td th:text="${v.getFecha_fin()}"></td>
+					<td> <a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id_ciclo}">Ver</a></td>
 				</tr>
 			</tbody>
 		</table>

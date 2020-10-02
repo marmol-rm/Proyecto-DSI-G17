@@ -19,7 +19,7 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<input oninput="check(this)" th:field="*{id}" type="hidden"class="form-control"/>
+					<input oninput="check(this)" th:field="*{id_ciclo}" type="hidden"class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>TITULO</label>
@@ -27,7 +27,7 @@
 				</div>
 				<div class="form-group">
 					<label>NUMERO</label>
-					<input oninput="check(this)" th:field="*{numero}" type="number" min="1" class="form-control"/>
+					<input oninput="check(this)" min="1" max="2" th:field="*{numero}" type="number" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>AÑO</label>
@@ -35,18 +35,18 @@
 				</div>
 				<div class="form-group">
 					<label>INICIO</label>
-					<input th:field="*{fechaInicio}" type="date" class="form-control"/>
+					<input th:field="*{fecha_ini}" type="date" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>FINALIZACION</label>
-					<input th:field="*{fechaFinal}" type="date" class="form-control"/>
+					<input th:field="*{fecha_fin}" type="date" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>ACTIVAR?</label><br>
-					<label>NO</label>
 					<input th:field="*{activo}" value="0" type="checkbox" class="form-control"/>
-					<label>SI</label>
+					<label>NO</label>
 					<input th:field="*{activo}" value="1" type="checkbox" class="form-control"/>
+					<label>SI</label>
 				</div>
 			</div>
 			<div class="card-footer">

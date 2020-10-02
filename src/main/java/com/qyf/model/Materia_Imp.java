@@ -13,17 +13,14 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="materia")
-public class Materia {
+@Table(name="materias_impartidas")
+public class Materia_Imp {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int id_materia;
-	@Column(length=6)
-	private String codigo;
-	@Column(length=255)
-	private String nombre_materia;
-	@Column(name="TIPO")
-	private String tipo;
+	@Column(unique=true)
+	private long id_materia_imp;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Departamento d;
+	private Materia m;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Ciclo c;
 }

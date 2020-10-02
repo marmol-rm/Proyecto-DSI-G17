@@ -17,7 +17,7 @@ import com.qyf.interfaces.IDepartamento;
 import com.qyf.model.Departamento;
 
 @Service
-public class DepartamentoService implements IDepartamentoServ{
+public class DepartamentoServ implements IDepartamentoServ{
 	@Autowired
 	private IDepartamento data;
 	
@@ -47,7 +47,6 @@ public class DepartamentoService implements IDepartamentoServ{
 	
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
 		data.deleteById(id);
 	}
 }

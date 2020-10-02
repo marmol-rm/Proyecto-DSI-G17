@@ -9,43 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="jefes_depto")
 public class Jefes_Depto {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="ID_JEFE")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(unique=true)
+	private int id_jefe;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Departamento depto;
+	private Departamento dep;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Docente docente;
-	
-	public Jefes_Depto() {
-		super();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Departamento getDepto() {
-		return depto;
-	}
-
-	public void setDepto(Departamento depto) {
-		this.depto = depto;
-	}
-
-	public Docente getDocente() {
-		return docente;
-	}
-
-	public void setDocente(Docente docente) {
-		this.docente = docente;
-	}
+	private Docente doc;
 }

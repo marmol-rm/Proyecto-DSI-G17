@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Administracion Departamentos</title>
+<title>Administracion Materias</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -13,14 +13,14 @@
 	<div class="row" >
 	  <div class="col"></div>
 	  <div class="col">
-		<h2>Departamentos</h2></div>  
+		<h2>Materias de la facultad</h2></div>  
 	<div class="col"></div>
 	</div>
 	<br/>
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-  	<form th:action="@{/departamentos}">
+  	<form th:action="@{/materias}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-primary">Buscar</button>
     </form>
@@ -31,20 +31,26 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
+					<th>CODIGO MATERIA</th>
+					<th>TIPO</th>
 					<th>NOMBRE</th>
+					<th>DEPARTAMENTO</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="v:${departamentos}">
-					<td th:text="${v.getDepartamento()}"></td>
-					<td><a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_depto}">Ver</a></td>
+				<tr th:each="v:${materias}">
+					<td th:text="${v.getCodigo()}"></td>
+					<td th:text="${v.getTipo()}"></td>
+					<td th:text="${v.getNombre_materia()}"></td>
+					<td> </td>
+					<td><a class="btn btn-primary" th:href="@{/editarMateria/}+${v.id_materia}">Ver</a></td>
 				</tr>
 			</tbody>
 		</table>
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/nuevoDepartamento}"
+	  <div class="col"><a th:href="@{/nuevaMateria}"
 	  	class="btn btn-danger">+Crear</a></div>
 	  <div class="col"></div>
 	</div>

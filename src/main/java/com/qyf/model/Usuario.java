@@ -9,85 +9,27 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="user")
 public class Usuario {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="ID_USER")
-	private int id;
-	@Column(name="NOMBRES")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(unique=true)
+	private int id_user;
+	@Column(length=255)
 	private String nombres;
-	@Column(name="APELLIDOS")
+	@Column(length=255)
 	private String apellidos;
-	@Column(name="EMAIL")
+	@Column(length=255)
 	private String email;
-	@Column(name="PASSWORD")
+	@Column(length=255)
 	private String password;
-	@Column(name="LOCKED")
-	private String activo;
-	
+	private int activo;
+
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Role rol;
-	
-	public Usuario() {
-		super();
-	}
-
-	public Role getRol() {
-		return rol;
-	}
-
-	public void setRol(Role rol) {
-		this.rol = rol;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNombres() {
-		return nombres;
-	}
-
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getActivo() {
-		return activo;
-	}
-
-	public void setActivo(String activo) {
-		this.activo = activo;
-	}
+	private Role r;
 }

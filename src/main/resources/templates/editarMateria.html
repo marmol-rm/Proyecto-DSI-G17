@@ -7,29 +7,37 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 		<div class="container mt-5">
-		<div class="col-sm-5">
-		<form th:action="@{/editDepto}" th:object=${depto} method="POST">
+		<div class="col-lg-5">
+		<form th:action="@{/editMateria}" th:object=${materia} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Editar Departamento</h3>
+				<h3>Editar Materia</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>CODIGO:</label>
-					<input th:text="${id}" th:field="*{id_depto}" oninput="check(this)" type="hidden" class="form-control"/>
+					<label>N:</label>
+					<input required th:text="${id}" th:field="*{id_materia}" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>NOMBRE DEL DEPARTAMENTO:</label>
-					<input required type="text" class="form-control" th:field="*{departamento}"/>
+					<label>CODIGO:</label>
+					<input required th:field="*{codigo}" type="text" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<label>TIPO:</label>
+					<input required th:field="*{tipo}" type="text" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<label>NOMBRE:</label>
+					<input required th:field="*{nombre_materia}" type="text" class="form-control"/>
 				</div>
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Editar" class="btn btn-primary" />
-				<a th:href="@{/eliminarDepartamento/}+${id}" class="btn btn-danger">Eliminar</a>
+				<a th:href="@{/eliminarMateria/}+${id}" class="btn btn-danger">Eliminar</a>
 			</div>
 	  <div class="col"></div>
 		</form>
