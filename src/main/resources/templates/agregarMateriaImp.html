@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Agregar Materia</title>
+<title>Agregar Materia a Impartir</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,7 +12,7 @@
 <body>
 		<div class="container mt-5">
 		<div class="col-lg-5">
-		<form th:action="@{/guardarMateria}" th:object=${materia} method="POST">
+		<form th:action="@{/guardarMateriaImp}" th:object=${materia} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
 				<h3>Ingresar Materia</h3>
@@ -20,15 +20,6 @@
 			<div class="card-body">
 				<div class="form-group">
 					<label>CODIGO MATERIA</label>
-					<input required th:field="*{codigo}" type="text" class="form-control"/>
-				</div>
-				<div class="form-group">
-					<label>TIPO</label>
-					<input required th:field="*{tipo}" type="text" class="form-control"/>
-				</div>
-				<div class="form-group">
-					<label>NOMBRE</label>
-					<input required th:field="*{nombre_materia}" type="text" class="form-control"/>
 				</div>
 			</div>
 			<div class="card-footer">

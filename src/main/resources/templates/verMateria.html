@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Editar Materia</title>
+<title>Datos de Materia</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,10 +12,10 @@
 <body>
 		<div class="container mt-5">
 		<div class="col-lg-5">
-		<form th:action="@{/editMateria}" th:object=${materia} method="POST">
+		<form th:object=${materia} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Editar Materia</h3>
+				<h3>Info.</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
@@ -24,19 +24,19 @@
 				</div>
 				<div class="form-group">
 					<label>CODIGO:</label>
-					<input required th:field="*{codigo}" type="text" class="form-control"/>
+					<input disabled th:field="*{codigo}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>TIPO:</label>
-					<input required th:field="*{tipo}" type="text" class="form-control"/>
+					<input disabled th:field="*{tipo}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>NOMBRE:</label>
-					<input required th:field="*{nombre_materia}" type="text" class="form-control"/>
+					<input disabled th:field="*{nombre_materia}" type="text" class="form-control"/>
 				</div>
 			</div>
 			<div class="card-footer">
-				<input type="submit" value="Guardar" class="btn btn-primary" />
+				<a th:href="@{/editarMateria/}+${id}" class="btn btn-primary">Editar</a>
 				<a th:href="@{/eliminarMateria/}+${id}" class="btn btn-danger">Eliminar</a>
 			</div>
 	  <div class="col"></div>

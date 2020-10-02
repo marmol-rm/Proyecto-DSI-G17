@@ -38,6 +38,13 @@ public class CicloController {
 		return "redirect:/ciclos";
 	}
 	
+	@GetMapping("/datosCiclo/{id}")
+	public String ver(@PathVariable int id, Model model) {
+		java.util.Optional<Ciclo> ciclo = service.listarId(id);
+		model.addAttribute("ciclo", ciclo);
+		return "verCiclo";
+	}
+	
 	@GetMapping("/editarCiclo/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		java.util.Optional<Ciclo> ciclo = service.listarId(id);

@@ -47,6 +47,13 @@ public class MateriaController {
 		return "redirect:/materias";
 	}
 	
+	@GetMapping("/datosMateria/{id}")
+	public String ver(@PathVariable int id, Model model) {
+		java.util.Optional<Materia> m = service.listarId(id);
+		model.addAttribute("materia", m);
+		return "verMateria";
+	}
+	
 	@GetMapping("/editarMateria/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		java.util.Optional<Materia> m = service.listarId(id);

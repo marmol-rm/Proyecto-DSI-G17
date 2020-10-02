@@ -37,6 +37,13 @@ public class DepartamentoController {
 		return "redirect:/departamentos";
 	}
 	
+	@GetMapping("/datosDepartamento/{id}")
+	public String ver(@PathVariable int id, Model model) {
+		java.util.Optional<Departamento> depto = service.listarId(id);
+		model.addAttribute("depto", depto);
+		return "verDepartamento";
+	}
+	
 	@GetMapping("/editarDepartamento/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		java.util.Optional<Departamento> depto = service.listarId(id);

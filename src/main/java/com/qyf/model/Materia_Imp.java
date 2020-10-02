@@ -18,7 +18,7 @@ public class Materia_Imp {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(unique=true)
-	private long id_materia_imp;
+	private int id_materia_imp;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Materia m;
 	@ManyToOne(fetch = FetchType.EAGER)

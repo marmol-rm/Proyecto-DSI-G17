@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Editar Ciclo</title>
+<title>Datos del ciclo</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,10 +12,10 @@
 <body>
 		<div class="container mt-5">
 		<div class="col-sm-5">
-		<form th:action="@{/editCiclo}" th:object=${ciclo} method="POST">
+		<form th:object=${ciclo} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Editar Ciclo</h3>
+				<h3>Info.</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
@@ -24,11 +24,11 @@
 				</div>
 				<div class="form-group">
 					<label>TITULO:</label>
-					<input required th:field="*{titulo}" type="text" class="form-control"/>
+					<input disabled th:field="*{titulo} type="text" class="form-control""/>
 				</div>
 				<div class="form-group">
 					<label>NUMERO:</label>
-					<input required th:field="*{numero}" type="number" min="1" max="2" class="form-control"/>
+					<input disabled th:field="*{numero}" type="number" min="1" max="2" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>AÑO:</label>
@@ -36,22 +36,22 @@
 				</div>
 				<div class="form-group">
 					<label>INICIO:</label>
-					<input th:field="*{fecha_ini}" type="date" class="form-control"/>
+					<input disabled th:field="*{fecha_ini}" type="date" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>FINALIZACION:</label>
-					<input th:field="*{fecha_fin}" type="date" class="form-control"/>
+					<input disabled th:field="*{fecha_fin}" type="date" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>ACTIVAR?</label><br>
-					<input th:field="*{activo}" value="0" type="checkbox" class="form-control"/>
+					<input disabled th:field="*{activo}" value="0" type="checkbox" class="form-control"/>
 					<label>NO</label>
-					<input th:field="*{activo}" value="1" type="checkbox" class="form-control"/>
+					<input disabled th:field="*{activo}" value="1" type="checkbox" class="form-control"/>
 					<label>SI</label>
 				</div>
 			</div>
 			<div class="card-footer">
-				<input type="submit" value="Guardar" class="btn btn-primary" />
+				<a th:href="@{/editarCiclo/}+${id}" class="btn btn-primary">Editar</a>
 				<a th:href="@{/eliminarCiclo/}+${id}" class="btn btn-danger">Eliminar</a>
 			</div>
 	  <div class="col"></div>

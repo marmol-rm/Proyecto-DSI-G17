@@ -27,7 +27,7 @@ public class MateriaImpController {
 		List<Materia_Imp> lista = service.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("materias",lista);
-		return "listaMatImpartidas";
+		return "listaMateriasImp";
 	}
 	
 	@GetMapping("/nuevaMateriaImp")
@@ -41,6 +41,13 @@ public class MateriaImpController {
 		model.getAttribute("materia");
 		service.guardar(m);
 		return "redirect:/materiasImpartidas";
+	}
+	
+	@GetMapping("/datosMateriaImp/{id}")
+	public String ver(@PathVariable int id, Model model) {
+		java.util.Optional<Materia_Imp> m = service.listarId(id);
+		model.addAttribute("materia", m);
+		return "verMateriaImp";
 	}
 	
 	@GetMapping("/editarMateriaImp/{id}")
