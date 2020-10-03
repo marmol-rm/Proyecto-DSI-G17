@@ -1,15 +1,17 @@
 body{
 	background-color : hsla(89, 43%, 51%, 0.3);
 }
+
 h1 h2 h3 h4 h5 h6{
 	text-align   : center;
 }
+
 div {
 	text-align : center;
 }
 
 table {
-    border     : 1px black;
+    border     : 1px solid gray;
     font-size  : 120%;
     text-align : center;
 }
