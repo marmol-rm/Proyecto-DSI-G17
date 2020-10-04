@@ -24,7 +24,11 @@
 				</div>
 				<div class="form-group">
 					<label>TIPO</label>
-					<input required th:field="*{tipo}" type="text" class="form-control"/>
+					<select required th:field="*{tipo}" type="text" class="form-control">
+						<option value="Obligatoria">Obligatoria</option>
+						<option value="Electiva">Electiva</option>
+					</select>
+					
 				</div>
 				<div class="form-group">
 					<label>NOMBRE</label>

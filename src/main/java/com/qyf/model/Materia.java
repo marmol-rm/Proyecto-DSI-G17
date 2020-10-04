@@ -17,8 +17,9 @@ import lombok.Data;
 public class Materia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(unique=true)
 	private int id_materia;
-	@Column(length=6)
+	@Column(length=6, unique=true)
 	private String codigo;
 	@Column(length=255)
 	private String nombre_materia;
