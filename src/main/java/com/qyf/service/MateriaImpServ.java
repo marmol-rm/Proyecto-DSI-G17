@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IMateriaImpServ;
-import com.qyf.interfaces.IMateriaImp;
 import com.qyf.model.Materia_Imp;
+import com.qyf.repository.IMateriaImp;
 
 @Service
 public class MateriaImpServ implements IMateriaImpServ{

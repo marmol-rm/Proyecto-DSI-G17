@@ -1,4 +1,4 @@
-package com.qyf.interfaces;
+package com.qyf.repository;
 
 import java.util.List;
 

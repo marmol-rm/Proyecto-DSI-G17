@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.ICicloServ;
-import com.qyf.interfaces.ICiclo;
 import com.qyf.model.Ciclo;
+import com.qyf.repository.ICiclo;
 
 @Service
 public class CicloServ implements ICicloServ {

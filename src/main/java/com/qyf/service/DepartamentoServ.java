@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IDepartamentoServ;
-import com.qyf.interfaces.IDepartamento;
 import com.qyf.model.Departamento;
+import com.qyf.repository.IDepartamento;
 
 @Service
 public class DepartamentoServ implements IDepartamentoServ{
