@@ -43,13 +43,6 @@ public class MateriaImpController {
 		return "redirect:/materiasImpartidas";
 	}
 	
-	@GetMapping("/datosMateriaImp/{id}")
-	public String ver(@PathVariable int id, Model model) {
-		java.util.Optional<Materia_Imp> m = service.listarId(id);
-		model.addAttribute("materia", m);
-		return "verMateriaImp";
-	}
-	
 	@GetMapping("/editarMateriaImp/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		java.util.Optional<Materia_Imp> m = service.listarId(id);
