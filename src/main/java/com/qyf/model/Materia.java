@@ -16,7 +16,7 @@ import lombok.Data;
 @Table(name="materia")
 public class Materia {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private int id_materia;
 	@Column(length=6, unique=true)

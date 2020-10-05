@@ -16,7 +16,7 @@ import lombok.Data;
 @Table(name="docente")
 public class Docente {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_DOCENTE", unique=true)
 	private int id;
 	@ManyToOne(fetch = FetchType.EAGER)

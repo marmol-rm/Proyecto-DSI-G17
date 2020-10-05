@@ -14,7 +14,7 @@ import lombok.Data;
 @Table(name="ciclo")
 public class Ciclo {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private int id_ciclo;
 	@Column(length=255)

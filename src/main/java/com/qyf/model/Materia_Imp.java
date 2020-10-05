@@ -16,7 +16,7 @@ import lombok.Data;
 @Table(name="materias_impartidas")
 public class Materia_Imp {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private int id_materia_imp;
 	@ManyToOne(fetch = FetchType.EAGER)

@@ -13,7 +13,7 @@ import lombok.Data;
 @Table(name="role")
 public class Role {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private int id_rol;
 	@Column(length=255)
