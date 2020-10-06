@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.qyf.interfaceService.IDepartamentoServ;
 import com.qyf.interfaceService.IMateriaServ;
+import com.qyf.model.Departamento;
 import com.qyf.model.Materia;
 
 @Controller
@@ -20,6 +22,8 @@ import com.qyf.model.Materia;
 public class MateriaController {
 	@Autowired
 	private IMateriaServ service;
+	@Autowired
+	private IDepartamentoServ dservice;
 	
 	@RequestMapping("/materias")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
@@ -33,6 +37,8 @@ public class MateriaController {
 	@GetMapping("/nuevaMateria")
 	public String agregar(Model model) {
 		model.addAttribute("materia", new Materia());
+		List<Departamento> lista = dservice.listar(null);
+		model.addAttribute("departamentos", lista);
 		return "agregarMateria";
 	}
 	

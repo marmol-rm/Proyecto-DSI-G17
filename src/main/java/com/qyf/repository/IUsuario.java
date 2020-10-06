@@ -8,6 +8,6 @@ import com.qyf.model.Usuario;
 
 @Repository
 public interface IUsuario extends JpaRepository<Usuario, Long>{
-	@Query("SELECT u FROM Usuario u WHERE u.email = 1?")
+	@Query("SELECT u FROM Usuario u WHERE u.email = ?1")
 	Usuario findByEmail(String email);
 }

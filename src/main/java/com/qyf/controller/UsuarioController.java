@@ -32,8 +32,8 @@ public class UsuarioController {
 	
 	@GetMapping("/registro")
 	public String registrar(Model model) {
-		model.addAttribute("user", new Usuario());
-		return "form-registro";
+		model.addAttribute("usuario", new Usuario());
+		return "registroUsuario";
 	}
 	
 	@PostMapping("/procesarRegistro")
@@ -42,6 +42,6 @@ public class UsuarioController {
 		String encodedPass = encoder.encode(user.getPassword());
 		user.setPassword(encodedPass);
 		service.save(user);
-		return "registro_exito";
+		return "listaUsuarios";
 	}
 }
