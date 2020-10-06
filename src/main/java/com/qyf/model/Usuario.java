@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,17 +20,18 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
-	private int id_user;
+	private Long id_user;
 	@Column(length=255)
 	private String nombres;
 	@Column(length=255)
 	private String apellidos;
-	@Column(length=255, unique=true)
+	@Column(nullable=false, length=255, unique=true)
 	private String email;
 	@Column(length=255)
 	private String password;
 	private int activo;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Role r;
+	@JoinColumn(name="id_rol")
+	private Role role;
 }

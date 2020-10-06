@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,7 +21,9 @@ public class Materia_Imp {
 	@Column(unique=true)
 	private int id_materia_imp;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Materia m;
+	@JoinColumn(name="id_materia")
+	private Materia materia;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Ciclo c;
+	@JoinColumn(name="id_ciclo")
+	private Ciclo ciclo;
 }

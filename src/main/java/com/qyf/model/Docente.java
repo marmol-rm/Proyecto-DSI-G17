@@ -6,7 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -19,6 +20,7 @@ public class Docente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_DOCENTE", unique=true)
 	private int id;
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Usuario u;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_user")
+	private Usuario user;
 }

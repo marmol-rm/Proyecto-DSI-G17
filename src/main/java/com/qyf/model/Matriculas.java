@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,9 +19,11 @@ public class Matriculas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
-	private long id_matricula;
+	private Long id_matricula;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Estudiante e;
+	@JoinColumn(name="carnet")
+	private Estudiante estudiante;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Materia_Imp m;
+	@JoinColumn(name="id_materia_imp")
+	private Materia_Imp materia;
 }

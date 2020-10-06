@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,7 +21,9 @@ public class Jefes_Depto {
 	@Column(unique=true)
 	private int id_jefe;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Departamento dep;
+	@JoinColumn(name="id_depto")
+	private Departamento departamento;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Docente doc;
+	@JoinColumn(name="id_docente")
+	private Docente docente;
 }
