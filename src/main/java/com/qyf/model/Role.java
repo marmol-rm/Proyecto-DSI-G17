@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
-@Data
 @Entity
 @Table(name="role")
 public class Role {
@@ -20,4 +18,32 @@ public class Role {
 	private String nombre;
 	@Column(length=255)
 	private String descripcion;
+	
+	public Role() {
+		super();
+	}
+
+	public int getId_rol() {
+		return id_rol;
+	}
+
+	public void setId_rol(int id_rol) {
+		this.id_rol = id_rol;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 }

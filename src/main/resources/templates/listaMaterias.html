@@ -58,10 +58,10 @@
 					<td th:text="${v.getCodigo()}"></td>
 					<td th:text="${v.getTipo()}"></td>
 					<td th:text="${v.getNombre_materia()}"></td>
-					<td th:text="${v.getD().getDepartamento()}"></td>
+					<td th:text="${v.departamento.getDepartamento()}"></td>
 					<td>
 						<a class="btn btn-primary" th:href="@{/editarMateria/}+${v.id_materia}">Editar</a>
-						<a th:href="@{/eliminarMateria/}+${v.id_materia}" class="btn btn-danger">Eliminar</a>
+						<a th:onclick="eliminarMateria([[${v.id_materia}]])" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
@@ -76,5 +76,9 @@
 	<br>
 	<br>
 	</div>
+	<script src="funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

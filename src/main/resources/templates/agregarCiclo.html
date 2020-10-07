@@ -31,15 +31,15 @@
 				</div>
 				<div class="form-group">
 					<label>AÑO</label>
-					<input oninput="check(this)" th:field="*{anio}" type="number" min="1" class="form-control"/>
+					<input oninput="check(this)" th:field="*{anio}" type="number" min="2020" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>INICIO</label>
-					<input th:field="*{fecha_ini}" type="date" class="form-control"/>
+					<input th:field="*{fecha_ini}" type="date" pattern="dd-MM-YYYY" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>FINALIZACION</label>
-					<input th:field="*{fecha_fin}" type="date" class="form-control"/>
+					<input th:field="*{fecha_fin}" type="date" pattern="dd-MM-YYYY" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>ACTIVAR?</label><br>

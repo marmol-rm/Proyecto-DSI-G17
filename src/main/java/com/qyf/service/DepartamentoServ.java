@@ -12,6 +12,7 @@ import com.qyf.repository.IDepartamento;
 
 @Service
 public class DepartamentoServ implements IDepartamentoServ{
+	
 	@Autowired
 	private IDepartamento data;
 	

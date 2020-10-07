@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Registro</title>
+<title>Registro Usuario</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,7 +12,7 @@
 <body>
 		<div class="container mt-5">
 		<div class="col-sm-5">
-		<form th:action="@{/procesarRegistro}" th:object=${usuario} method="POST">
+		<form th:action="@{/procesarRegistro}" th:object=${user} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
 				<h3>Registrar Usuario</h3>
@@ -23,9 +23,11 @@
 				</div>
 				<div class="form-group">
 					<label>ROL</label>
-					<select th:fiel="*{role}" class="form-control">
+					<select th:field="*{role.id_rol}" class="form-control">
+						<option value=1>Administrador</option>
 						<option value=2>Estudiante</option>
-						<option value=3>Docente</option>
+						<option value=3>Coordinador de catedra</option>
+						<option value=4>Jefe de departamento</option>
 					</select>
 				</div>
 				<div class="form-group">

@@ -31,7 +31,6 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>ESTADO</th>
 					<th>CICLO</th>
 					<th>TITULO</th>
 					<th>INICIO</th>
@@ -40,14 +39,13 @@
 			</thead>
 			<tbody>
 				<tr th:each="v:${ciclos}">
-					<td th:text="${v.getActivo()}"></td>
 					<td th:text="${v.getNumero()}"></td>
 					<td th:text="${v.getTitulo()}"></td>
 					<td th:text="${v.getFecha_ini()}"></td>
 					<td th:text="${v.getFecha_fin()}"></td>
 					<td>
 						<a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id_ciclo}">Editar</a>
-						<a th:href="@{/eliminarCiclo/}+${v.id_ciclo}" class="btn btn-danger">Eliminar</a>
+						<a th:onclick="eliminarCiclo([[${v.id_ciclo}]])" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
@@ -62,5 +60,9 @@
 	<br>
 	<br>
 	</div>
+	<script src="funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

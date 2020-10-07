@@ -19,14 +19,14 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>N:</label>
+					<label>ID:</label>
 					<input required th:text="${id}" th:field="*{id_materia}" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>DEPARTAMENTO</label>
-					<select class="form-control">
-						<option th:each="v:${departamentos}" th:field="*{d.departamento}" 
-						th:value="${v.getDepartamento()}" th:text="${v.getDepartamento()}"></option>
+					<select th:field="*{departamento.id_depto}" class="form-control">
+						<option th:each="v:${departamentos}"  
+						th:value="${v.getId_depto()}" th:text="${v.getDepartamento()}"></option>
 					</select>
 				</div>
 				<div class="form-group">
@@ -47,7 +47,7 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a th:href="@{/eliminarMateria/}+${id}" class="btn btn-danger">Eliminar</a>
+				<a th:onclick="eliminarMateria([[${id}]])" class="btn btn-danger">Eliminar</a>
 			</div>
 	  <div class="col"></div>
 		</form>

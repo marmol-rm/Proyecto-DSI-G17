@@ -10,9 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name="docente")
 public class Docente {
@@ -23,4 +20,24 @@ public class Docente {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_user")
 	private Usuario user;
+	
+	public Docente() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
 }

@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="/">
   	<img src="logo.png" width="40" height="40" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Inicio <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="/">Inicio <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/departamentos">Departamentos</a>
       <a class="nav-item nav-link" href="/materias">Materias</a>
       <a class="nav-item nav-link disabled" href="#">Ciclos</a>
@@ -63,7 +63,7 @@
 					<td th:text="${v.getRole().getNombre()}"></td>
 					<td>
 					<a class="btn btn-primary" th:href="@{/editarUsuario/}+${v.id_user}">Editar</a>
-					<a class="btn btn-danger" th:href="@{/eliminarUsuario/}+${v.id_user}">Eliminar</a>
+					<a class="btn btn-danger" th:onclick="eliminarUsuario([[${v.id_user}]])">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
@@ -78,5 +78,9 @@
 	<br>
 	<br>
 	</div>
+	<script src="funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

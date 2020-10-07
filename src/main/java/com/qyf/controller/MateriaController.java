@@ -52,6 +52,8 @@ public class MateriaController {
 	@GetMapping("/editarMateria/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		java.util.Optional<Materia> m = service.listarId(id);
+		List<Departamento> lista = dservice.listar(null);
+		model.addAttribute("departamentos", lista);
 		model.addAttribute("materia", m);
 		return "editarMateria";
 	}

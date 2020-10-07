@@ -19,7 +19,7 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>CODIGO:</label>
+					<label>ID:</label>
 					<input th:text="${id}" th:field="*{id_depto}" oninput="check(this)" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
@@ -29,7 +29,7 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a th:href="@{/eliminarDepartamento/}+${id}" class="btn btn-danger">Eliminar</a>
+				<a th:onclick="eliminarDepartamento([[${id}]])" class="btn btn-danger">Eliminar</a>
 			</div>
 	  <div class="col"></div>
 		</form>
