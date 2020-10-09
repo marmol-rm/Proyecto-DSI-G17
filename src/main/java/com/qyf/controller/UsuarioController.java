@@ -41,7 +41,7 @@ public class UsuarioController {
 		String encodedPass = encoder.encode(user.getPassword());
 		user.setPassword(encodedPass); //Se guarda el password codificado
 		service.guardar(user);
-		return "redirect:listaUsuarios";
+		return "redirect:/usuarios";
 	}
 	
 	@GetMapping("/editarUsuario/{id}")
