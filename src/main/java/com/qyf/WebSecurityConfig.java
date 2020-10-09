@@ -45,13 +45,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.authenticationProvider(authProvider());
 	}
 
-/*	@Override
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/usuarios/**").authenticated()
 		.anyRequest().permitAll().and().formLogin()
-		.usernameParameter("email").defaultSuccessUrl("/usuarios")
+		.usernameParameter("email").defaultSuccessUrl("/")
 		.permitAll()
 		.and().logout().logoutSuccessUrl("/").permitAll();	
-	}*/
+	}
 }
