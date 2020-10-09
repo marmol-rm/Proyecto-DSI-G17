@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -25,6 +27,8 @@ public class Usuario {
 	@Column(length=255)
 	private String apellidos;
 	@Column(nullable=false, length=255, unique=true)
+	@NotBlank(message = "email obligatorio")
+	@Email(message = "no parece un correo")
 	private String email;
 	@Column(length=255)
 	private String password;

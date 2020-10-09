@@ -16,6 +16,7 @@
 			<div class="card"></div>
 			<div class="card-header">
 				<h3>Editar Ciclo</h3>
+				<a th:href="@{/materiasImpartidas/}+${id}" class="btn btn-primary">Materia Impartidas</a>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
@@ -54,7 +55,6 @@
 				<input type="submit" value="Guardar" class="btn btn-primary" />
 				<a th:onclick="eliminarCiclo([[${id}]])" class="btn btn-danger">Eliminar</a>
 			</div>
-	  	<div class="col"></div>
 		</form>
 		<br>
 		</div>

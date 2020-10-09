@@ -26,4 +26,7 @@ public class Materia_Imp {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_ciclo")
 	private Ciclo ciclo;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_catedra")
+	private Coordinador coord;
 }

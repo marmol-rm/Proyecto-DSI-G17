@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="estudiante")
@@ -17,6 +18,7 @@ public class Estudiante {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_estudiante;
 	@Column(length=7, unique=true)
+	@Pattern(regexp = "^[a-z A-Z]{2}[0-9]{5}$", message = "carnet no válido")
 	private String carnet;
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_user")

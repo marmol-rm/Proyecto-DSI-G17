@@ -21,14 +21,10 @@ public class UsuarioController {
 	@Autowired
 	private IUsuarioServ service;
 	
-	@GetMapping("")
-	public String inicio() {
-		return "index";
-	}
-	
 	@GetMapping("/usuarios")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Usuario> lista = service.listar(palabra);
+		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
 		return "listaUsuarios";
 	}

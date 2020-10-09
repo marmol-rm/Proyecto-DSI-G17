@@ -7,10 +7,30 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="http://localhost:8081/style.css">
 </head>
 <body>
-	<div class="row" >
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+  	<img src="logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Inicio <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/usuarios">Usuarios</a>
+      <a class="nav-item nav-link" href="/departamentos">Departamentos</a>
+      <a class="nav-item nav-link" href="/materias">Materias</a>
+      <a class="nav-item nav-link" href="/ciclos">Gestion de ciclo</a>
+    </div>
+  </div>
+  <span class="navbar-text">
+    Sistema de gestion de solicitudes academicas
+  </span>
+</nav>
+	<div class="row mt-3" >
 	  <div class="col"></div>
 	  <div class="col">
 		<h2>Materias Impartidas</h2></div>  
@@ -20,9 +40,9 @@
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-  	<form th:action="@{/materiasImpartidas}">
+  	<form th:action="@{/materiasImpartidas/}+${id}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
-      	<button type="submit" class="btn btn-primary">Buscar</button>
+      	<button type="submit" class="btn btn-success">Buscar</button>
     </form>
   </div>
   <div class="col"></div>
@@ -32,24 +52,31 @@
 			<thead>
 				<tr>
 					<th>CODIGO</th>
+					<th>NOMBRE</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="v:${materias}">
-					<td th:text="${v.getId_materia_imp()}">
-					<td><a class="btn btn-primary" th:href="@{/datosMateriaImp/}+${v.id_materia_imp}">Ver</a></td>
+					<td th:text="${v.getMateria().getCodigo()}"></td>
+					<td th:text="${v.getMateria().getNombre_materia()}"></td>
+					<td><a class="btn btn-primary" th:href="@{/editarMateriaImp/}+${v.id_materia_imp}">Editar</a></td>
+					<td><a th:href="@{/eliminarMateriaImp/}+${id}" class="btn btn-danger">Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/nuevaMateriaImp}"
-	  	class="btn btn-danger">+Crear</a></div>
+	  <div class="col"><a th:href="@{/nuevaMateriaImp/}+${ciclo}"
+	  	class="btn btn-success">+Agregar</a></div>
 	  <div class="col"></div>
 	</div>
 	<br>
 	<br>
 	</div>
+	<script src="http://localhost:8081/funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
