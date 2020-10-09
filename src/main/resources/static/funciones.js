@@ -90,7 +90,7 @@ function eliminarMateria(id) {
       }
     }).then((Ok)=>{
       if(Ok){
-        location.href="/Materias";
+        location.href="/materias";
       }
     });
     swal("Eliminado!", {
