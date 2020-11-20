@@ -1,6 +1,7 @@
 package com.qyf.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.qyf.interfaceService.IDepartamentoServ;
 import com.qyf.model.Departamento;
+import com.qyf.model.Jefes_Depto;
 
 @Controller
 @RequestMapping
@@ -17,9 +19,11 @@ public class DepartamentoController {
 	
 	@RequestMapping("/departamentos")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
-		List<Departamento> lista = service.listar(palabra);
+		List<Departamento> deptos = service.listar(palabra);
+		List<Jefes_Depto> jefes = service.listarJefes();
 		model.addAttribute("buscar",palabra);
-		model.addAttribute("departamentos",lista);
+		model.addAttribute("departamentos", deptos);
+		model.addAttribute("jefes", jefes);
 		return "listaDepartamentos";
 	}
 	

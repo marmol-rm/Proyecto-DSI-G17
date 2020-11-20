@@ -8,13 +8,17 @@ import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IDepartamentoServ;
 import com.qyf.model.Departamento;
+import com.qyf.model.Jefes_Depto;
 import com.qyf.repository.IDepartamento;
+import com.qyf.repository.IJefes;
 
 @Service
 public class DepartamentoServ implements IDepartamentoServ{
 	
 	@Autowired
 	private IDepartamento data;
+	@Autowired
+	private IJefes jefes;
 	
 	@Override
 	public List<Departamento> listar(String key) {
@@ -43,5 +47,10 @@ public class DepartamentoServ implements IDepartamentoServ{
 	@Override
 	public void delete(int id) {
 		data.deleteById(id);
+	}
+
+	@Override
+	public List<Jefes_Depto> listarJefes() {
+		return (List<Jefes_Depto>) jefes.findAll();
 	}
 }

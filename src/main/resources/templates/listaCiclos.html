@@ -51,6 +51,7 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
+					<th>ESTADO</th>
 					<th>CICLO</th>
 					<th>TITULO</th>
 					<th>INICIO</th>
@@ -59,6 +60,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="v:${ciclos}">
+					<td th:text="${v.getEstado()}"></td>
 					<td th:text="${v.getNumero()}"></td>
 					<td th:text="${v.getTitulo()}"></td>
 					<td th:text="${v.getFecha_ini()}"></td>

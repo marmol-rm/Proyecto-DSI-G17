@@ -35,6 +35,11 @@ public class Usuario {
 	public Usuario() {
 		super();
 	}
+	
+	public String getNombre_completo() {
+		String completo = this.getNombres() + " " + this.getApellidos();
+		return completo;
+	}
 
 	public Long getId_user() {
 		return id_user;

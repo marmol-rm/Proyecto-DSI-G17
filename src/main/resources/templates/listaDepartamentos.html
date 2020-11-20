@@ -53,12 +53,25 @@
 				<tr>
 					<th>ID</th>
 					<th>NOMBRE</th>
+					<th>JEFE</th>
 				</tr>
 			</thead>
 			<tbody>
+				<tr th:each="v:${jefes}">
+					<td th:text="${v.getId_jefe()}"></td>
+					<td th:text="${v.getDepartamento().getDepartamento()}"></td>
+					<td th:text="${v.getDocente().getUser().getNombre_completo()}"></td>
+					<td></td>
+					<td>
+					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_jefe}">Editar</a>
+					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.id_jefe}]])">Eliminar</a>
+					</td>
+				</tr>
 				<tr th:each="v:${departamentos}">
 					<td th:text="${v.getId_depto()}"></td>
 					<td th:text="${v.getDepartamento()}"></td>
+					<td></td>
+					<td></td>
 					<td>
 					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_depto}">Editar</a>
 					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.id_depto}]])">Eliminar</a>

@@ -18,12 +18,21 @@ public class Ciclo {
 	private String titulo;
 	private int numero;
 	private int anio;
-	private int activo;
+	private Integer activo;
 	private String fecha_ini;
 	private String fecha_fin;
 	
 	public Ciclo() {
 		super();
+	}
+	
+	public String getEstado() {
+		String estado;
+		if(this.getActivo()==0)
+			estado = "INACTIVO";
+		else
+			estado = "ACTIVO";
+		return estado;
 	}
 
 	public int getId_ciclo() {
@@ -58,11 +67,11 @@ public class Ciclo {
 		this.anio = anio;
 	}
 
-	public int getActivo() {
+	public Integer getActivo() {
 		return activo;
 	}
 
-	public void setActivo(int activo) {
+	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
 

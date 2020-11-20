@@ -23,4 +23,32 @@ public class Jefes_Depto {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_docente")
 	private Docente docente;
+	
+	public Jefes_Depto() {
+		super();
+	}
+
+	public int getId_jefe() {
+		return id_jefe;
+	}
+
+	public void setId_jefe(int id_jefe) {
+		this.id_jefe = id_jefe;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public Docente getDocente() {
+		return docente;
+	}
+
+	public void setDocente(Docente docente) {
+		this.docente = docente;
+	}
 }
