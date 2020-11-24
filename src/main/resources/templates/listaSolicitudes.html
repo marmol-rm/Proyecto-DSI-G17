@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Departamentos - Facultad de Quimica y Farmacia</title>
+<title>solicitudes - Facultad de Quimica y Farmacia</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -33,14 +33,14 @@
 	<div class="row mt-3">
 	  <div class="col"></div>
 	  <div class="col">
-		<h2>Departamentos</h2></div>  
+		<h2>Solicitudes</h2></div>  
 	<div class="col"></div>
 	</div>
 	<br/>
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-  	<form th:action="@{/departamentos}">
+  	<form th:action="@{/solicitudes}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-success">Buscar</button>
     </form>
@@ -57,13 +57,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="v:${jefes}">
-					<td th:text="${v.getDepartamento().getId_depto()}"></td>
-					<td th:text="${v.getDepartamento(),getDepartamento()}"></td>
-					<td th:text="${v.getJefe().getId_jefe()}"></td>
+				<tr th:each="v:${solicitudes}">
+					<td th:text="${v}"></td>
+					<td th:text="${v}"></td>
+					<td th:text="${v}"></td>
 					<td>
-					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.departamento.id_depto}">Editar</a>
-					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.departamento.id_depto}]])">Eliminar</a>
+					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_solicitud}">Editar</a>
+					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.id_solicitud}]])">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>

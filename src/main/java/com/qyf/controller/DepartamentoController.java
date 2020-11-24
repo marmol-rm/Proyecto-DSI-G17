@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.qyf.interfaceService.IDepartamentoServ;
 import com.qyf.model.Departamento;
+import com.qyf.model.DeptoResponse;
 import com.qyf.model.Jefes_Depto;
 
 @Controller
@@ -20,7 +21,7 @@ public class DepartamentoController {
 	@RequestMapping("/departamentos")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Departamento> deptos = service.listar(palabra);
-		List<Jefes_Depto> jefes = service.listarJefes();
+		List<DeptoResponse> jefes = service.listarJefes();
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("departamentos", deptos);
 		model.addAttribute("jefes", jefes);
