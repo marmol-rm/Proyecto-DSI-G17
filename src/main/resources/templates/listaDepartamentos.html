@@ -57,13 +57,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="v:${jefes}">
-					<td th:text="${v.getDepartamento().getId_depto()}"></td>
-					<td th:text="${v.getDepartamento(),getDepartamento()}"></td>
-					<td th:text="${v.getJefe().getId_jefe()}"></td>
+				<tr th:each="v:${departamentos}">
+					<td th:text="${v.getId_depto()}"></td>
+					<td th:text="${v.getDepartamento()}"></td>
+					<td></td>
 					<td>
-					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.departamento.id_depto}">Editar</a>
-					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.departamento.id_depto}]])">Eliminar</a>
+					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_depto}">Editar</a>
+					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.id_depto}]])">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>

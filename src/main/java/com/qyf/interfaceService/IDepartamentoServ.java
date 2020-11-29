@@ -8,7 +8,6 @@ import com.qyf.model.DeptoResponse;
 
 public interface IDepartamentoServ {
 	public List<Departamento> listar(String key);
-	public List<DeptoResponse> listarJefes();
 	public Optional<Departamento> listarId(int id);
 	public int guardar(Departamento depto);
 	public void delete(int id);

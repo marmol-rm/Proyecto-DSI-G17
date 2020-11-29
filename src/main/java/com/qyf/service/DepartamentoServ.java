@@ -47,10 +47,4 @@ public class DepartamentoServ implements IDepartamentoServ{
 	public void delete(int id) {
 		data.deleteById(id);
 	}
-
-	@Override
-	public List<DeptoResponse> listarJefes() {
-		// TODO Auto-generated method stub
-		return data.listaDepartamentos();
-	}
 }

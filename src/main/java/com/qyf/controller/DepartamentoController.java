@@ -21,10 +21,8 @@ public class DepartamentoController {
 	@RequestMapping("/departamentos")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Departamento> deptos = service.listar(palabra);
-		List<DeptoResponse> jefes = service.listarJefes();
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("departamentos", deptos);
-		model.addAttribute("jefes", jefes);
 		return "listaDepartamentos";
 	}
 	
