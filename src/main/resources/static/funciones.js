@@ -55,7 +55,7 @@ function eliminarUsuario(id) {
 .then((Si) => {
   if (Si) {
     $.ajax({
-      url:"/eliminarUnuario/"+id,
+      url:"/eliminarUsuario/"+id,
       success: function(res){
         console.log(res);
       }

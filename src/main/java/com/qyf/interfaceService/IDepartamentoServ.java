@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.qyf.model.Departamento;
-import com.qyf.model.DeptoResponse;
 
 public interface IDepartamentoServ {
 	public List<Departamento> listar(String key);

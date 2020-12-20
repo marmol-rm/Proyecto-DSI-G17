@@ -2,10 +2,6 @@ body{
 	background-color :hsla(89, 43%, 51%, 0.3);
 }
 
-h1 h2 h3 h4 h5 h6{
-
-}
-
 div {
 	text-align : center;
 }
@@ -18,4 +14,8 @@ table {
  
 table tbody  tr {
     cursor : pointer;
+}
+
+input {
+    padding: 0.9%;
 }

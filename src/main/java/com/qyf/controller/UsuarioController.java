@@ -29,7 +29,7 @@ public class UsuarioController {
 		return "listaUsuarios";
 	}
 	
-	@GetMapping("/registro")
+	@GetMapping("usuarios/registro")
 	public String registrar(Model model) {
 		model.addAttribute("user", new Usuario());
 		return "registroUsuario";
@@ -54,11 +54,14 @@ public class UsuarioController {
 	@PostMapping("/editUser")
 	public String edit(@Validated Usuario user, Model model) {
 		model.getAttribute("user");
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedPass = encoder.encode(user.getPassword());
+		user.setPassword(encodedPass); //Se guarda el password codificado
 		service.guardar(user);
 		return "redirect:/usuarios";
 	}
 	
-	@GetMapping("eliminarUsuario/{id}")
+	@GetMapping("/eliminarUsuario/{id}")
 	public String delete(@PathVariable Long id, Model model) {
 		service.delete(id);
 		return "redirect:/usuarios";

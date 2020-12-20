@@ -33,22 +33,18 @@
 	<div class="row mt-3">
 	  <div class="col"></div>
 	  <div class="container mt-5">
-        <form th:action="@{/guardarContrasena}" th:object=${curso} method="POST">
-            <h3>Estableciendo Contraseña</h3>
+        <form th:action="@{/guardarMatricula}" th:object=${curso} method="POST">
+            <h3>Matricula</h3>
             <div class="form-group">
                 <label>ID del curso:</label>
                 <input th:text="${id}" th:field="*{id_curso}" type="hidden" class="form-control"/>
             </div>
             <div class="form-group">
-                <h5>Ingrese la contraseña actual:</h5>
-                <input type="password" th:field="*{temp_pass}">
-            </div>
-            <div class="form-group">
-                <h5>Ingrese la nueva contraseña:</h5>
+                <h5>Ingrese la contraseña del curso:</h5>
                 <input type="password" th:field="*{pass}">
             </div>
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary">
+                <input type="submit" value="Matricularme" class="btn btn-primary">
             </div>
         </form>
 	  </div>
