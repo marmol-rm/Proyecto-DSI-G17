@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Establecer Contraseña</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="http://localhost:8081/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+  	<img src="http://localhost:8081/logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Inicio <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/usuarios">Usuarios</a>
+      <a class="nav-item nav-link" href="/departamentos">Departamentos</a>
+      <a class="nav-item nav-link" href="/materias">Materias</a>
+      <a class="nav-item nav-link" href="/ciclos">Gestion de ciclo</a>
+    </div>
+  </div>
+  <span class="navbar-text">
+    Sistema de Gestion de Solicitudes Academicas
+  </span>
+</nav>
+	<div class="row mt-3">
+	  <div class="col"></div>
+	  <div class="container mt-5">
+        <form th:action="@{/guardarMatricula}" th:object=${curso} method="POST">
+            <h3>Matricula</h3>
+            <div class="form-group">
+                <label>ID del curso:</label>
+                <input th:text="${id}" th:field="*{id_curso}" type="hidden" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <h5>Ingrese la contraseña del curso:</h5>
+                <input type="password" th:field="*{pass}">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Matricularme" class="btn btn-primary">
+            </div>
+        </form>
+	  </div>
+	<div class="col"></div>
+	</div>
+	<br/>
+	<script src="http://localhost:8081/funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" lang="es">
+<title>Agregar Materia</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+		<div class="container mt-5">
+		<div class="col-lg-5">
+		<form th:action="@{/guardarMateria}" th:object=${materia} method="POST">
+			<div class="card"></div>
+			<div class="card-header">
+				<h3>Ingresar Materia</h3>
+			</div>
+			<div class="card-body">
+				<div class="form-group">
+					<label>DEPARTAMENTO</label>
+					<select th:field="*{departamento.id_depto}" class="form-control">
+						<option value=0>Seleccione el departamento...</option>
+						<option th:each="v:${departamentos}"  
+						th:value="${v.getId_depto()}" th:text="${v.getDepartamento()}">
+						</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>CODIGO MATERIA</label>
+					<input required th:field="*{codigo}" type="text" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<label>TIPO</label>
+					<select required th:field="*{tipo}" type="text" class="form-control">
+						<option value="Obligatoria">Obligatoria</option>
+						<option value="Electiva">Electiva</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>NOMBRE</label>
+					<input required th:field="*{nombre_materia}" type="text" class="form-control"/>
+				</div>
+			</div>
+			<div class="card-footer">
+				<input type="submit" value="Guardar" class="btn btn-success" />
+			</div>
+		</form>
+		<br>
+		</div>
+	</div>
+	<script src="funciones.js" language="javascript"></script>
+</body>
+</html>
