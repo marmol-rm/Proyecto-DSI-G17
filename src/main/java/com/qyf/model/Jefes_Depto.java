@@ -18,14 +18,22 @@ public class Jefes_Depto {
 	@Column(unique=true)
 	private int id_jefe;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_depto")
-	private Departamento departamento;
-	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_docente")
 	private Docente docente;
 	
 	public Jefes_Depto() {
 		super();
+	}
+	
+	public String getNombreJefe() {
+		String nombre = this.getDocente().getUser().getNombre_completo();
+		if (nombre != null){
+			return nombre;
+		}
+		else {
+			nombre = "";
+			return nombre;
+		}
 	}
 
 	public int getId_jefe() {
@@ -34,14 +42,6 @@ public class Jefes_Depto {
 
 	public void setId_jefe(int id_jefe) {
 		this.id_jefe = id_jefe;
-	}
-
-	public Departamento getDepartamento() {
-		return departamento;
-	}
-
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
 	}
 
 	public Docente getDocente() {

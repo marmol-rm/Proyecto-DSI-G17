@@ -23,7 +23,7 @@
       <a class="nav-item nav-link" href="/usuarios">Usuarios</a>
       <a class="nav-item nav-link" href="/departamentos">Departamentos</a>
       <a class="nav-item nav-link" href="/materias">Materias</a>
-      <a class="nav-item nav-link" href="/ciclos">Gestion de ciclo</a>
+	  <a class="nav-item nav-link" href="/ciclos">Gestion de ciclo</a>
     </div>
   </div>
   <span class="navbar-text">
@@ -60,7 +60,7 @@
 				<tr th:each="v:${departamentos}">
 					<td th:text="${v.getId_depto()}"></td>
 					<td th:text="${v.getDepartamento()}"></td>
-					<td></td>
+					<td th:text="${v.getJefe().getNombreJefe()}"></td>
 					<td>
 					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_depto}">Editar</a>
 					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.id_depto}]])">Eliminar</a>

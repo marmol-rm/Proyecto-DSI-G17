@@ -27,7 +27,6 @@ public class MateriaController {
 	
 	@RequestMapping("/materias")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
-		//System.out.println(palabra);
 		List<Materia> lista = service.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("materias",lista);

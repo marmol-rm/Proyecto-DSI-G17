@@ -13,6 +13,6 @@ import com.qyf.model.DeptoResponse;
 public interface IDepartamento extends JpaRepository<Departamento, Integer>{
 	
 	@Query("SELECT d FROM Departamento d WHERE "+
-	"CONCAT(d.id_depto, d.departamento) LIKE %?1%")
+	"CONCAT(d.id_depto, d.departamento, d.jefe) LIKE %?1%")
 	public List<Departamento> findAll(String key);
 }

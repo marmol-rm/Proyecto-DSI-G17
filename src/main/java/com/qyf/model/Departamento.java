@@ -1,7 +1,5 @@
 package com.qyf.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,8 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name="departamento")
@@ -21,9 +22,9 @@ public class Departamento {
 	private int id_depto;
 	@Column(length=255)
 	private String departamento;
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_jefe")
-	private List<Jefes_Depto> jefes;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_jefe")
+	private Jefes_Depto jefe;
 	
 	public Departamento() {
 		super();
@@ -44,12 +45,12 @@ public class Departamento {
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
 	}
-
-	public List<Jefes_Depto> getJefes() {
-		return jefes;
+	
+	public Jefes_Depto getJefe() {
+		return jefe;
 	}
 
-	public void setJefes(List<Jefes_Depto> jefes) {
-		this.jefes = jefes;
+	public void setJefe(Jefes_Depto jefe) {
+		this.jefe = jefe;
 	}
 }
