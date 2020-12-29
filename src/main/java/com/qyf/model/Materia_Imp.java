@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name="materias_impartidas")
@@ -25,7 +26,7 @@ public class Materia_Imp {
 	private Ciclo ciclo;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_catedra")
-	private Coordinador coord;
+	private Coordinador coordinador;
 	
 	public Materia_Imp() {
 		super();
@@ -55,11 +56,11 @@ public class Materia_Imp {
 		this.ciclo = ciclo;
 	}
 
-	public Coordinador getCoord() {
-		return coord;
+	public Coordinador getCoordinador() {
+		return coordinador;
 	}
 
-	public void setCoord(Coordinador coord) {
-		this.coord = coord;
+	public void setCoordinador(Coordinador coord) {
+		this.coordinador = coord;
 	}
 }

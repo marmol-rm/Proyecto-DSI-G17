@@ -12,7 +12,7 @@
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand" href="/">
-  	<img src="logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
+  	<img src="http://localhost:8081/logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -57,8 +57,8 @@
 			</thead>
 			<tbody>
 				<tr th:each="v:${materias}">
-					<td th:text="${v.getMateria().getCodigo()}"></td>
-					<td th:text="${v.getMateria().getNombre_materia()}"></td>
+					<td th:text="${v.getId_materia().getCodigo()}"></td>
+					<td th:text="${v.getId_materia().getNombre_materia()}"></td>
 					<td><a class="btn btn-primary" th:href="@{/editarMateriaImp/}+${v.id_materia_imp}">Editar</a></td>
 					<td><a th:href="@{/eliminarMateriaImp/}+${id}" class="btn btn-danger">Eliminar</a></td>
 				</tr>
@@ -67,7 +67,7 @@
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/nuevaMateriaImp/}+${ciclo}"
+	  <div class="col"><a th:href="@{/editarCiclo/}+${id}+@{/agregar/}"
 	  	class="btn btn-success">+Agregar</a></div>
 	  <div class="col"></div>
 	</div>

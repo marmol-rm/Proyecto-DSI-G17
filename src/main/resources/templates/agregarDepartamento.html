@@ -28,7 +28,6 @@
 				<div class="form-group">
 					<label>Asignar jefe:</label>
 					<select th:field="*{jefe.id_jefe}" class="form-control">
-						<option value=0>-</option>
 						<option th:each="v:${jefes}"  
 						th:value="${v.getId_jefe()}" th:text="${v.getNombreJefe()}">
 						</option>

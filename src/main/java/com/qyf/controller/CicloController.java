@@ -1,6 +1,8 @@
 package com.qyf.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +42,7 @@ public class CicloController {
 	
 	@GetMapping("/editarCiclo/{id}")
 	public String editar(@PathVariable int id, Model model) {
-		java.util.Optional<Ciclo> ciclo = service.listarId(id);
+		Optional<Ciclo> ciclo = service.listarId(id);
 		model.addAttribute("ciclo", ciclo);
 		return "editarCiclo";
 	}

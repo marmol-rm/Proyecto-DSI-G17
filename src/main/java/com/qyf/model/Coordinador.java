@@ -1,7 +1,6 @@
 package com.qyf.model;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,15 +18,23 @@ public class Coordinador {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private int id_catedra;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="id_docente")
 	private Docente docente;
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_materia_imp")
-	private List<Materia_Imp> materias;
 	
 	public Coordinador() {
 		super();
+	}
+	
+	public String getNombre_completo() {
+		String nombre = this.getDocente().getUser().getNombre_completo();
+		if(nombre != null) {
+			return nombre;
+		}
+		else {
+			nombre = "";
+			return nombre;
+		}
 	}
 
 	public int getId_catedra() {
@@ -45,13 +51,5 @@ public class Coordinador {
 
 	public void setDocente(Docente docente) {
 		this.docente = docente;
-	}
-
-	public List<Materia_Imp> getMaterias() {
-		return materias;
-	}
-
-	public void setMaterias(List<Materia_Imp> materias) {
-		this.materias = materias;
 	}
 }
