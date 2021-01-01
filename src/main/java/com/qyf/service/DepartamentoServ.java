@@ -8,10 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IDepartamentoServ;
 import com.qyf.model.Departamento;
-import com.qyf.model.DeptoResponse;
-import com.qyf.model.Jefes_Depto;
 import com.qyf.repository.IDepartamento;
-import com.qyf.repository.IJefes;
 
 @Service
 public class DepartamentoServ implements IDepartamentoServ{

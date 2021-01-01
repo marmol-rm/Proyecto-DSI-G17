@@ -39,7 +39,7 @@ public class DepartamentoController {
 	
 	@PostMapping("/guardarDepto")
 	public String save(@Validated Departamento depto, Model model) {
-		model.getAttribute("depto");
+		//model.getAttribute("depto");
 		departamentos.guardar(depto);
 		return "redirect:/departamentos";
 	}
@@ -55,7 +55,7 @@ public class DepartamentoController {
 	
 	@PostMapping("/editDepto")
 	public String edit(@Validated Departamento depto, Model model) {
-		model.getAttribute("depto");
+		//model.getAttribute("depto");
 		departamentos.guardar(depto);
 		return "redirect:/departamentos";
 	}

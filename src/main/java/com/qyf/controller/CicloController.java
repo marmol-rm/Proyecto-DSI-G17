@@ -20,7 +20,6 @@ public class CicloController {
 	
 	@RequestMapping("/ciclos")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
-		//System.out.println(palabra);
 		List<Ciclo> lista = service.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("ciclos",lista);
@@ -35,7 +34,7 @@ public class CicloController {
 	
 	@PostMapping("/guardarCiclo")
 	public String save(@Validated Ciclo c, Model model) {
-		model.getAttribute("ciclo");
+		//model.getAttribute("ciclo");
 		service.guardar(c);
 		return "redirect:/ciclos";
 	}
@@ -49,7 +48,7 @@ public class CicloController {
 	
 	@PostMapping("/editCiclo")
 	public String edit(@Validated Ciclo c, Model model) {
-		model.getAttribute("ciclo");
+		//model.getAttribute("ciclo");
 		service.guardar(c);
 		return "redirect:/ciclos";
 	}

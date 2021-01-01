@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 	
-	@Autowired
+	/*@Autowired
 	private UsuarioController controller;
 	private static int flag = 0;
 	private String dir = null;
 	
 	@GetMapping("/")
 	public String inicio(Model model) {
-	/*	if(flag == 0) {
+		if(flag == 0) {
 			flag += 1;
 			dir = controller.registrar(model);
 		}
-		else*/
+		else
 			dir = "index";
 		return dir;
-	}
+	}*/
 }

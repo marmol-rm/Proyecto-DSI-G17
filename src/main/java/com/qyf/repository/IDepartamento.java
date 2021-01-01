@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.qyf.model.Departamento;
-import com.qyf.model.DeptoResponse;
 
 @Repository
 public interface IDepartamento extends JpaRepository<Departamento, Integer>{

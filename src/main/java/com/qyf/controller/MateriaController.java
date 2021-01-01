@@ -1,6 +1,7 @@
 package com.qyf.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,14 +44,14 @@ public class MateriaController {
 	
 	@PostMapping("/guardarMateria")
 	public String save(@Validated Materia m, Model model) {
-		model.getAttribute("materia");
+		//model.getAttribute("materia");
 		service.guardar(m);
 		return "redirect:/materias";
 	}
 	
 	@GetMapping("/editarMateria/{id}")
 	public String editar(@PathVariable int id, Model model) {
-		java.util.Optional<Materia> m = service.listarId(id);
+		Optional<Materia> m = service.listarId(id);
 		List<Departamento> lista = dservice.listar(null);
 		model.addAttribute("departamentos", lista);
 		model.addAttribute("materia", m);
@@ -59,7 +60,7 @@ public class MateriaController {
 	
 	@PostMapping("/editMateria")
 	public String edit(@Validated Materia m, Model model) {
-		model.getAttribute("materia");
+		//model.getAttribute("materia");
 		service.guardar(m);
 		return "redirect:/materias";
 	}

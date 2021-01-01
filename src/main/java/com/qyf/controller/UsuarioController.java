@@ -1,6 +1,7 @@
 package com.qyf.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -39,14 +40,14 @@ public class UsuarioController {
 	public String procesoRegistro(Usuario user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPass = encoder.encode(user.getPassword());
-		user.setPassword(encodedPass); //Se guarda el password codificado
+		user.setPassword(encodedPass); //Se guarda el password encriptado
 		service.guardar(user);
 		return "redirect:/usuarios";
 	}
 	
 	@GetMapping("/editarUsuario/{id}")
 	public String editar(@PathVariable Long id, Model model) {
-		java.util.Optional<Usuario> user = service.listarId(id);
+		Optional<Usuario> user = service.listarId(id);
 		model.addAttribute("user", user);
 		return "editarUsuario";
 	}
