@@ -38,20 +38,20 @@ public class MateriaImpController {
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, 
 			 @PathVariable int id, Model model) {
 		List<Materia_Imp> lista = impartidas.listar(palabra);
-		model.addAttribute("ciclo", new Ciclo());
 		model.addAttribute("buscar",palabra);
-		model.addAttribute("materias",lista);
+		model.addAttribute("materias", lista);
 		return "listaMateriasImp";
 	}
 	
-	@GetMapping("/editarCiclo/{id}/agregar/")
+	@GetMapping("/editarCiclo/{id}/agregar")
 	public String agregar(@PathVariable Integer id, Model model) {
 		Optional<Ciclo> c = ciclos.listarId(id);
 		Ciclo ciclo = c.get();
 		List<Materia> listaMaterias = materias.listar(null);
 		List<Coordinador> listaCoordinadores = catedra.listar();
-		model.addAttribute("materia", new Materia_Imp());
-		model.addAttribute("ciclo", ciclo);
+		Materia_Imp materia = new Materia_Imp();
+		materia.setCiclo(ciclo); //Le asigna el ciclo correspondiente
+		model.addAttribute("materia", materia);
 		model.addAttribute("materias", listaMaterias);
 		model.addAttribute("catedra", listaCoordinadores);
 		return "agregarMateriaImp";
@@ -66,16 +66,18 @@ public class MateriaImpController {
 	
 	@GetMapping("/editarMateriaImp/{id}")
 	public String editar(@PathVariable int id, Model model) {
-		java.util.Optional<Materia_Imp> m = impartidas.listarId(id);
+		Optional<Materia_Imp> materia = impartidas.listarId(id);
 		List<Materia> listaMaterias = materias.listar(null);
+		List<Coordinador> listaCoordinadores = catedra.listar();
+		model.addAttribute("catedra", listaCoordinadores);
 		model.addAttribute("materias", listaMaterias);
-		model.addAttribute("materia", m);
+		model.addAttribute("materia", materia);
 		return "editarMateriaImp";
 	}
 	
 	@PostMapping("/editMateriaImp")
 	public String edit(@Validated Materia_Imp m, Model model) {
-		model.getAttribute("materia");
+		//model.getAttribute("materia");
 		impartidas.guardar(m);
 		return "redirect:/ciclos";
 	}

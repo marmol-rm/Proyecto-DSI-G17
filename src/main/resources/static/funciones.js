@@ -130,3 +130,32 @@ function eliminarCiclo(id) {
   }
 });
 }
+
+function eliminarMateriaImp(id) {
+  swal({
+  title: "Eliminar",
+  text: "Esta seguro?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((Si) => {
+  if (Si) {
+    $.ajax({
+      url:"/eliminarMateriaImp/"+id,
+      success: function(res){
+        console.log(res);
+      }
+    }).then((Ok)=>{
+      if(Ok){
+        location.href="/ciclos";
+      }
+    });
+    swal("Eliminado!", {
+      icon: "success",
+    });
+  } else {
+    swal("No pasa nada.");
+  }
+});
+}
