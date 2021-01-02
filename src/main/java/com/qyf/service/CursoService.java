@@ -33,13 +33,15 @@ public class CursoService implements ICursoServ{
 	@Override
 	public int guardar(Curso curso) {
 		int res = 0;
+		Curso c = new Curso();
 		if(curso.getPass() != curso.getTemp_pass()) { //Valida si la contrasena es diferente
-			curso.setTemp_pass(curso.getPass());
-			Curso c = data.save(curso);
-			if(!c.equals(null)) {
-				res = 1;
-			}
+			curso.setTemp_pass("");
+			c = data.save(curso);
 		}
+		else
+			c = data.save(curso);
+		if(!c.equals(null))
+			res = 1;
 		return res;
 	}
 

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+//import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import com.qyf.model.Usuario;
@@ -19,8 +19,8 @@ public class IUsuarioTest {
 	@Autowired
 	private IUsuario repo;
 	
-	@Autowired
-	private TestEntityManager entityManager;
+	//@Autowired
+	//private TestEntityManager entityManager;
 	
 	@Test
 	public void testCrearUsuario() {

@@ -41,7 +41,7 @@
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-  	<form th:action="@{/materiasImpartidas/}+${id}">
+  	<form th:action="@{/editarCiclo/}+${id}+@{/materiasImpartidas}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-success">Buscar</button>
     </form>

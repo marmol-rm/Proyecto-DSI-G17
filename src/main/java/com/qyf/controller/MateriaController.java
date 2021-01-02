@@ -22,13 +22,13 @@ import com.qyf.model.Materia;
 @RequestMapping
 public class MateriaController {
 	@Autowired
-	private IMateriaServ service;
+	private IMateriaServ materias;
 	@Autowired
-	private IDepartamentoServ dservice;
+	private IDepartamentoServ deptos;
 	
 	@RequestMapping("/materias")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
-		List<Materia> lista = service.listar(palabra);
+		List<Materia> lista = materias.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("materias",lista);
 		return "listaMaterias";
@@ -37,22 +37,21 @@ public class MateriaController {
 	@GetMapping("/nuevaMateria")
 	public String agregar(Model model) {
 		model.addAttribute("materia", new Materia());
-		List<Departamento> lista = dservice.listar(null);
+		List<Departamento> lista = deptos.listar(null);
 		model.addAttribute("departamentos", lista);
 		return "agregarMateria";
 	}
 	
 	@PostMapping("/guardarMateria")
 	public String save(@Validated Materia m, Model model) {
-		//model.getAttribute("materia");
-		service.guardar(m);
+		materias.guardar(m);
 		return "redirect:/materias";
 	}
 	
 	@GetMapping("/editarMateria/{id}")
 	public String editar(@PathVariable int id, Model model) {
-		Optional<Materia> m = service.listarId(id);
-		List<Departamento> lista = dservice.listar(null);
+		Optional<Materia> m = materias.listarId(id);
+		List<Departamento> lista = deptos.listar(null);
 		model.addAttribute("departamentos", lista);
 		model.addAttribute("materia", m);
 		return "editarMateria";
@@ -60,14 +59,13 @@ public class MateriaController {
 	
 	@PostMapping("/editMateria")
 	public String edit(@Validated Materia m, Model model) {
-		//model.getAttribute("materia");
-		service.guardar(m);
+		materias.guardar(m);
 		return "redirect:/materias";
 	}
 	
 	@GetMapping("eliminarMateria/{id}")
 	public String delete(@PathVariable int id, Model model) {
-		service.delete(id);
+		materias.delete(id);
 		return "redirect:/materias";
 	}
 }

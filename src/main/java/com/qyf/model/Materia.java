@@ -21,7 +21,7 @@ public class Materia {
 	private String codigo;
 	@Column(length=255)
 	private String nombre_materia;
-	@Column(name="TIPO")
+	@Column(name="tipo")
 	private String tipo;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_depto")

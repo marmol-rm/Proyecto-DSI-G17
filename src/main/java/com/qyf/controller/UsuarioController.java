@@ -30,6 +30,11 @@ public class UsuarioController {
 		return "listaUsuarios";
 	}
 	
+	@GetMapping("/usuarios/{id}/recuperarContrasena")
+	public String recuperarContrasena(@PathVariable Long id, Model model) {
+		return "recuperarContrasena";
+	}
+	
 	@GetMapping("usuarios/registro")
 	public String registrar(Model model) {
 		model.addAttribute("user", new Usuario());

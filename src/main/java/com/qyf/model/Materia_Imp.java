@@ -1,5 +1,6 @@
 package com.qyf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,7 @@ public class Materia_Imp {
 	@Column(unique=true)
 	private int id_materia_imp;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_materia")
+	@JoinColumn(name="id_materia", unique=true)
 	private Materia materia;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_ciclo")
@@ -26,7 +28,18 @@ public class Materia_Imp {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_catedra")
 	private Coordinador coordinador;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JoinColumn(unique = true)
+	private Curso curso;
 	
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
 	public Materia_Imp() {
 		super();
 	}
