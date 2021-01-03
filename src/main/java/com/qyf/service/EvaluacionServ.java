@@ -29,14 +29,17 @@ public class EvaluacionServ implements IEvaluacoinServ {
 
 	@Override
 	public int guardar(Evaluacion e) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		Evaluacion ev = data.save(e);
+		if(!ev.equals(null))
+			res = 1;
+		
+		return res;
 	}
 
 	@Override
 	public void eliminar(int id) {
-		// TODO Auto-generated method stub
-
+		data.deleteById(id);
 	}
 
 }

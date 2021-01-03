@@ -23,7 +23,7 @@
       <a class="nav-item nav-link" href="/usuarios">Usuarios</a>
       <a class="nav-item nav-link" href="/departamentos">Departamentos</a>
       <a class="nav-item nav-link" href="/materias">Materias</a>
-      <a class="nav-item nav-link" href="/ciclos">Gestion de ciclo</a>
+      <a class="nav-item nav-link" href="/ciclos">Gestion de Ciclo</a>
     </div>
   </div>
   <span class="navbar-text">
@@ -67,7 +67,7 @@
 					<td th:text="${v.getFecha_ini()}"></td>
 					<td th:text="${v.getFecha_fin()}"></td>
 					<td>
-						<a class="btn btn-primary" th:href="@{/editarCiclo/}+${v.id_ciclo}">Editar</a>
+						<a class="btn btn-primary" th:href="@{/ciclos/editar/}+${v.id_ciclo}">Editar</a>
 						<a th:onclick="eliminarCiclo([[${v.id_ciclo}]])" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
@@ -76,7 +76,7 @@
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/nuevoCiclo}" class="btn btn-success">+Crear</a></div>
+	  <div class="col"><a th:href="@{/ciclos/agregar}" class="btn btn-success">+Crear</a></div>
 	  <div class="col"></div>
 	</div>
 	<br>

@@ -1,18 +1,11 @@
 package com.qyf.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name="ciclo")
@@ -20,12 +13,9 @@ public class Ciclo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
-	private int id_ciclo;
+	private Integer id_ciclo;
 	@Column(length=255)
 	private String titulo;
-	//@Nullable
-	//@OneToMany(mappedBy = "id_materia_imp", cascade = CascadeType.ALL)
-	//private List<Materia_Imp> materias_impartidas;
 	private int numero;
 	private int anio;
 	private Integer activo;
@@ -45,7 +35,7 @@ public class Ciclo {
 		return estado;
 	}
 
-	public int getId_ciclo() {
+	public Integer getId_ciclo() {
 		return id_ciclo;
 	}
 

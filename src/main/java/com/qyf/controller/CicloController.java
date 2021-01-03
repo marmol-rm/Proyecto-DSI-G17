@@ -19,27 +19,26 @@ public class CicloController {
 	private ICicloServ service;
 	
 	@RequestMapping("/ciclos")
-	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
+	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Ciclo> lista = service.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("ciclos",lista);
 		return "listaCiclos";
 	}
 	
-	@GetMapping("/nuevoCiclo")
-	public String agregar(Model model) {
+	@GetMapping("/ciclos/agregar")
+	public String form_agregar(Model model) {
 		model.addAttribute("ciclo", new Ciclo());
 		return "agregarCiclo";
 	}
 	
 	@PostMapping("/guardarCiclo")
 	public String save(@Validated Ciclo c, Model model) {
-		//model.getAttribute("ciclo");
 		service.guardar(c);
 		return "redirect:/ciclos";
 	}
 	
-	@GetMapping("/editarCiclo/{id}")
+	@GetMapping("/ciclos/editar/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		Optional<Ciclo> ciclo = service.listarId(id);
 		model.addAttribute("ciclo", ciclo);
@@ -48,7 +47,6 @@ public class CicloController {
 	
 	@PostMapping("/editCiclo")
 	public String edit(@Validated Ciclo c, Model model) {
-		//model.getAttribute("ciclo");
 		service.guardar(c);
 		return "redirect:/ciclos";
 	}

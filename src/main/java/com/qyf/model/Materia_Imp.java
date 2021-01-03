@@ -18,7 +18,7 @@ public class Materia_Imp {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
-	private int id_materia_imp;
+	private Integer id_materia_imp;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_materia", unique=true)
 	private Materia materia;
@@ -44,11 +44,11 @@ public class Materia_Imp {
 		super();
 	}
 
-	public int getId_materia_imp() {
+	public Integer getId_materia_imp() {
 		return id_materia_imp;
 	}
 
-	public void setId_materia_imp(int id_materia_imp) {
+	public void setId_materia_imp(Integer id_materia_imp) {
 		this.id_materia_imp = id_materia_imp;
 	}
 

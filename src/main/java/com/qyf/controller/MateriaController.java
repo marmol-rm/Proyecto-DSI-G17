@@ -27,15 +27,17 @@ public class MateriaController {
 	private IDepartamentoServ deptos;
 	
 	@RequestMapping("/materias")
-	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
+	public String form_consultar(
+	@RequestParam(value="buscar", required=false) String palabra,
+	Model model) {
 		List<Materia> lista = materias.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("materias",lista);
 		return "listaMaterias";
 	}
 	
-	@GetMapping("/nuevaMateria")
-	public String agregar(Model model) {
+	@GetMapping("/materias/agregar")
+	public String form_agregar(Model model) {
 		model.addAttribute("materia", new Materia());
 		List<Departamento> lista = deptos.listar(null);
 		model.addAttribute("departamentos", lista);
@@ -43,13 +45,13 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/guardarMateria")
-	public String save(@Validated Materia m, Model model) {
+	public String guardar(@Validated Materia m, Model model) {
 		materias.guardar(m);
 		return "redirect:/materias";
 	}
 	
-	@GetMapping("/editarMateria/{id}")
-	public String editar(@PathVariable int id, Model model) {
+	@GetMapping("/materias/editar/{id}")
+	public String editar(@PathVariable Integer id, Model model) {
 		Optional<Materia> m = materias.listarId(id);
 		List<Departamento> lista = deptos.listar(null);
 		model.addAttribute("departamentos", lista);

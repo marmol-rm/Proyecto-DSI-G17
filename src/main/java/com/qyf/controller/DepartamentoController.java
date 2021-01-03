@@ -22,15 +22,15 @@ public class DepartamentoController {
 	private IJefeServ jefes;
 	
 	@RequestMapping("/departamentos")
-	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
+	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Departamento> deptos = departamentos.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("departamentos", deptos);
 		return "listaDepartamentos";
 	}
 	
-	@GetMapping("/nuevoDepartamento")
-	public String agregar(Model model) {
+	@GetMapping("/departamentos/agregar")
+	public String form_agregar(Model model) {
 		model.addAttribute("depto", new Departamento());
 		List<Jefes_Depto> lista_jefes = jefes.listar();
 		model.addAttribute("jefes", lista_jefes);
@@ -38,14 +38,13 @@ public class DepartamentoController {
 	}
 	
 	@PostMapping("/guardarDepto")
-	public String save(@Validated Departamento depto, Model model) {
-		//model.getAttribute("depto");
+	public String guardar(@Validated Departamento depto, Model model) {
 		departamentos.guardar(depto);
 		return "redirect:/departamentos";
 	}
 	
-	@GetMapping("/editarDepartamento/{id}")
-	public String editar(@PathVariable int id, Model model) {
+	@GetMapping("/departamentos/editar/{id}")
+	public String form_editar(@PathVariable int id, Model model) {
 		Optional<Departamento> depto = departamentos.listarId(id);
 		List<Jefes_Depto> lista_jefes = jefes.listar();
 		model.addAttribute("depto", depto);
@@ -54,14 +53,13 @@ public class DepartamentoController {
 	}
 	
 	@PostMapping("/editDepto")
-	public String edit(@Validated Departamento depto, Model model) {
-		//model.getAttribute("depto");
+	public String editar(@Validated Departamento depto, Model model) {
 		departamentos.guardar(depto);
 		return "redirect:/departamentos";
 	}
 	
 	@GetMapping("eliminarDepartamento/{id}")
-	public String delete(@PathVariable int id, Model model) {
+	public String eliminar(@PathVariable int id, Model model) {
 		departamentos.delete(id);
 		return "redirect:/departamentos";
 	}

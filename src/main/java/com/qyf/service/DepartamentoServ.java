@@ -34,9 +34,9 @@ public class DepartamentoServ implements IDepartamentoServ{
 	public int guardar(Departamento d) {
 		int res=0;
 		Departamento depto = data.save(d);
-		if(!depto.equals(null)) {
+		if(!depto.equals(null))
 			res = 1;
-		}
+
 		return res;
 	}
 	

@@ -27,6 +27,7 @@ import com.qyf.model.Materia_Imp;
 @Controller
 @RequestMapping
 public class MateriaImpController {
+	private String c;
 	@Autowired
 	private IMateriaImpServ impartidas;
 	@Autowired
@@ -38,9 +39,9 @@ public class MateriaImpController {
 	@Autowired
 	private ICursoServ cursos;
 	
-	@RequestMapping("/editar-ciclo/{id}/materias-imp")
-	public String listar(@RequestParam(value="buscar", required=false) String palabra, 
-			 @PathVariable int id, Model model) {
+	@RequestMapping("/ciclos/{id}/materias-imp")
+	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, 
+			 @PathVariable Integer id, Model model) {
 		List<Materia_Imp> lista = impartidas.listar(palabra);
 		if(!lista.isEmpty()) {
 			for(int i = 0;i < lista.size();i++) { //Quita las materias que no pertenecen al ciclo
@@ -54,14 +55,13 @@ public class MateriaImpController {
 		return "listaMateriasImp";
 	}
 	
-	@GetMapping("/editar-ciclo/{id}/agregar-materia")
-	public String agregar(@PathVariable Integer id, Model model) {
+	@GetMapping("/ciclos/{id}/agregar-materia")
+	public String form_agregar(@PathVariable Integer id, Model model) {
+		Materia_Imp materia = new Materia_Imp();
 		Optional<Ciclo> c = ciclos.listarId(id);
-		Ciclo ciclo = c.get();
+		materia.setCiclo(c.get()); //Le asigna el ciclo correspondiente
 		List<Materia> listaMaterias = materias.listar(null);
 		List<Coordinador> listaCoordinadores = catedra.listar();
-		Materia_Imp materia = new Materia_Imp();
-		materia.setCiclo(ciclo); //Le asigna el ciclo correspondiente
 		model.addAttribute("materia", materia);
 		model.addAttribute("materias", listaMaterias);
 		model.addAttribute("catedra", listaCoordinadores);
@@ -71,13 +71,14 @@ public class MateriaImpController {
 	
 	@PostMapping("/guardarMateriaImp")
 	public String save(@Validated Materia_Imp m, Model model) {
+		c = m.getCiclo().getId_ciclo().toString();
 		impartidas.guardar(m);
 		
-		return "redirect:/ciclos";
+		return "redirect:/ciclos/"+ c +"materias_imp";
 	}
 	
-	@GetMapping("/editar-materia-imp/{id}")
-	public String editar(@PathVariable int id, Model model) {
+	@GetMapping("/ciclos/editar-materia-imp/{id}")
+	public String form_editar(@PathVariable int id, Model model) {
 		Optional<Materia_Imp> materia = impartidas.listarId(id);
 		List<Materia> listaMaterias = materias.listar(null);
 		List<Coordinador> listaCoordinadores = catedra.listar();
@@ -90,15 +91,19 @@ public class MateriaImpController {
 	
 	@PostMapping("/editMateriaImp")
 	public String edit(@Validated Materia_Imp m, Model model) {
+		c = m.getCiclo().getId_ciclo().toString();
 		impartidas.guardar(m);
 		
-		return "redirect:/ciclos";
+		return "redirect:/ciclos/"+ c +"materias_imp";
 	}
 	
-	@GetMapping("/eliminarMateriaImp/{id}")
+	@GetMapping("eliminarMateriaImp/{id}")
 	public String delete(@PathVariable int id, Model model) {
+		String c;
+		Optional<Materia_Imp> m = impartidas.listarId(id);
+		c = m.get().getCiclo().getId_ciclo().toString();
 		impartidas.delete(id);
 		
-		return "redirect:/ciclos";
+		return "redirect:/ciclos/"+ c +"materias_imp";
 	}
 }

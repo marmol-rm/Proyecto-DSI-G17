@@ -41,7 +41,7 @@
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-      <form th:action="@{/editar-materia-imp/}+${id}+@{/evaluaciones}">
+      <form th:action="@{/materia-imp/}+${id}+@{/evaluaciones}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-success">Buscar</button>
     </form>
@@ -68,7 +68,7 @@
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/nuevaEval}"
+	  <div class="col"><a th:href="@{/materia-imp/}+${id}+@{/agregar-evaluacion}"
 	  	class="btn btn-success">+Crear</a></div>
 	  <div class="col"></div>
 	</div>

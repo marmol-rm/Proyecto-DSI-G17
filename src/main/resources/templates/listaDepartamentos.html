@@ -63,7 +63,7 @@
 					<td th:text="${v.getDepartamento()}"></td>
 					<td th:text="${v.getJefe().getNombreJefe()}"></td>
 					<td>
-					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.id_depto}">Editar</a>
+					<a class="btn btn-primary" th:href="@{departamentos/editar/}+${v.id_depto}">Editar</a>
 					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.id_depto}]])">Eliminar</a>
 					</td>
 				</tr>
@@ -72,7 +72,7 @@
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/nuevoDepartamento}"
+	  <div class="col"><a th:href="@{/departamentos/agregar}"
 	  	class="btn btn-success">+Crear</a></div>
 	  <div class="col"></div>
 	</div>

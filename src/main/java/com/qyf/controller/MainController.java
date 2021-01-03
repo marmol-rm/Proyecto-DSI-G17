@@ -24,10 +24,4 @@ public class MainController {
 			dir = "index";
 		return dir;
 	}*/
-	
-	@GetMapping("/error")
-	public String pagina_error() {
-		
-		return "error";
-	}
 }
