@@ -7,12 +7,12 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="http://localhost:8081/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand" href="/">
-  	<img src="logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
+  	<img src="http://localhost:8081/logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -27,20 +27,21 @@
     </div>
   </div>
   <span class="navbar-text">
-    Sistema de gestion de solicitudes academicas
+    Sistema de Gestion de Solicitudes Academicas
   </span>
 </nav>
 	<div class="row mt-3">
 	  <div class="col"></div>
-	  <div class="col">
-		<h2>Departamentos</h2></div>  
+	  	<div class="col">
+			<h3>Evaluaciones</h3>
+		</div>  
 	<div class="col"></div>
 	</div>
 	<br/>
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-      <form th:action="@{/evaluaciones}">
+      <form th:action="@{/editar-materia-imp/}+${id}+@{/evaluaciones}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-success">Buscar</button>
     </form>
@@ -51,19 +52,15 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>NOMBRE</th>
-					<th>JEFE</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="v:${jefes}">
-					<td th:text="${v.getDepartamento().getId_depto()}"></td>
-					<td th:text="${v.getDepartamento(),getDepartamento()}"></td>
-					<td th:text="${v.getJefe().getId_jefe()}"></td>
+				<tr th:each="v:${evaluaciones}">
+					<td th:text="${v.getEvaluacion()}"></td>
 					<td>
-					<a class="btn btn-primary" th:href="@{/editarDepartamento/}+${v.departamento.id_depto}">Editar</a>
-					<a class="btn btn-danger" th:onclick="eliminarDepartamento([[${v.departamento.id_depto}]])">Eliminar</a>
+					<a class="btn btn-primary">Editar</a>
+					<a class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
@@ -78,8 +75,9 @@
 	<br>
 	<br>
 	</div>
-	<script src="funciones.js" language="javascript"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	<script src="http://localhost:8081/funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" 
+	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>

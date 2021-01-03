@@ -13,10 +13,10 @@
 		<div class="container mt-5">
 		<div class="col-sm-5">
 		<form th:action="@{/editCiclo}" th:object=${ciclo} method="POST">
-			<div class="card"></div>
+		<div class="card">
 			<div class="card-header">
 				<h3>Editar Ciclo</h3>
-				<a th:href="@{/editarCiclo/}+${id}+@{/materiasImpartidas/}">Materias Impartidas</a>
+				<a th:href=@{/editar-ciclo/}+${id}+@{/materias-imp/}>Materias Impartidas</a>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
@@ -55,6 +55,7 @@
 				<input type="submit" value="Guardar" class="btn btn-primary" />
 				<a th:onclick="eliminarCiclo([[${id}]])" class="btn btn-danger">Eliminar</a>
 			</div>
+		</div>
 		</form>
 		<br>
 		</div>

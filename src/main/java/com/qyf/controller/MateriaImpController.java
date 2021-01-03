@@ -38,13 +38,15 @@ public class MateriaImpController {
 	@Autowired
 	private ICursoServ cursos;
 	
-	@RequestMapping("/editarCiclo/{id}/materiasImpartidas")
+	@RequestMapping("/editar-ciclo/{id}/materias-imp")
 	public String listar(@RequestParam(value="buscar", required=false) String palabra, 
 			 @PathVariable int id, Model model) {
 		List<Materia_Imp> lista = impartidas.listar(palabra);
-		for(int i = 0;i < lista.size();i++) { //Quita las materias que no pertenecen al ciclo
-			if(lista.get(i).getCiclo().getId_ciclo() != id)
-				lista.remove(i);
+		if(!lista.isEmpty()) {
+			for(int i = 0;i < lista.size();i++) { //Quita las materias que no pertenecen al ciclo
+				if(lista.get(i).getCiclo().getId_ciclo() != id)
+					lista.remove(i);
+			}
 		}
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("materias", lista);
@@ -52,7 +54,7 @@ public class MateriaImpController {
 		return "listaMateriasImp";
 	}
 	
-	@GetMapping("/editarCiclo/{id}/agregar")
+	@GetMapping("/editar-ciclo/{id}/agregar-materia")
 	public String agregar(@PathVariable Integer id, Model model) {
 		Optional<Ciclo> c = ciclos.listarId(id);
 		Ciclo ciclo = c.get();
@@ -74,7 +76,7 @@ public class MateriaImpController {
 		return "redirect:/ciclos";
 	}
 	
-	@GetMapping("/editarMateriaImp/{id}")
+	@GetMapping("/editar-materia-imp/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		Optional<Materia_Imp> materia = impartidas.listarId(id);
 		List<Materia> listaMaterias = materias.listar(null);
