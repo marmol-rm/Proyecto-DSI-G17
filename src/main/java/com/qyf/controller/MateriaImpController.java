@@ -93,7 +93,7 @@ public class MateriaImpController {
 		return "redirect:/ciclos";
 	}
 	
-	@GetMapping("eliminarMateriaImp/{id}")
+	@GetMapping("/eliminarMateriaImp/{id}")
 	public String delete(@PathVariable int id, Model model) {
 		impartidas.delete(id);
 		

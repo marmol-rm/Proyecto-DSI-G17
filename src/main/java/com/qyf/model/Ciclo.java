@@ -23,9 +23,9 @@ public class Ciclo {
 	private int id_ciclo;
 	@Column(length=255)
 	private String titulo;
-	@Nullable
-	@OneToMany(mappedBy = "id_materia_imp", cascade = CascadeType.REMOVE)
-	private List<Materia_Imp> materias_impartidas;
+	//@Nullable
+	//@OneToMany(mappedBy = "id_materia_imp", cascade = CascadeType.ALL)
+	//private List<Materia_Imp> materias_impartidas;
 	private int numero;
 	private int anio;
 	private Integer activo;

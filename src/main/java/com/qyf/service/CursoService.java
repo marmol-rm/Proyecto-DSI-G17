@@ -18,15 +18,15 @@ public class CursoService implements ICursoServ{
 	
 	@Override
 	public List<Curso> listar(String key) {
-		if(key!=null) {
+		if(key!=null)
 			return (List<Curso>) data.findAll(key);
-		}
 		else
-		return (List<Curso>) data.findAll();
+			return (List<Curso>) data.findAll();
 	}
 
 	@Override
 	public Optional<Curso> listarId(int id) {
+		
 		return data.findById(id);
 	}
 
@@ -42,6 +42,7 @@ public class CursoService implements ICursoServ{
 			c = data.save(curso);
 		if(!c.equals(null))
 			res = 1;
+		
 		return res;
 	}
 
