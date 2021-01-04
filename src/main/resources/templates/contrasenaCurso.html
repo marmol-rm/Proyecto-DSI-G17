@@ -33,21 +33,25 @@
 	<div class="row mt-3">
 	  <div class="col"></div>
 	  <div class="container mt-5">
-        <form th:action="@{/saveContrasena}" th:object=${curso} method="POST">
-            <h3>Estableciendo Contraseña</h3>
+        <form th:action="@{/saveMateriaImp}" th:object=${curso} method="POST">
+        	<div class="card"></div>
+        	<div class="card-header">
+            	<h3>Estableciendo Contraseña</h3>
+            </div>
+            <div class="card-body">
             <div class="form-group">
-                <input th:field="*{id_curso}" th:value="${id}" type="hidden" class="form-control"/>
+                <input th:field="*{id_materia_imp}" th:value="${id}" type="hidden" class="form-control">
             </div>
             <div class="form-group">
-                <h5>Ingrese la contraseña actual:</h5>
-                <input type="password" th:field="*{temp_pass}">
+                <input type="hidden" th:field="*{pass}" class="form-control">
             </div>
             <div class="form-group">
                 <h5>Ingrese la nueva contraseña:</h5>
-                <input type="password" th:field="*{pass}">
+                <input type="password" th:field="*{temp_pass}" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="card-footer">
                 <input type="submit" value="Guardar" class="btn btn-primary">
+            </div>
             </div>
         </form>
 	  </div>

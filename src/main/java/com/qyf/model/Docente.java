@@ -1,5 +1,6 @@
 package com.qyf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,22 +16,27 @@ import javax.persistence.Table;
 public class Docente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID_DOCENTE", unique=true)
-	private int id;
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_user")
+	@Column(name="id_docente", unique=true)
+	private int id_docente;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JoinColumn(name="id_user", unique=true)
 	private Usuario user;
 	
 	public Docente() {
 		super();
 	}
 
+	public Docente(Usuario user) {
+		super();
+		this.user = user;
+	}
+
 	public int getId() {
-		return id;
+		return id_docente;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id_docente = id;
 	}
 
 	public Usuario getUser() {

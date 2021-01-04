@@ -19,38 +19,35 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<input oninput="check(this)" th:field="*{id_user}" type="hidden" class="form-control"/>
-				</div>
-				<div class="form-group">
-					<label>ROL</label>
+					<h5>Rol:</h5>
 					<select th:field="*{role.id_rol}" class="form-control">
-						<option value=1>Administrador</option>
-						<option value=2>Estudiante</option>
-						<option value=3>Coordinador de catedra</option>
-						<option value=4>Jefe de Departamento</option>
+						<option value=0>Asigne un rol...</option>
+						<option value=1>Estudiante</option>
+						<option value=2>Coordinador de Cátedra</option>
+						<option value=3>Jefe de Departamento</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>EMAIL</label>
+					<h5>E-mail:</h5>
 					<input required th:field="*{email}" type="email" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>NOMBRES</label>
+					<h5>Nombres:</h5>
 					<input required th:field="*{nombres}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>APELLIDOS</label>
+					<h5>Apellidos:</h5>
 					<input required th:field="*{apellidos}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>CONTRASEÑA</label>
+					<h5>Contraseña</h5>
 					<input required th:field="*{password}" type="password" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>ACTIVAR?</label><br>
-					<input th:field="*{activo}" value="0" type="checkbox" class="form-control"/>
+					<h5>Activo?</h5>
+					<input th:field="*{activo}" value="0" type="checkbox" title="(no activo)" class="form-control"/>
 					<label>NO</label>
-					<input th:field="*{activo}" value="1" type="checkbox" class="form-control"/>
+					<input th:field="*{activo}" value="1" type="checkbox" title="(activo)" class="form-control"/>
 					<label>SI</label>
 				</div>
 			</div>

@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IUsuarioServ;
+import com.qyf.model.Role;
 import com.qyf.model.Usuario;
 import com.qyf.repository.IUsuario;
 
@@ -27,7 +29,7 @@ public class UsuarioServ implements IUsuarioServ{
 
 	@Override
 	public Optional<Usuario> listarId(Long id) {
-		// TODO Auto-generated method stub
+
 		return data.findById(id);
 	}
 
@@ -43,8 +45,23 @@ public class UsuarioServ implements IUsuarioServ{
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		data.deleteById(id);
 	}
 
+	@Override
+	public void iniciarAdmin(Role r) {
+		long vacio = data.count();
+		if(vacio == 0) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String encodedPass = encoder.encode("sysadmin");
+			Usuario admin = new Usuario("admin",encodedPass,1,r);
+			data.save(admin);
+		}
+	}
+
+	@Override
+	public Usuario listarEmail(String email) {
+		
+		return data.findByEmail(email);
+	}
 }

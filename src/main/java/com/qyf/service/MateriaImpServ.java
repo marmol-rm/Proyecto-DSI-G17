@@ -7,17 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IMateriaImpServ;
-import com.qyf.model.Curso;
 import com.qyf.model.Materia_Imp;
-import com.qyf.repository.ICurso;
 import com.qyf.repository.IMateriaImp;
 
 @Service
 public class MateriaImpServ implements IMateriaImpServ{
 	@Autowired
 	private IMateriaImp data;
-	@Autowired
-	private ICurso data_cursos;
 	
 	@Override
 	public List<Materia_Imp> listar(String key) {
@@ -35,8 +31,13 @@ public class MateriaImpServ implements IMateriaImpServ{
 
 	@Override
 	public int guardar(Materia_Imp materia) {
+		Materia_Imp m = new Materia_Imp();
+		if(materia.getPass()!= materia.getTemp_pass()) {
+			materia.setPass(materia.getTemp_pass());
+			materia.setTemp_pass("");
+			m = data.save(materia);
+		}
 		int res=0;
-		Materia_Imp m = data.save(materia);
 		if(!m.equals(null)) {
 			res = 1;
 		}
@@ -45,7 +46,7 @@ public class MateriaImpServ implements IMateriaImpServ{
 	}
 
 	@Override
-	public void delete(int id) {
+	public void eliminar(int id) {
 		data.deleteById(id);
 	}
 }

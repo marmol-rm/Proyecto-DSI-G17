@@ -13,18 +13,19 @@
 		<div class="container mt-5">
 		<div class="col-sm-5">
 		<form th:action="@{/saveDepto}" th:object=${depto} method="POST">
-			<div class="card">
+			<div class="card"></div>
 			<div class="card-header">
 				<h3>Ingresar Departamento</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>NOMBRE DEL DEPARTAMENTO</label>
+					<h5>Nombre del Departamento</h5>
 					<input required th:field="*{departamento}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>Asignar jefe:</label>
+					<h5>Asignar jefe:</h5>
 					<select th:field="*{jefe.id_jefe}" class="form-control">
+						<option value=0>Asigne el jefe...</option>
 						<option th:each="v:${jefes}"  
 						th:value="${v.getId_jefe()}" th:text="${v.getNombreJefe()}">
 						</option>
@@ -33,7 +34,6 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-success" />
-			</div>
 			</div>
 		</form>
 		<br>

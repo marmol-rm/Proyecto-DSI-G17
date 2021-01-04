@@ -13,18 +13,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.qyf.interfaceService.ICoordinadorServ;
+import com.qyf.interfaceService.IDocenteServ;
 import com.qyf.interfaceService.IUsuarioServ;
+import com.qyf.model.Docente;
 import com.qyf.model.Usuario;
 
 @Controller
 public class UsuarioController {
 	
 	@Autowired
-	private IUsuarioServ service;
+	private IUsuarioServ usuarios;
+	@Autowired
+	private IDocenteServ docentes;
+	@Autowired
+	private ICoordinadorServ coordinadores;
 	
 	@GetMapping("/usuarios")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
-		List<Usuario> lista = service.listar(palabra);
+		List<Usuario> lista = usuarios.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
 		
@@ -46,26 +53,31 @@ public class UsuarioController {
 	
 	@GetMapping("/usuarios/editar/{id}")
 	public String form_editar(@PathVariable Long id, Model model) {
-		Optional<Usuario> user = service.listarId(id);
+		Optional<Usuario> user = usuarios.listarId(id);
 		model.addAttribute("user", user);
 		
 		return "editarUsuario";
 	}
 	
 	@PostMapping("/saveUser")
-	public String registro(Usuario user) {
+	public String registro(@Validated Usuario user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPass = encoder.encode(user.getPassword());
 		user.setPassword(encodedPass); //Se guarda el password encriptado
-		service.guardar(user);
+		int r = user.getRole().getId_rol();
+		usuarios.guardar(user); //Guarda el usuario
+		if(r != 1 && r != 2) {
+			Docente d = new Docente(user);
+			docentes.guardar(d);
+		}
 		
 		return "redirect:/usuarios";
 	}
 	
 	@GetMapping("/deleteUser/{id}")
-	public void eliminar(@PathVariable Long id, Model model) {
-		service.delete(id);
+	public String eliminar(@PathVariable Long id, Model model) {
+		usuarios.delete(id);
 		
-		return;
+		return "redirect:/usuarios";
 	}
 }

@@ -1,5 +1,6 @@
 package com.qyf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,8 +19,8 @@ public class Estudiante {
 	private int id_estudiante;
 	@Column(length=7, unique=true)
 	private String carnet;
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_user")
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JoinColumn(name="id_user", unique=true)
 	private Usuario user;
 	
 	public Estudiante() {

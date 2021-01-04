@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.qyf.interfaceService.ICursoServ;
 import com.qyf.model.Curso;
-import com.qyf.model.Materia_Imp;
-import com.qyf.repository.IMateriaImp;
 
 @Controller
 @RequestMapping
@@ -22,14 +20,6 @@ public class CursoController {
 	
 	@Autowired
 	private ICursoServ cursos;
-	
-	@GetMapping("/editar-materia-imp/{id}/cambiar-contrasena")
-	public String establecer(@PathVariable int id, Model model) {
-		Optional<Curso> c = cursos.listarId(id);
-		model.addAttribute("curso", c);
-		
-		return "contrasenaCurso";
-	}
 	
 	@PostMapping("/saveContrasena")
 	public String guardarContra(@Validated Curso curso, Model model) {

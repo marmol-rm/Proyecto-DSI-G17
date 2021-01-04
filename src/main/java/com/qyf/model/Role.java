@@ -23,6 +23,13 @@ public class Role {
 		super();
 	}
 
+	public Role(String nombre, String descripcion) {
+		super();
+		//this.id_rol = id_rol;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+
 	public int getId_rol() {
 		return id_rol;
 	}

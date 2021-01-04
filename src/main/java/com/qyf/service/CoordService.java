@@ -19,4 +19,19 @@ public class CoordService implements ICoordinadorServ {
 	public List<Coordinador> listar() {
 		return data.findAll();
 	}
+
+	@Override
+	public int guardar(Coordinador c) {
+		int res = 0;
+		Coordinador co = data.save(c);
+		if(!co.equals(null))
+			res =1 ;
+		
+		return res;
+	}
+
+	@Override
+	public void eliminar(int id) {
+		data.deleteById(id);
+	}
 }

@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.qyf.interfaceService.ICicloServ;
 import com.qyf.interfaceService.ICoordinadorServ;
-import com.qyf.interfaceService.ICursoServ;
 import com.qyf.interfaceService.IMateriaImpServ;
 import com.qyf.interfaceService.IMateriaServ;
 import com.qyf.model.Ciclo;
 import com.qyf.model.Coordinador;
-import com.qyf.model.Curso;
 import com.qyf.model.Materia;
 import com.qyf.model.Materia_Imp;
 
@@ -36,8 +34,6 @@ public class MateriaImpController {
 	private ICicloServ ciclos;
 	@Autowired
 	private ICoordinadorServ catedra;
-	@Autowired
-	private ICursoServ cursos;
 	
 	@RequestMapping("/ciclos/{id}/materias-imp")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, 
@@ -81,21 +77,28 @@ public class MateriaImpController {
 		return "editarMateriaImp";
 	}
 	
+	@GetMapping("/editar-materia-imp/{id}/cambiar-contrasena")
+	public String establecer(@PathVariable int id, Model model) {
+		Optional<Materia_Imp> m = impartidas.listarId(id);
+		model.addAttribute("curso", m);
+		
+		return "contrasenaCurso";
+	}
+	
 	@PostMapping("/saveMateriaImp")
 	public String guardar(@Validated Materia_Imp m, Model model) {
 		c = m.getCiclo().getId_ciclo().toString();
 		impartidas.guardar(m);
 		
-		return "redirect:/ciclos/"+ c +"materias_imp";
+		return "redirect:/ciclos/"+ c +"/materias-imp";
 	}
 	
 	@GetMapping("/delMateriaImp/{id}")
 	public String eliminar(@PathVariable int id, Model model) {
-		String c;
 		Optional<Materia_Imp> m = impartidas.listarId(id);
 		c = m.get().getCiclo().getId_ciclo().toString();
-		impartidas.delete(id);
+		impartidas.eliminar(id);
 		
-		return "redirect:/ciclos/"+ c +"materias_imp";
+		return "redirect:/ciclos/"+ c +"/materias-imp";
 	}
 }

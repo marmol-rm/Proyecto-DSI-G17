@@ -2,26 +2,24 @@ package com.qyf.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import com.qyf.service.RoleService;
+import com.qyf.service.UsuarioServ;
 
 @Controller
 public class MainController {
-	
-	/*@Autowired
-	private UsuarioController controller;
-	private static int flag = 0;
-	private String dir = null;
+	@Autowired
+	private RoleService roles;
+	@Autowired
+	private UsuarioServ users;
 	
 	@GetMapping("/")
-	public String inicio(Model model) {
-		if(flag == 0) {
-			flag += 1;
-			dir = controller.registrar(model);
-		}
-		else
-			dir = "index";
-		return dir;
-	}*/
+	public String inicio() {
+		roles.inicializar(); //Crea los roles si no estan
+		//Crea un usuario por defecto
+		users.iniciarAdmin(roles.listarId(4).get());
+		
+		return "index";
+	}
 }

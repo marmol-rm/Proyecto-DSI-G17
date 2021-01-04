@@ -1,5 +1,6 @@
 package com.qyf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +19,8 @@ public class Jefes_Depto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private int id_jefe;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_docente")
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JoinColumn(name="id_docente", unique=true)
 	private Docente docente;
 	
 	public Jefes_Depto() {

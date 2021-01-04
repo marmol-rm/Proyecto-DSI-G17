@@ -54,8 +54,8 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/saveMateria")
-	public String guardar(@Validated Materia m, Model model) {
-		materias.guardar(m);
+	public String guardar(@Validated Materia materia, Model model) {
+		materias.guardar(materia);
 		return "redirect:/materias";
 	}
 	

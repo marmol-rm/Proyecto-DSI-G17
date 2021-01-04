@@ -50,9 +50,9 @@ public class CicloController {
 	}
 	
 	@GetMapping("deleteCiclo/{id}")
-	public void delete(@PathVariable int id, Model model) {
+	public String delete(@PathVariable int id, Model model) {
 		service.delete(id);
 		
-		return;
+		return "redirect:/ciclos";
 	}
 }

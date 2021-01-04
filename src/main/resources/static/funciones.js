@@ -15,8 +15,8 @@ function eliminarUsuario(id) {
   buttons: true,
   dangerMode: true,
 })
-.then((Si) => {
-  if (Si) {
+.then((Ok) => {
+  if (Ok) {
     $.ajax({
       url:"/deleteUser/"+id,
       success: function(res){
@@ -102,8 +102,8 @@ function eliminarCiclo(id) {
   buttons: true,
   dangerMode: true,
 })
-.then((Si) => {
-  if (Si) {
+.then((Ok) => {
+  if (Ok) {
     $.ajax({
       url:"/deleteCiclo/"+id,
       success: function(res){
@@ -131,8 +131,8 @@ function eliminarMateriaImp(id) {
   buttons: true,
   dangerMode: true,
 })
-.then((Si) => {
-  if (Si) {
+.then((Ok) => {
+  if (Ok) {
     $.ajax({
       url:"/delMateriaImp/"+id,
       success: function(res){
@@ -167,8 +167,8 @@ function eliminarEvaluacion(id) {
       success: function(res){
         console.log(res);
       }
-    }).then((Ok)=>{
-      if(Ok){
+    }).then((ok)=>{
+      if(ok){
         location.href="/ciclos";
       }
     });

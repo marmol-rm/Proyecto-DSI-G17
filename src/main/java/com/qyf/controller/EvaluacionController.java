@@ -68,9 +68,11 @@ public class EvaluacionController {
 	}
 	
 	@GetMapping("/deleteEval/{id}")
-	public void eliminar(@PathVariable int id, Model model) {
+	public String eliminar(@PathVariable int id, Model model) {
+		Optional<Evaluacion> e = evaluaciones.listaId(id);
+		m = e.get().getMateria().getId_materia_imp().toString();
 		evaluaciones.eliminar(id);
 		
-		return;
+		return "redirect:/materia-imp/" + m + "/evaluaciones";
 	}
 }

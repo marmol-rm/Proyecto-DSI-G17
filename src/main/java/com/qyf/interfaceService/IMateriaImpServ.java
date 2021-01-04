@@ -9,5 +9,5 @@ public interface IMateriaImpServ {
 	public List<Materia_Imp> listar(String key);
 	public Optional<Materia_Imp> listarId(int id);
 	public int guardar(Materia_Imp materia);
-	public void delete(int id);
+	public void eliminar(int id);
 }

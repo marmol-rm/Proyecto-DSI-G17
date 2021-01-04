@@ -51,7 +51,6 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>NOMBRES</th>
 					<th>APELLIDOS</th>
 					<th>EMAIL</th>
@@ -60,7 +59,6 @@
 			</thead>
 			<tbody>
 				<tr th:each="v:${usuarios}">
-					<td th:text="${v.getId_user()}"></td>
 					<td th:text="${v.getNombres()}"></td>
 					<td th:text="${v.getApellidos()}"></td>
 					<td th:text="${v.getEmail()}"></td>

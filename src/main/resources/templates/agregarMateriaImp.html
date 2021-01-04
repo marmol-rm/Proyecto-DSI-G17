@@ -40,6 +40,13 @@
 						</option>
 					</select>
 				</div>
+				<div class="form-group">
+                <input type="hidden" th:field="*{pass}" class="form-control">
+            </div>
+            <div class="form-group">
+                <h5>Ingrese la nueva contraseña:</h5>
+                <input type="password" th:field="*{temp_pass}" class="form-control">
+            </div>
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-success" />
