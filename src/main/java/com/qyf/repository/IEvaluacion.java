@@ -10,6 +10,7 @@ import com.qyf.model.Evaluacion;
 
 @Repository
 public interface IEvaluacion extends JpaRepository<Evaluacion, Integer> {
-	//@Query("SELECT e FROM Evaluacion e")
-	//public List<Evaluacion> findAll(String key);
+	@Query("SELECT e FROM Evaluacion e WHERE " +
+			"CONCAT(e.evaluacion) LIKE %?1%")
+	public List<Evaluacion> findAll(String key);
 }

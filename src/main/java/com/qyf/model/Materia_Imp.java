@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +18,10 @@ public class Materia_Imp {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
 	private Integer id_materia_imp;
+	@Column(length = 25)
+	private String pass;
+	@Column(length = 25)
+	private String temp_pass;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_materia", unique=true)
 	private Materia materia;
@@ -28,16 +31,21 @@ public class Materia_Imp {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_catedra")
 	private Coordinador coordinador;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-	@JoinColumn(unique = true)
-	private Curso curso;
 	
-	public Curso getCurso() {
-		return curso;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getTemp_pass() {
+		return temp_pass;
+	}
+
+	public void setTemp_pass(String temp_pass) {
+		this.temp_pass = temp_pass;
 	}
 
 	public Materia_Imp() {

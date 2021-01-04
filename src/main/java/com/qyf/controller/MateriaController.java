@@ -44,12 +44,6 @@ public class MateriaController {
 		return "agregarMateria";
 	}
 	
-	@PostMapping("/guardarMateria")
-	public String guardar(@Validated Materia m, Model model) {
-		materias.guardar(m);
-		return "redirect:/materias";
-	}
-	
 	@GetMapping("/materias/editar/{id}")
 	public String editar(@PathVariable Integer id, Model model) {
 		Optional<Materia> m = materias.listarId(id);
@@ -59,15 +53,16 @@ public class MateriaController {
 		return "editarMateria";
 	}
 	
-	@PostMapping("/editMateria")
-	public String edit(@Validated Materia m, Model model) {
+	@PostMapping("/saveMateria")
+	public String guardar(@Validated Materia m, Model model) {
 		materias.guardar(m);
 		return "redirect:/materias";
 	}
 	
-	@GetMapping("eliminarMateria/{id}")
-	public String delete(@PathVariable int id, Model model) {
+	@GetMapping("/deleteMateria/{id}")
+	public String eliminar(@PathVariable int id, Model model) {
 		materias.delete(id);
+		
 		return "redirect:/materias";
 	}
 }

@@ -8,6 +8,7 @@ import com.qyf.model.Curso;
 public interface ICursoServ {
 	public List<Curso> listar(String key);
 	public Optional<Curso> listarId(int id);
+	public int crear();
 	public int guardar(Curso curso);
 	public void delete(int id);
 }

@@ -15,13 +15,20 @@ public class Curso {
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
 	private Integer id_curso;
-	@Column(length = 255)
+	@Column(length = 25)
 	private String pass;
-	@Column(length = 255)
+	@Column(length = 25)
 	private String temp_pass;
 	
 	public Curso() {
 		super();
+	}
+
+	public Curso(Integer id_curso, String pass, String temp_pass) {
+		super();
+		this.id_curso = id_curso;
+		this.pass = pass;
+		this.temp_pass = temp_pass;
 	}
 
 	public Integer getId_curso() {

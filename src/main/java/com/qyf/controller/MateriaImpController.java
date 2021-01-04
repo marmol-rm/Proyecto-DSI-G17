@@ -49,7 +49,7 @@ public class MateriaImpController {
 					lista.remove(i);
 			}
 		}
-		model.addAttribute("buscar",palabra);
+		model.addAttribute("buscar", palabra);
 		model.addAttribute("materias", lista);
 		
 		return "listaMateriasImp";
@@ -69,14 +69,6 @@ public class MateriaImpController {
 		return "agregarMateriaImp";
 	}
 	
-	@PostMapping("/guardarMateriaImp")
-	public String save(@Validated Materia_Imp m, Model model) {
-		c = m.getCiclo().getId_ciclo().toString();
-		impartidas.guardar(m);
-		
-		return "redirect:/ciclos/"+ c +"materias_imp";
-	}
-	
 	@GetMapping("/ciclos/editar-materia-imp/{id}")
 	public String form_editar(@PathVariable int id, Model model) {
 		Optional<Materia_Imp> materia = impartidas.listarId(id);
@@ -89,16 +81,16 @@ public class MateriaImpController {
 		return "editarMateriaImp";
 	}
 	
-	@PostMapping("/editMateriaImp")
-	public String edit(@Validated Materia_Imp m, Model model) {
+	@PostMapping("/saveMateriaImp")
+	public String guardar(@Validated Materia_Imp m, Model model) {
 		c = m.getCiclo().getId_ciclo().toString();
 		impartidas.guardar(m);
 		
 		return "redirect:/ciclos/"+ c +"materias_imp";
 	}
 	
-	@GetMapping("eliminarMateriaImp/{id}")
-	public String delete(@PathVariable int id, Model model) {
+	@GetMapping("/delMateriaImp/{id}")
+	public String eliminar(@PathVariable int id, Model model) {
 		String c;
 		Optional<Materia_Imp> m = impartidas.listarId(id);
 		c = m.get().getCiclo().getId_ciclo().toString();

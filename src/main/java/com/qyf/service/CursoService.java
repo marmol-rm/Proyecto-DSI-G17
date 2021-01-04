@@ -29,17 +29,20 @@ public class CursoService implements ICursoServ{
 		
 		return data.findById(id);
 	}
+	
+	@Override
+	public int crear() {
+		Curso curso = new Curso(0,"","");
+		data.save(curso);
+		
+		return 0;
+	}
 
 	@Override
 	public int guardar(Curso curso) {
 		int res = 0;
-		Curso c = new Curso();
-		if(curso.getPass() != curso.getTemp_pass()) { //Valida si la contrasena es diferente
-			curso.setTemp_pass("");
-			c = data.save(curso);
-		}
-		else
-			c = data.save(curso);
+		Curso c = data.save(curso);
+		
 		if(!c.equals(null))
 			res = 1;
 		
@@ -48,8 +51,6 @@ public class CursoService implements ICursoServ{
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
 		data.deleteById(id);
 	}
-
 }

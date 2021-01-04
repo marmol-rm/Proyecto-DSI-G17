@@ -33,7 +33,7 @@
 	<div class="row mt-3">
 	  <div class="col"></div>
 	  <div class="container mt-5">
-        <form th:action="@{/guardarContrasena}" th:object=${curso} method="POST">
+        <form th:action="@{/saveContrasena}" th:object=${curso} method="POST">
             <h3>Estableciendo Contraseña</h3>
             <div class="form-group">
                 <input th:field="*{id_curso}" th:value="${id}" type="hidden" class="form-control"/>

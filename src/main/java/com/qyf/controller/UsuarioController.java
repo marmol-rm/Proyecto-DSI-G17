@@ -23,53 +23,49 @@ public class UsuarioController {
 	private IUsuarioServ service;
 	
 	@GetMapping("/usuarios")
-	public String listar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
+	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Usuario> lista = service.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
+		
 		return "listaUsuarios";
 	}
 	
 	@GetMapping("/usuarios/{id}/recuperarContrasena")
-	public String recuperarContrasena(@PathVariable Long id, Model model) {
+	public String recuperar_contrasena(@PathVariable Long id, Model model) {
+		
 		return "recuperarContrasena";
 	}
 	
-	@GetMapping("usuarios/registro")
-	public String registrar(Model model) {
+	@GetMapping("/usuarios/registro")
+	public String form_registro(Model model) {
 		model.addAttribute("user", new Usuario());
-		return "registroUsuario";
+		
+		return "agregarUsuario";
 	}
 	
-	@PostMapping("/procesarRegistro")
-	public String procesoRegistro(Usuario user) {
+	@GetMapping("/usuarios/editar/{id}")
+	public String form_editar(@PathVariable Long id, Model model) {
+		Optional<Usuario> user = service.listarId(id);
+		model.addAttribute("user", user);
+		
+		return "editarUsuario";
+	}
+	
+	@PostMapping("/saveUser")
+	public String registro(Usuario user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPass = encoder.encode(user.getPassword());
 		user.setPassword(encodedPass); //Se guarda el password encriptado
 		service.guardar(user);
+		
 		return "redirect:/usuarios";
 	}
 	
-	@GetMapping("/editarUsuario/{id}")
-	public String editar(@PathVariable Long id, Model model) {
-		Optional<Usuario> user = service.listarId(id);
-		model.addAttribute("user", user);
-		return "editarUsuario";
-	}
-	
-	@PostMapping("/editUser")
-	public String edit(@Validated Usuario user, Model model) {
-		model.getAttribute("user");
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String encodedPass = encoder.encode(user.getPassword());
-		user.setPassword(encodedPass); //Se guarda el password codificado
-		service.guardar(user);
-		return "redirect:/usuarios";
-	}
-	
-	@GetMapping("/eliminarUsuario/{id}")
-	public String delete(@PathVariable Long id, Model model) {
+	@GetMapping("/deleteUser/{id}")
+	public void eliminar(@PathVariable Long id, Model model) {
 		service.delete(id);
-		return "redirect:/usuarios";
+		
+		return;
 	}
 }

@@ -16,9 +16,11 @@ public class EvaluacionServ implements IEvaluacoinServ {
 	private IEvaluacion data;
 	
 	@Override
-	public List<Evaluacion> listar() {
-
-		return (List<Evaluacion>) data.findAll();
+	public List<Evaluacion> listar(String key) {
+		if(key != null)
+			return (List<Evaluacion>) data.findAll(key);
+		else
+			return (List<Evaluacion>) data.findAll();
 	}
 
 	@Override

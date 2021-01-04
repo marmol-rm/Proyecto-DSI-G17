@@ -7,47 +7,10 @@ function check(input) {
    }
 }
 
-function estadoCiclo(estado){
-  if(estado.value == 1){
-    text.setCustomValidity('Activo');
-  } else{
-    text.setCustomValidity('Inactivo');
-  }
-}
-
-function eliminarDepartamento(id) {
-  swal({
-  title: "Eliminar",
-  text: "Esta seguro?",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((Si) => {
-  if (Si) {
-    $.ajax({
-      url:"/eliminarDepartamento/"+id,
-      success: function(res){
-        console.log(res);
-      }
-    }).then((Ok)=>{
-      if(Ok){
-        location.href="/departamentos";
-      }
-    });
-    swal("Eliminado!", {
-      icon: "success",
-    });
-  } else {
-    swal("No pasa nada.");
-  }
-});
-}
-
 function eliminarUsuario(id) {
   swal({
   title: "Eliminar",
-  text: "Esta seguro?",
+  text: "Está seguro?",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -55,7 +18,7 @@ function eliminarUsuario(id) {
 .then((Si) => {
   if (Si) {
     $.ajax({
-      url:"/eliminarUsuario/"+id,
+      url:"/deleteUser/"+id,
       success: function(res){
         console.log(res);
       }
@@ -73,18 +36,47 @@ function eliminarUsuario(id) {
 });
 }
 
-function eliminarMateria(id) {
+function eliminarDepartamento(id) {
   swal({
   title: "Eliminar",
-  text: "Esta seguro?",
+  text: "Está seguro?",
   icon: "warning",
   buttons: true,
   dangerMode: true,
 })
-.then((Si) => {
-  if (Si) {
+.then((Ok) => {
+  if (Ok) {
     $.ajax({
-      url:"/eliminarMateria/"+id,
+      url:"/deleteDepto/"+id,
+      success: function(res){
+        console.log(res);
+      }
+    }).then((Ok)=>{
+      if(Ok){
+        location.href="redirect:/departamentos";
+      }
+    });
+    swal("Eliminado!", {
+      icon: "success",
+    });
+  } else {
+    swal("No pasa nada.");
+  }
+});
+}
+
+function eliminarMateria(id) {
+  swal({
+  title: "Eliminar",
+  text: "Está seguro?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((Ok) => {
+  if (Ok) {
+    $.ajax({
+      url:"/deleteMateria/"+id,
       success: function(res){
         console.log(res);
       }
@@ -105,7 +97,7 @@ function eliminarMateria(id) {
 function eliminarCiclo(id) {
   swal({
   title: "Eliminar",
-  text: "Esta seguro?",
+  text: "Está seguro?",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -113,7 +105,7 @@ function eliminarCiclo(id) {
 .then((Si) => {
   if (Si) {
     $.ajax({
-      url:"/eliminarCiclo/"+id,
+      url:"/deleteCiclo/"+id,
       success: function(res){
         console.log(res);
       }
@@ -134,7 +126,7 @@ function eliminarCiclo(id) {
 function eliminarMateriaImp(id) {
   swal({
   title: "Eliminar",
-  text: "Esta seguro?",
+  text: "Está seguro?",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -142,7 +134,36 @@ function eliminarMateriaImp(id) {
 .then((Si) => {
   if (Si) {
     $.ajax({
-      url:"/eliminarMateriaImp/"+id,
+      url:"/delMateriaImp/"+id,
+      success: function(res){
+        console.log(res);
+      }
+    }).then((Ok)=>{
+      if(Ok){
+        location.href="/ciclos";
+      }
+    });
+    swal("Eliminado!", {
+      icon: "success",
+    });
+  } else {
+    swal("No pasa nada.");
+  }
+});
+}
+
+function eliminarEvaluacion(id) {
+  swal({
+  title: "Eliminar",
+  text: "Está seguro?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((Ok) => {
+  if (Ok) {
+    $.ajax({
+      url:"/deleteEval/"+id,
       success: function(res){
         console.log(res);
       }

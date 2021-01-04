@@ -66,7 +66,7 @@
 					<td th:text="${v.getEmail()}"></td>
 					<td th:text="${v.getRole().getNombre()}"></td>
 					<td>
-					<a class="btn btn-primary" th:href="@{/editarUsuario/}+${v.id_user}">Editar</a>
+					<a class="btn btn-primary" th:href="@{/usuarios/editar/}+${v.id_user}">Editar</a>
 					<a class="btn btn-danger" th:onclick="eliminarUsuario([[${v.id_user}]])">Eliminar</a>
 					</td>
 				</tr>
@@ -75,7 +75,7 @@
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/registro}" class="btn btn-success">+Crear</a></div>
+	  <div class="col"><a th:href="@{/usuarios/registro}" class="btn btn-success">+Crear</a></div>
 	  <div class="col"></div>
 	</div>
 	<br>

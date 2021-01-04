@@ -12,8 +12,8 @@
 <body>
 		<div class="container mt-5">
 		<div class="col-lg-5">
-		<form th:action="@{/editMateriaImp}" th:object=${materia} method="POST">
-			<div class="card">
+		<form th:action="@{/saveMateriaImp}" th:object=${materia} method="POST">
+			<div class="card"></div>
 			<div class="card-header">
 				<h3>Editar Materia Impartida</h3>
 				<a th:href="@{/materia-imp/}+${id}+@{/evaluaciones}">Evaluaciones</a>
@@ -46,9 +46,8 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${id}]])">Eliminar</a></br></br>
+				<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${id}]])">Eliminar</a><br/><br/>
 				<a th:href="@{/editar-materia-imp/}+${id}+@{/cambiar-contrasena}">Cambiar contraseña del curso</a>
-			</div>
 			</div>
 		</form>
 		<br>

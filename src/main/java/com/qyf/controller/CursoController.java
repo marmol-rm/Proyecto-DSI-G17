@@ -31,7 +31,7 @@ public class CursoController {
 		return "contrasenaCurso";
 	}
 	
-	@PostMapping("/guardarContrasena")
+	@PostMapping("/saveContrasena")
 	public String guardarContra(@Validated Curso curso, Model model) {
 		cursos.guardar(curso);
 		

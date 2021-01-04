@@ -59,8 +59,8 @@
 				<tr th:each="v:${evaluaciones}">
 					<td th:text="${v.getEvaluacion()}"></td>
 					<td>
-					<a class="btn btn-primary">Editar</a>
-					<a class="btn btn-danger">Eliminar</a>
+					<a class="btn btn-primary" th:href="@{/materia-imp/editar-evaluacion/}+${v.id_evaluacion}">Editar</a>
+					<a class="btn btn-danger" th:onclick="eliminarEvaluacion([[${v.id_evaluacion}]])">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>

@@ -26,6 +26,7 @@ public class DepartamentoController {
 		List<Departamento> deptos = departamentos.listar(palabra);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("departamentos", deptos);
+		
 		return "listaDepartamentos";
 	}
 	
@@ -34,13 +35,8 @@ public class DepartamentoController {
 		model.addAttribute("depto", new Departamento());
 		List<Jefes_Depto> lista_jefes = jefes.listar();
 		model.addAttribute("jefes", lista_jefes);
+		
 		return "agregarDepartamento";
-	}
-	
-	@PostMapping("/guardarDepto")
-	public String guardar(@Validated Departamento depto, Model model) {
-		departamentos.guardar(depto);
-		return "redirect:/departamentos";
 	}
 	
 	@GetMapping("/departamentos/editar/{id}")
@@ -49,18 +45,21 @@ public class DepartamentoController {
 		List<Jefes_Depto> lista_jefes = jefes.listar();
 		model.addAttribute("depto", depto);
 		model.addAttribute("jefes", lista_jefes);
+		
 		return "editarDepartamento";
 	}
 	
-	@PostMapping("/editDepto")
-	public String editar(@Validated Departamento depto, Model model) {
+	@PostMapping("/saveDepto")
+	public String guardar(@Validated Departamento depto, Model model) {
 		departamentos.guardar(depto);
+		
 		return "redirect:/departamentos";
 	}
 	
-	@GetMapping("eliminarDepartamento/{id}")
+	@GetMapping("/deleteDepto/{id}")
 	public String eliminar(@PathVariable int id, Model model) {
 		departamentos.delete(id);
+		
 		return "redirect:/departamentos";
 	}
 }
