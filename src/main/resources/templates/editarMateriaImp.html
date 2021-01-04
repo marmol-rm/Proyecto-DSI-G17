@@ -20,13 +20,13 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<input type="hidden" th:field="*{id_materia_imp}" class="form-control"/>
+					<input type="hidden" th:field="*{id_materia_imp}" th:value="${id}" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<input type="hidden" th:field="*{ciclo.id_ciclo}" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>MATERIA</label>
+					<h5>Materia:</h5>
 					<select th:field="*{materia.id_materia}" class="form-control">
 						<option value=0>Seleccione la materia...</option>
 						<option th:each="v:${materias}"  
@@ -35,7 +35,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>COORDINADOR</label>
+					<h5>Docente coordinador:</h5>
 					<select th:field="*{coordinador.id_catedra}" class="form-control">
 						<option value=0>Seleccione el coordinador...</option>
 						<option th:each="v:${catedra}"  

@@ -19,4 +19,19 @@ public class JefeService implements IJefeServ{
 	public List<Jefes_Depto> listar() {
 		return (List<Jefes_Depto>) data.findAll();
 	}
+
+	@Override
+	public int guardar(Jefes_Depto jefe) {
+		Jefes_Depto j = data.save(jefe);
+		int res = 0;
+		if(!j.equals(null))
+			res = 1;
+		
+		return res;
+	}
+
+	@Override
+	public void eliminar(int id) {
+		data.deleteById(id);
+	}
 }

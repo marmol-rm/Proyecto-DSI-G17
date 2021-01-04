@@ -19,6 +19,7 @@ import com.qyf.interfaceService.IMateriaImpServ;
 import com.qyf.interfaceService.IMateriaServ;
 import com.qyf.model.Ciclo;
 import com.qyf.model.Coordinador;
+import com.qyf.model.Curso;
 import com.qyf.model.Materia;
 import com.qyf.model.Materia_Imp;
 
@@ -77,20 +78,28 @@ public class MateriaImpController {
 		return "editarMateriaImp";
 	}
 	
-	@GetMapping("/editar-materia-imp/{id}/cambiar-contrasena")
-	public String establecer(@PathVariable int id, Model model) {
-		Optional<Materia_Imp> m = impartidas.listarId(id);
-		model.addAttribute("curso", m);
-		
-		return "contrasenaCurso";
-	}
-	
 	@PostMapping("/saveMateriaImp")
 	public String guardar(@Validated Materia_Imp m, Model model) {
 		c = m.getCiclo().getId_ciclo().toString();
 		impartidas.guardar(m);
 		
 		return "redirect:/ciclos/"+ c +"/materias-imp";
+	}
+	
+	@GetMapping("/editar-materia-imp/{id}/cambiar-contrasena")
+	public String establecer(@PathVariable int id, Model model) {
+		Optional<Materia_Imp> m = impartidas.listarId(id);
+		model.addAttribute("curso", m);
+		
+		return "establecerContrasena";
+	}
+	
+	@PostMapping("/saveContrasena")
+	public String guardarContra(@Validated Materia_Imp materia, Model model) {
+		c = materia.getId_materia_imp().toString();
+		impartidas.guardar(materia);
+		
+		return "redirect:/ciclos/editar-materia-imp/"+ c;
 	}
 	
 	@GetMapping("/delMateriaImp/{id}")

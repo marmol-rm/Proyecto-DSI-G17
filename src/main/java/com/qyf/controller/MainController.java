@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.qyf.service.RoleService;
-import com.qyf.service.UsuarioServ;
+import com.qyf.interfaceService.IRoleService;
+import com.qyf.interfaceService.IUsuarioServ;
 
 @Controller
 public class MainController {
 	@Autowired
-	private RoleService roles;
+	private IRoleService roles;
 	@Autowired
-	private UsuarioServ users;
+	private IUsuarioServ users;
 	
 	@GetMapping("/")
 	public String inicio() {

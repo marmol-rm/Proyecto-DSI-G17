@@ -26,6 +26,11 @@ public class Coordinador {
 		super();
 	}
 	
+	public Coordinador(Docente docente) {
+		super();
+		this.docente = docente;
+	}
+
 	public String getNombre_completo() {
 		String nombre = this.getDocente().getUser().getNombre_completo();
 		if(nombre != null) {

@@ -27,6 +27,11 @@ public class Jefes_Depto {
 		super();
 	}
 	
+	public Jefes_Depto(Docente docente) {
+		super();
+		this.docente = docente;
+	}
+
 	public String getNombreJefe() {
 		String nombre = this.getDocente().getUser().getNombre_completo();
 		if (nombre != null){

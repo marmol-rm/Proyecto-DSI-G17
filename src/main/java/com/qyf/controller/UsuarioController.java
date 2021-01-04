@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.qyf.interfaceService.ICoordinadorServ;
 import com.qyf.interfaceService.IDocenteServ;
+import com.qyf.interfaceService.IEstudianteServ;
+import com.qyf.interfaceService.IJefeServ;
 import com.qyf.interfaceService.IUsuarioServ;
+import com.qyf.model.Coordinador;
 import com.qyf.model.Docente;
+import com.qyf.model.Estudiante;
+import com.qyf.model.Jefes_Depto;
 import com.qyf.model.Usuario;
 
 @Controller
@@ -25,9 +30,13 @@ public class UsuarioController {
 	@Autowired
 	private IUsuarioServ usuarios;
 	@Autowired
+	private IEstudianteServ estudiantes;
+	@Autowired
 	private IDocenteServ docentes;
 	@Autowired
 	private ICoordinadorServ coordinadores;
+	@Autowired
+	private IJefeServ jefes;
 	
 	@GetMapping("/usuarios")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
@@ -64,11 +73,25 @@ public class UsuarioController {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPass = encoder.encode(user.getPassword());
 		user.setPassword(encodedPass); //Se guarda el password encriptado
-		int r = user.getRole().getId_rol();
-		usuarios.guardar(user); //Guarda el usuario
-		if(r != 1 && r != 2) {
-			Docente d = new Docente(user);
-			docentes.guardar(d);
+		int rol = user.getRole().getId_rol();
+		if(rol != 0)
+			usuarios.guardar(user); //Guarda el usuario
+		
+		switch(rol) {
+			case 1: //Estudiante
+				Estudiante e = new Estudiante(user);
+				estudiantes.guardar(e);
+			break;
+			case 2: //Coordinador
+				Docente coo = new Docente(user);
+				docentes.guardar(coo);
+				coordinadores.guardar(new Coordinador(coo));
+			break;
+			case 3: //Jefe
+				Docente jefe = new Docente(user);
+				docentes.guardar(jefe);
+				jefes.guardar(new Jefes_Depto(jefe));
+			break;
 		}
 		
 		return "redirect:/usuarios";

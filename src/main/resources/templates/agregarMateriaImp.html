@@ -19,11 +19,11 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>CICLO</label><br/>
-					<input th:field="*{ciclo.id_ciclo}" th:text="${materia.getCiclo().getTitulo()}" type="hidden" class="form-control"/>
+					<h5 th:text="${materia.getCiclo().getTitulo()}"></h5>
+					<input th:field="*{ciclo.id_ciclo}" th:value="${id}" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>MATERIA</label>
+					<h5>Materia:</h5>
 					<select th:field="*{materia.id_materia}" class="form-control">
 						<option value=0>Seleccione la materia...</option>
 						<option th:each="v:${materias}"  
@@ -32,7 +32,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>COORDINADOR</label>
+					<h5>Docente coordinador:</h5>
 					<select th:field="*{coordinador.id_catedra}" class="form-control">
 						<option value=0>Seleccione el coordinador...</option>
 						<option th:each="v:${catedra}"  
@@ -44,7 +44,7 @@
                 <input type="hidden" th:field="*{pass}" class="form-control">
             </div>
             <div class="form-group">
-                <h5>Ingrese la nueva contraseña:</h5>
+                <h5>Ingrese la contraseña:</h5>
                 <input type="password" th:field="*{temp_pass}" class="form-control">
             </div>
 			</div>

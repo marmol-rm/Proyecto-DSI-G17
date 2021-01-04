@@ -6,4 +6,6 @@ import com.qyf.model.Jefes_Depto;
 
 public interface IJefeServ {
 	public List<Jefes_Depto> listar();
+	public int guardar(Jefes_Depto jefe);
+	public void eliminar(int id);
 }

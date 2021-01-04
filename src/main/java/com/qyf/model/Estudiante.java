@@ -16,8 +16,8 @@ import javax.persistence.Table;
 public class Estudiante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_estudiante;
-	@Column(length=7, unique=true)
+	private Integer id_estudiante;
+	@Column(length=7, unique=true, nullable=true)
 	private String carnet;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name="id_user", unique=true)
@@ -25,6 +25,11 @@ public class Estudiante {
 	
 	public Estudiante() {
 		super();
+	}
+
+	public Estudiante(Usuario user) {
+		super();
+		this.user = user;
 	}
 
 	public int getId_estudiante() {

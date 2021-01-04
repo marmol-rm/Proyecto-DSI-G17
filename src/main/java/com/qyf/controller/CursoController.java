@@ -21,13 +21,6 @@ public class CursoController {
 	@Autowired
 	private ICursoServ cursos;
 	
-	@PostMapping("/saveContrasena")
-	public String guardarContra(@Validated Curso curso, Model model) {
-		cursos.guardar(curso);
-		
-		return "redirect:/ciclos";
-	}
-	
 	@GetMapping("/matriculaCurso/{id}")
 	public String matricularse(@PathVariable int id, Model model) {
 		Optional<Curso> curso = cursos.listarId(id);
