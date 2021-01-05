@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.qyf.model.Evaluacion;
 
-public interface IEvaluacoinServ {
+public interface IEvaluacionServ {
 	public List<Evaluacion> listar(String key);
 	public Optional<Evaluacion> listaId(int id);
 	public int guardar(Evaluacion e);

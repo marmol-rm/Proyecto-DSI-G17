@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.qyf.interfaceService.ICicloServ;
 import com.qyf.interfaceService.ICoordinadorServ;
 import com.qyf.interfaceService.IMateriaImpServ;
 import com.qyf.interfaceService.IMateriaServ;
-import com.qyf.model.Ciclo;
 import com.qyf.model.Coordinador;
 import com.qyf.model.Materia;
 import com.qyf.model.Materia_Imp;
@@ -30,8 +28,6 @@ public class MateriaImpController {
 	private IMateriaImpServ impartidas;
 	@Autowired
 	private IMateriaServ materias;
-	@Autowired
-	private ICicloServ ciclos;
 	@Autowired
 	private ICoordinadorServ catedra;
 	
@@ -54,8 +50,8 @@ public class MateriaImpController {
 	@GetMapping("/ciclos/{id}/agregar-materia")
 	public String form_agregar(@PathVariable Integer id, Model model) {
 		Materia_Imp materia = new Materia_Imp();
-		Optional<Ciclo> c = ciclos.listarId(id);
-		materia.setCiclo(c.get()); //Le asigna el ciclo correspondiente
+		//Optional<Ciclo> c = ciclos.listarId(id);
+		//materia.setCiclo(c.get()); //Le asigna el ciclo correspondiente
 		List<Materia> listaMaterias = materias.listar(null);
 		List<Coordinador> listaCoordinadores = catedra.listar();
 		model.addAttribute("materia", materia);
@@ -65,16 +61,34 @@ public class MateriaImpController {
 		return "agregarMateriaImp";
 	}
 	
-	@GetMapping("/ciclos/editar-materia-imp/{id}")
-	public String form_editar(@PathVariable int id, Model model) {
-		Optional<Materia_Imp> materia = impartidas.listarId(id);
+	@GetMapping("/ciclos/{id_c}/editar-materia-imp/{id_m}")
+	public String form_editar(@PathVariable int id_c,
+			@PathVariable int id_m, Model model) {
+		Optional<Materia_Imp> materia = impartidas.listarId(id_m);
+		//Optional<Ciclo> c = ciclos.listarId(id_c);
+		//materia.setCiclo(c.get());
+		model.addAttribute("materia", materia);
 		List<Materia> listaMaterias = materias.listar(null);
 		List<Coordinador> listaCoordinadores = catedra.listar();
 		model.addAttribute("catedra", listaCoordinadores);
 		model.addAttribute("materias", listaMaterias);
-		model.addAttribute("materia", materia);
 		
 		return "editarMateriaImp";
+	}
+	
+	@GetMapping("/ciclos/{id_c}/editar-materia-imp/{id_m}/contrasena")
+	public String establecer(@PathVariable int id_c,
+			@PathVariable int id_m, Model model) {
+		Optional<Materia_Imp> materia = impartidas.listarId(id_m);
+		//Optional<Ciclo> c = ciclos.listarId(id_c);
+		//materia.setCiclo(c.get());
+		model.addAttribute("materia", materia);
+		List<Materia> listaMaterias = materias.listar(null);
+		List<Coordinador> listaCoordinadores = catedra.listar();
+		model.addAttribute("catedra", listaCoordinadores);
+		model.addAttribute("materias", listaMaterias);
+		
+		return "contrasenaCurso";
 	}
 	
 	@PostMapping("/saveMateriaImp")
@@ -85,26 +99,10 @@ public class MateriaImpController {
 		return "redirect:/ciclos/"+ c +"/materias-imp";
 	}
 	
-	@GetMapping("/editar-materia-imp/{id}/cambiar-contrasena")
-	public String establecer(@PathVariable int id, Model model) {
-		Optional<Materia_Imp> m = impartidas.listarId(id);
-		model.addAttribute("curso", m);
-		
-		return "establecerContrasena";
-	}
-	
-	@PostMapping("/saveContrasena")
-	public String guardarContra(@Validated Materia_Imp materia, Model model) {
-		c = materia.getId_materia_imp().toString();
-		impartidas.guardar(materia);
-		
-		return "redirect:/ciclos/editar-materia-imp/"+ c;
-	}
-	
 	@GetMapping("/delMateriaImp/{id}")
 	public String eliminar(@PathVariable int id, Model model) {
-		Optional<Materia_Imp> m = impartidas.listarId(id);
-		c = m.get().getCiclo().getId_ciclo().toString();
+		Materia_Imp materia = impartidas.listarId(id).get();
+		c = materia.getCiclo().getId_ciclo().toString();
 		impartidas.eliminar(id);
 		
 		return "redirect:/ciclos/"+ c +"/materias-imp";

@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qyf.interfaceService.IEvaluacoinServ;
+import com.qyf.interfaceService.IEvaluacionServ;
 import com.qyf.model.Evaluacion;
 import com.qyf.repository.IEvaluacion;
 
 @Service
-public class EvaluacionServ implements IEvaluacoinServ {
+public class EvaluacionServ implements IEvaluacionServ {
 	@Autowired
 	private IEvaluacion data;
 	

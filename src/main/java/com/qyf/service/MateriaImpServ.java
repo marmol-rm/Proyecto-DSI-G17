@@ -21,22 +21,24 @@ public class MateriaImpServ implements IMateriaImpServ{
 			return (List<Materia_Imp>)data.findAll(key);
 		}
 		else
-		return (List<Materia_Imp>) data.findAll();
+			return data.findAll();
 	}
 
 	@Override
 	public Optional<Materia_Imp> listarId(int id) {
-			return data.findById(id);
+		
+		return data.findById(id);
 	}
 
 	@Override
 	public int guardar(Materia_Imp materia) {
-		Materia_Imp m = new Materia_Imp();
-		if(materia.getPass()!= materia.getTemp_pass()) {
+		Materia_Imp m = data.save(materia);
+		/*Materia_Imp m = new Materia_Imp();
+		if(materia.getPass() == materia.getTemp_pass()) {
 			materia.setPass(materia.getTemp_pass());
 			materia.setTemp_pass("");
 			m = data.save(materia);
-		}
+		}*/
 		int res=0;
 		if(!m.equals(null)) {
 			res = 1;

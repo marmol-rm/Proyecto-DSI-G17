@@ -16,14 +16,14 @@
 			<div class="card"></div>
 			<div class="card-header">
 				<h3>Editar Materia Impartida</h3>
-				<a th:href="@{/materia-imp/}+${id}+@{/evaluaciones}">Evaluaciones</a>
+				<a th:href="@{/materia-imp/}+${id_m}+@{/evaluaciones}">Evaluaciones</a>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<input type="hidden" th:field="*{id_materia_imp}" th:value="${id}" class="form-control"/>
+					<input type="hidden" th:field="*{id_materia_imp}" th:value="${id_m}" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<input type="hidden" th:field="*{ciclo.id_ciclo}" class="form-control"/>
+					<input type="hidden" th:field="*{ciclo.id_ciclo}" th:value="${id_c}" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<h5>Materia:</h5>
@@ -43,11 +43,14 @@
 						</option>
 					</select>
 				</div>
+				<div class="form-group">
+					<input type="hidden" th:field="*{pass}" th:value="${pass}" class="form-control"/>
+				</div>
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${id}]])">Eliminar</a><br/><br/>
-				<a th:href="@{/editar-materia-imp/}+${id}+@{/cambiar-contrasena}">Cambiar contraseña del curso</a>
+				<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${id_c}]],[[${id_m}]])">Eliminar</a><br/><br/>
+				<a th:href="@{/ciclos/}+${id_c}+@{/editar-materia-imp/}+${id_m}+@{/contrasena}">Cambiar contraseña del curso</a>
 			</div>
 		</form>
 		<br>

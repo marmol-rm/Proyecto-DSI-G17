@@ -19,15 +19,13 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>ID:</label>
-					<input oninput="check(this)" th:text="${id}" th:field="*{id_user}" type="hidden" class="form-control"/>
+					<input type="hidden" th:field="*{id_user}" th:value="${id}" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<input th:field="*{password}" th:value="${password}" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<h5>Rol</h5>
-					<select th:field="*{role.id_rol}" class="form-control">
+					<select hidden="" th:field="*{role.id_rol}" class="form-control">
 						<option value=0>Asigne un rol...</option>
 						<option value=1>Estudiante</option>
 						<option value=2>Coordinador de Cátedra</option>

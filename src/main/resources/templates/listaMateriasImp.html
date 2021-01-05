@@ -52,19 +52,23 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
+					<th>COORDINADOR</th>
 					<th>CODIGO</th>
 					<th>NOMBRE</th>
-					<th>COORDINADOR</th>
+					<th>CONTRASEÑA</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="v:${materias}">
+					<td th:text="${v.getCoordinador().getNombre_completo()}"></td>
 					<td th:text="${v.getMateria().getCodigo()}"></td>
 					<td th:text="${v.getMateria().getNombre_materia()}"></td>
-					<td th:text="${v.getCoordinador().getNombre_completo()}"></td>
+					<td th:text="@{<-}+${v.getPass()}+@{->}"></td>
 					<td>
-						<a class="btn btn-primary" th:href="@{/ciclos/editar-materia-imp/}+${v.id_materia_imp}">Editar</a>
-						<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${v.id_materia_imp}]])">Eliminar</a>
+						<a class="btn btn-primary" th:href="@{/ciclos/}+${id}+
+						@{/editar-materia-imp/}+${v.id_materia_imp}">Editar</a>
+						<a class="btn btn-danger" 
+						th:onclick="eliminarMateriaImp([[${id}]],[[${v.id_materia_imp}]])">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>

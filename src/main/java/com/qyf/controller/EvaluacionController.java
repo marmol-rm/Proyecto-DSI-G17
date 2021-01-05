@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.qyf.interfaceService.IEvaluacionServ;
+import com.qyf.interfaceService.IMateriaImpServ;
 import com.qyf.model.Evaluacion;
 import com.qyf.model.Materia_Imp;
-import com.qyf.service.EvaluacionServ;
-import com.qyf.service.MateriaImpServ;
 
 @Controller
 public class EvaluacionController {
 	private String m;
 	@Autowired
-	private EvaluacionServ evaluaciones;
+	private IEvaluacionServ evaluaciones;
 	@Autowired
-	private MateriaImpServ materias;
+	private IMateriaImpServ materias;
 	
 	@GetMapping("/materia-imp/{id}/evaluaciones")
 	public String consultar(@RequestParam(value="buscar", required=false) String palabra,
@@ -44,16 +44,17 @@ public class EvaluacionController {
 	@GetMapping("/materia-imp/{id}/agregar-evaluacion")
 	public String agregar(@PathVariable int id, Model model) {
 		Evaluacion e = new Evaluacion();
-		Optional<Materia_Imp> m = materias.listarId(id);
-		e.setMateria(m.get()); //Es necesario asignar la materia
+		Materia_Imp m = materias.listarId(id).get();
+		e.setMateria(m); //Es necesario asignar la materia
 		model.addAttribute("evaluacion", e);
 		
 		return "agregarEvaluacion";
 	}
 	
-	@GetMapping("/materia-imp/editar-evaluacion/{id}")
-	public String form_editar(@PathVariable int id, Model model) {
-		Optional<Evaluacion> e = evaluaciones.listaId(id);
+	@GetMapping("/materia-imp/{id_m}/editar-evaluacion/{id_ev}")
+	public String form_editar(@PathVariable int id_m,
+			@PathVariable int id_ev, Model model) {
+		Optional<Evaluacion> e = evaluaciones.listaId(id_ev);
 		model.addAttribute("evaluacion", e);
 		
 		return "editarEvaluacion";
@@ -69,8 +70,8 @@ public class EvaluacionController {
 	
 	@GetMapping("/deleteEval/{id}")
 	public String eliminar(@PathVariable int id, Model model) {
-		Optional<Evaluacion> e = evaluaciones.listaId(id);
-		m = e.get().getMateria().getId_materia_imp().toString();
+		Evaluacion e = evaluaciones.listaId(id).get();
+		m = e.getMateria().getId_materia_imp().toString();
 		evaluaciones.eliminar(id);
 		
 		return "redirect:/materia-imp/" + m + "/evaluaciones";

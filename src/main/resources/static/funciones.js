@@ -123,7 +123,7 @@ function eliminarCiclo(id) {
 });
 }
 
-function eliminarMateriaImp(id) {
+function eliminarMateriaImp(id_c,id_m) {
   swal({
   title: "Eliminar",
   text: "Está seguro?",
@@ -134,13 +134,13 @@ function eliminarMateriaImp(id) {
 .then((Ok) => {
   if (Ok) {
     $.ajax({
-      url:"/delMateriaImp/"+id,
+      url:"/delMateriaImp/"+id_m,
       success: function(res){
         console.log(res);
       }
     }).then((Ok)=>{
       if(Ok){
-        location.href="/ciclos";
+        location.href="/ciclos/"+id_c+"/materias-imp";
       }
     });
     swal("Eliminado!", {
@@ -152,7 +152,7 @@ function eliminarMateriaImp(id) {
 });
 }
 
-function eliminarEvaluacion(id) {
+function eliminarEvaluacion(id_m,id_ev) {
   swal({
   title: "Eliminar",
   text: "Está seguro?",
@@ -163,13 +163,13 @@ function eliminarEvaluacion(id) {
 .then((Ok) => {
   if (Ok) {
     $.ajax({
-      url:"/deleteEval/"+id,
+      url:"/deleteEval/"+id_ev,
       success: function(res){
         console.log(res);
       }
     }).then((ok)=>{
       if(ok){
-        location.href="/ciclos";
+        location.href="/materia-imp/"+id_m+"/evaluaciones";
       }
     });
     swal("Eliminado!", {

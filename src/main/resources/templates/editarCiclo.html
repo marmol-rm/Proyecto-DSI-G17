@@ -16,38 +16,37 @@
 		<div class="card"></div>
 			<div class="card-header">
 				<h3>Editar Ciclo</h3>
-				<a th:href=@{/ciclos/}+${id}+@{/materias-imp/}>Materias Impartidas</a>
+				<a th:href=@{/ciclos/}+${id}+@{/materias-imp}>Materias Impartidas</a>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>ID:</label>
-					<input th:text="${id}" th:field="*{id_ciclo}" oninput="check(this)" type="hidden" class="form-control"/>
+					<input th:field="*{id_ciclo}" th:value="${id}" oninput="check(this)" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>TITULO:</label>
+					<h5>Título</h5>
 					<input required th:field="*{titulo}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>NUMERO:</label>
-					<input required th:field="*{numero}" type="number" min="1" max="2" class="form-control"/>
+					<h5>Número</h5>
+					<input oninput="check(this)" min="1" max="2" th:field="*{numero}" type="number" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>AÑO:</label>
-					<input oninput="check(this)" th:field="*{anio}" type="number" min="1" class="form-control"/>
+					<h5>Año</h5>
+					<input oninput="check(this)" th:field="*{anio}" type="number" min="2020" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>INICIO:</label>
-					<input th:field="*{fecha_ini}" type="date" class="form-control"/>
+					<h5>Inicia:</h5>
+					<input th:field="*{fecha_ini}" type="date" pattern="dd-MM-YYYY" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>FINALIZACION:</label>
-					<input th:field="*{fecha_fin}" type="date" class="form-control"/>
+					<h5>Finaliza:</h5>
+					<input th:field="*{fecha_fin}" type="date" pattern="dd-MM-YYYY" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>ACTIVAR?</label><br>
-					<input th:field="*{activo}" value="0" type="checkbox" class="form-control"/>
+					<h5>Activar?</h5>
+					<input th:field="*{activo}" value="0" type="checkbox" title="(No activar)" class="form-control"/>
 					<label>NO</label>
-					<input th:field="*{activo}" value="1" type="checkbox" class="form-control"/>
+					<input th:field="*{activo}" value="1" type="checkbox" title="(Activar)" class="form-control"/>
 					<label>SI</label>
 				</div>
 			</div>

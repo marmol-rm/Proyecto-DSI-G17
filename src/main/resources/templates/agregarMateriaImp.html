@@ -20,7 +20,7 @@
 			<div class="card-body">
 				<div class="form-group">
 					<h5 th:text="${materia.getCiclo().getTitulo()}"></h5>
-					<input th:field="*{ciclo.id_ciclo}" th:value="${id}" type="hidden" class="form-control"/>
+					<input type="hidden" th:field="*{ciclo.id_ciclo}" th:value="${id}" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<h5>Materia:</h5>
@@ -44,7 +44,7 @@
                 <input type="hidden" th:field="*{pass}" class="form-control">
             </div>
             <div class="form-group">
-                <h5>Ingrese la contraseña:</h5>
+                <h5>Ingrese la contraseña (opcional):</h5>
                 <input type="password" th:field="*{temp_pass}" class="form-control">
             </div>
 			</div>
