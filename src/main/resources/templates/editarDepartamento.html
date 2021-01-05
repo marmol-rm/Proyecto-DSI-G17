@@ -19,15 +19,14 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>ID:</label>
-					<input th:text="${id}" th:field="*{id_depto}" type="hidden" class="form-control"/>
+					<input type="hidden" th:value="${id}" th:field="*{id_depto}" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>Nombre del departamento:</label>
+					<h5>Nombre del departamento:</h5>
 					<input required th:field="*{departamento}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>Asignar jefe:</label>
+					<h5>Asignar jefe:</h5>
 					<select th:field="*{jefe.id_jefe}" class="form-control">
 						<option th:each="v:${jefes}"  
 						th:value="${v.getId_jefe()}" th:text="${v.getNombreJefe()}">
@@ -37,7 +36,7 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a th:onclick="eliminarDepartamento([[${id}]])" class="btn btn-danger">Eliminar</a>
+				<a href="/departamentos" class="btn btn-danger">Cancelar</a>
 			</div>
 	  		<div class="col"></div>
 		</form>

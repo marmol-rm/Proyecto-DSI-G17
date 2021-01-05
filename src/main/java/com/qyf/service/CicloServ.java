@@ -17,15 +17,16 @@ public class CicloServ implements ICicloServ {
 
 	@Override
 	public List<Ciclo> listar(String key) {
-		if(key!=null) {
-			return (List<Ciclo>) data.findAll(key);
+		if(key != null) {
+			return data.findAll(key);
 		}
 		else
-		return (List<Ciclo>) data.findAll();
+			return data.findAll();
 	}
 	
 	@Override
 	public Optional<Ciclo> listarId(int id) {
+		
 		return data.findById(id);
 	}
 	
@@ -36,12 +37,12 @@ public class CicloServ implements ICicloServ {
 		if(!ciclo.equals(null)) {
 			res = 1;
 		}
+		
 		return res;
 	}
 	
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
 		data.deleteById(id);
 	}
 }

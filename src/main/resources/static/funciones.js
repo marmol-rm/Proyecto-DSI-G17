@@ -180,3 +180,32 @@ function eliminarEvaluacion(id_m,id_ev) {
   }
 });
 }
+
+function eliminarSolicitud(id) {
+  swal({
+  title: "Eliminar",
+  text: "Está seguro?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((Ok) => {
+  if (Ok) {
+    $.ajax({
+      url:"/deleteSolicitud/"+id,
+      success: function(res){
+        console.log(res);
+      }
+    }).then((ok)=>{
+      if(ok){
+        location.href="/solicitudes";
+      }
+    });
+    swal("Eliminado!", {
+      icon: "success",
+    });
+  } else {
+    swal("No pasa nada.");
+  }
+});
+}

@@ -17,11 +17,11 @@ public class MateriaImpServ implements IMateriaImpServ{
 	
 	@Override
 	public List<Materia_Imp> listar(String key) {
-		if(key!=null) {
-			return (List<Materia_Imp>)data.findAll(key);
-		}
-		else
-			return data.findAll();
+		long n = data.count();
+			if(key!=null)
+				return data.findAll(key);
+			else
+				return data.findAll();
 	}
 
 	@Override

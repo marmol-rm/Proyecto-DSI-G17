@@ -20,15 +20,34 @@ public class Solicitud {
 	private Integer id_solicitud;
 	@Column(length = 10)
 	private String fecha_solicitud;
+	@Column(length = 1)
+	private int estado;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_evaluacion")
 	private Evaluacion evaluacion;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_tipo_sol")
-	private int tipo_solicitud;
+	@JoinColumn(name = "id_tipo")
+	private Tipo_Solicitud tipo;
 	
 	public Solicitud() {
 		super();
+	}
+	
+	public String getEstadoSol() {
+		String estado = "";
+		switch(this.estado) {
+			case 1:
+				estado = "Pendiente";
+			break;
+			case 2:
+				estado = "Aceptada";
+			break;
+			case 3:
+				estado = "Denegada";
+			break;
+		}
+		
+		return estado;
 	}
 
 	public Integer getId_solicitud() {
@@ -37,6 +56,14 @@ public class Solicitud {
 
 	public void setId_solicitud(Integer id_solicitud) {
 		this.id_solicitud = id_solicitud;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
 
 	public Evaluacion getEvaluacion() {
@@ -55,11 +82,11 @@ public class Solicitud {
 		this.fecha_solicitud = fecha_solicitud;
 	}
 
-	public int getTipo_solicitud() {
-		return tipo_solicitud;
+	public Tipo_Solicitud getTipo() {
+		return tipo;
 	}
 
-	public void setTipo_solicitud(int tipo_solicitud) {
-		this.tipo_solicitud = tipo_solicitud;
+	public void setTipo(Tipo_Solicitud tipo) {
+		this.tipo = tipo;
 	}
 }

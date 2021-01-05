@@ -18,11 +18,11 @@ public class DepartamentoServ implements IDepartamentoServ{
 	
 	@Override
 	public List<Departamento> listar(String key) {
-		if(key!=null) {
-			return (List<Departamento>) data.findAll(key);
+		if(key != null) {
+			return data.findAll(key);
 		}
 		else
-		return (List<Departamento>) data.findAll();
+			return data.findAll();
 	}
 	
 	@Override

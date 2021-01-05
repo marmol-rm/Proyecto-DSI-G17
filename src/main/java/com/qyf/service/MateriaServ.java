@@ -17,11 +17,10 @@ public class MateriaServ implements IMateriaServ{
 	
 	@Override
 	public List<Materia> listar(String key) {
-		if(key!=null) {
-			return (List<Materia>)data.findAll(key);
-		}
+		if(key!=null)
+			return data.findAll(key);
 		else
-		return (List<Materia>) data.findAll();
+			return data.findAll();
 	}
 
 	@Override
@@ -36,6 +35,7 @@ public class MateriaServ implements IMateriaServ{
 		if(!mat.equals(null)) {
 			res = 1;
 		}
+		
 		return res;
 	}
 

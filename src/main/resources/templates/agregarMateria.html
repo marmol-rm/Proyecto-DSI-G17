@@ -19,7 +19,7 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<label>DEPARTAMENTO</label>
+					<h5>Departamento:</h5>
 					<select th:field="*{departamento.id_depto}" class="form-control">
 						<option value=0>Seleccione el departamento...</option>
 						<option th:each="v:${departamentos}"  
@@ -28,23 +28,24 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>CODIGO MATERIA</label>
+					<h5>Código de materia:</h5>
 					<input required th:field="*{codigo}" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<label>TIPO</label>
+					<h5>Tipo de materia:</h5>
 					<select required th:field="*{tipo}" type="text" class="form-control">
 						<option value="Obligatoria">Obligatoria</option>
 						<option value="Electiva">Electiva</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>NOMBRE</label>
+					<h5>Nombre:</h5>
 					<input required th:field="*{nombre_materia}" type="text" class="form-control"/>
 				</div>
 			</div>
 			<div class="card-footer">
-				<input type="submit" value="Guardar" class="btn btn-success" />
+				<input type="submit" value="Guardar" class="btn btn-success"/>
+				<a href="/materias" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 		<br>

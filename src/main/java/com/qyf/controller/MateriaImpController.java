@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.qyf.interfaceService.ICicloServ;
 import com.qyf.interfaceService.ICoordinadorServ;
 import com.qyf.interfaceService.IMateriaImpServ;
 import com.qyf.interfaceService.IMateriaServ;
+import com.qyf.model.Ciclo;
 import com.qyf.model.Coordinador;
 import com.qyf.model.Materia;
 import com.qyf.model.Materia_Imp;
@@ -30,6 +32,8 @@ public class MateriaImpController {
 	private IMateriaServ materias;
 	@Autowired
 	private ICoordinadorServ catedra;
+	@Autowired
+	private ICicloServ ciclos;
 	
 	@RequestMapping("/ciclos/{id}/materias-imp")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, 
@@ -50,8 +54,8 @@ public class MateriaImpController {
 	@GetMapping("/ciclos/{id}/agregar-materia")
 	public String form_agregar(@PathVariable Integer id, Model model) {
 		Materia_Imp materia = new Materia_Imp();
-		//Optional<Ciclo> c = ciclos.listarId(id);
-		//materia.setCiclo(c.get()); //Le asigna el ciclo correspondiente
+		Optional<Ciclo> c = ciclos.listarId(id);
+		materia.setCiclo(c.get()); //Le asigna el ciclo correspondiente
 		List<Materia> listaMaterias = materias.listar(null);
 		List<Coordinador> listaCoordinadores = catedra.listar();
 		model.addAttribute("materia", materia);

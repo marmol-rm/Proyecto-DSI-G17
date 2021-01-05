@@ -18,9 +18,9 @@ public class EvaluacionServ implements IEvaluacionServ {
 	@Override
 	public List<Evaluacion> listar(String key) {
 		if(key != null)
-			return (List<Evaluacion>) data.findAll(key);
+			return data.findAll(key);
 		else
-			return (List<Evaluacion>) data.findAll();
+			return data.findAll();
 	}
 
 	@Override
