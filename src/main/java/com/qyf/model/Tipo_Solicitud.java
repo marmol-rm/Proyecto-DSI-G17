@@ -15,11 +15,19 @@ public class Tipo_Solicitud {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
 	private int id_tipo_sol;
-	@Column(length = 255)
+	@Column(unique = true)
 	private int tipo_solicitud;
+	@Column(length = 255)
+	private String descripcion;
 	
 	public Tipo_Solicitud() {
 		super();
+	}
+
+	public Tipo_Solicitud(int tipo_solicitud, String descripcion) {
+		super();
+		this.tipo_solicitud = tipo_solicitud;
+		this.descripcion = descripcion;
 	}
 
 	public int getId_tipo_sol() {
@@ -36,5 +44,13 @@ public class Tipo_Solicitud {
 
 	public void setTipo_solicitud(int tipo_solicitud) {
 		this.tipo_solicitud = tipo_solicitud;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 }

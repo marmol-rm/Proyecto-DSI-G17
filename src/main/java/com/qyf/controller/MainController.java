@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.qyf.interfaceService.IRoleService;
+import com.qyf.interfaceService.ISolicitudServ;
 import com.qyf.interfaceService.IUsuarioServ;
 
 @Controller
@@ -13,10 +14,13 @@ public class MainController {
 	private IRoleService roles;
 	@Autowired
 	private IUsuarioServ users;
+	@Autowired
+	private ISolicitudServ solicitudes;
 	
 	@GetMapping("/")
 	public String inicio() {
 		roles.inicializar(); //Crea los roles si no estan
+		solicitudes.inicializar();
 		//Crea un usuario por defecto
 		users.iniciarAdmin(roles.listarId(4).get());
 		

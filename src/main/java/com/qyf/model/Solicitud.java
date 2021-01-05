@@ -17,7 +17,7 @@ public class Solicitud {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
-	private int id_solicitud;
+	private Integer id_solicitud;
 	@Column(length = 10)
 	private String fecha_solicitud;
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -25,17 +25,17 @@ public class Solicitud {
 	private Evaluacion evaluacion;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipo_sol")
-	private Tipo_Solicitud tipo;
+	private int tipo_solicitud;
 	
 	public Solicitud() {
 		super();
 	}
 
-	public int getId_solicitud() {
+	public Integer getId_solicitud() {
 		return id_solicitud;
 	}
 
-	public void setId_solicitud(int id_solicitud) {
+	public void setId_solicitud(Integer id_solicitud) {
 		this.id_solicitud = id_solicitud;
 	}
 
@@ -47,11 +47,19 @@ public class Solicitud {
 		this.evaluacion = evaluacion;
 	}
 
-	public Tipo_Solicitud getTipo() {
-		return tipo;
+	public String getFecha_solicitud() {
+		return fecha_solicitud;
 	}
 
-	public void setTipo(Tipo_Solicitud tipo) {
-		this.tipo = tipo;
+	public void setFecha_solicitud(String fecha_solicitud) {
+		this.fecha_solicitud = fecha_solicitud;
+	}
+
+	public int getTipo_solicitud() {
+		return tipo_solicitud;
+	}
+
+	public void setTipo_solicitud(int tipo_solicitud) {
+		this.tipo_solicitud = tipo_solicitud;
 	}
 }
