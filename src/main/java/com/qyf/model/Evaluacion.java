@@ -18,6 +18,8 @@ public class Evaluacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
 	private int id_evaluacion;
+	@Column(length = 20)
+	private String fecha;
 	@Column(length = 255)
 	private String evaluacion;
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -34,6 +36,14 @@ public class Evaluacion {
 
 	public void setId_evaluacion(int id_evaluacion) {
 		this.id_evaluacion = id_evaluacion;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getEvaluacion() {
