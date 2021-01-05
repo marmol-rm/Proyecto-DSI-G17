@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -13,15 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.qyf.interfaceService.ICoordinadorServ;
-import com.qyf.interfaceService.IDocenteServ;
-import com.qyf.interfaceService.IEstudianteServ;
-import com.qyf.interfaceService.IJefeServ;
 import com.qyf.interfaceService.IUsuarioServ;
-import com.qyf.model.Coordinador;
-import com.qyf.model.Docente;
-import com.qyf.model.Estudiante;
-import com.qyf.model.Jefes_Depto;
 import com.qyf.model.Usuario;
 
 @Controller
@@ -29,18 +20,11 @@ public class UsuarioController {
 	
 	@Autowired
 	private IUsuarioServ usuarios;
-	@Autowired
-	private IEstudianteServ estudiantes;
-	@Autowired
-	private IDocenteServ docentes;
-	@Autowired
-	private ICoordinadorServ coordinadores;
-	@Autowired
-	private IJefeServ jefes;
 	
 	@GetMapping("/usuarios")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Usuario> lista = usuarios.listar(palabra);
+		lista.remove(0);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
 		
@@ -48,7 +32,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/usuarios/{id}/recuperarContrasena")
-	public String recuperar_contrasena(@PathVariable Long id, Model model) {
+	public String recuperar_contrasena(@PathVariable int id, Model model) {
 		
 		return "recuperarContrasena";
 	}
@@ -61,7 +45,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/usuarios/editar/{id}")
-	public String form_editar(@PathVariable Long id, Model model) {
+	public String form_editar(@PathVariable Integer id, Model model) {
 		Optional<Usuario> user = usuarios.listarId(id);
 		model.addAttribute("user", user);
 		
@@ -69,37 +53,21 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/saveUser")
-	public String registro(@Validated Usuario user) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String encodedPass = encoder.encode(user.getPassword());
-		user.setPassword(encodedPass); //Se guarda el password encriptado
-		int rol = user.getRole().getId_rol();
-		if(rol != 0)
+	public String registro(@Validated Usuario user) {		
+		int r = user.getRole().getId_rol();
+		if(r != 0) {
+			String encodedPass = usuarios.encriptar(user.getPassword());
+			user.setPassword(encodedPass); //Se guarda el password encriptado
 			usuarios.guardar(user); //Guarda el usuario
-		
-		switch(rol) {
-			case 1: //Estudiante
-				Estudiante e = new Estudiante(user);
-				estudiantes.guardar(e);
-			break;
-			case 2: //Coordinador
-				Docente coo = new Docente(user);
-				docentes.guardar(coo);
-				coordinadores.guardar(new Coordinador(coo));
-			break;
-			case 3: //Jefe
-				Docente jefe = new Docente(user);
-				docentes.guardar(jefe);
-				jefes.guardar(new Jefes_Depto(jefe));
-			break;
+			usuarios.asignarRole(r, user); //(aun no funciona bien)
 		}
 		
 		return "redirect:/usuarios";
 	}
 	
 	@GetMapping("/deleteUser/{id}")
-	public String eliminar(@PathVariable Long id, Model model) {
-		usuarios.delete(id);
+	public String eliminar(@PathVariable int id, Model model) {
+		usuarios.eliminar(id);
 		
 		return "redirect:/usuarios";
 	}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IEstudianteServ;
 import com.qyf.model.Estudiante;
+import com.qyf.model.Usuario;
 import com.qyf.repository.IEstudiante;
 
 @Service
@@ -21,6 +22,12 @@ public class EstudianteServ implements IEstudianteServ {
 	}
 
 	@Override
+	public Estudiante listarUsuario(Usuario user) {
+
+		return data.findByUser(user);
+	}
+	
+	@Override
 	public int guardar(Estudiante estudiante) {
 		Estudiante e = data.save(estudiante);
 		 int res = 0;
@@ -34,5 +41,4 @@ public class EstudianteServ implements IEstudianteServ {
 	public void eliminar(int id) {
 		data.deleteById(id);
 	}
-
 }

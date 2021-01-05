@@ -17,7 +17,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique=true)
-	private Long id_user;
+	private Integer id_user;
 	@Column(nullable=true, length=255)
 	private String nombres;
 	@Column(nullable=true, length=255)
@@ -48,11 +48,11 @@ public class Usuario {
 		return completo;
 	}
 
-	public Long getId_user() {
+	public Integer getId_user() {
 		return id_user;
 	}
 
-	public void setId_user(Long id_user) {
+	public void setId_user(Integer id_user) {
 		this.id_user = id_user;
 	}
 

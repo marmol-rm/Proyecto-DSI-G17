@@ -7,16 +7,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.qyf.model.CustomUserDetails;
 import com.qyf.model.Usuario;
-import com.qyf.repository.IUsuario;
 
 public class CUDService implements UserDetailsService {
 	
 	@Autowired
-	private IUsuario service;
+	private UsuarioServ service;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Usuario user = service.findByEmail(email);
+		Usuario user = service.listarEmail(email);
 		if(user == null) {
 			throw new UsernameNotFoundException("El usuairo no existe");
 		}

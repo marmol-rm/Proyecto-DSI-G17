@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.IJefeServ;
+import com.qyf.model.Docente;
 import com.qyf.model.Jefes_Depto;
 import com.qyf.repository.IJefes;
 
@@ -17,7 +18,14 @@ public class JefeService implements IJefeServ{
 	
 	@Override
 	public List<Jefes_Depto> listar() {
-		return (List<Jefes_Depto>) data.findAll();
+		
+		return data.findAll();
+	}
+
+	@Override
+	public Jefes_Depto listarUsuario(Docente d) {
+		
+		return data.findByDocente(d);
 	}
 
 	@Override

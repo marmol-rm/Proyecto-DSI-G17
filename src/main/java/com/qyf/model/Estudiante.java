@@ -32,11 +32,11 @@ public class Estudiante {
 		this.user = user;
 	}
 
-	public int getId_estudiante() {
+	public Integer getId_estudiante() {
 		return id_estudiante;
 	}
 
-	public void setId_estudiante(int id_estudiante) {
+	public void setId_estudiante(Integer id_estudiante) {
 		this.id_estudiante = id_estudiante;
 	}
 

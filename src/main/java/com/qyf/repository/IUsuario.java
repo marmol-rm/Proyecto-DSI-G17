@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.qyf.model.Usuario;
 
 @Repository
-public interface IUsuario extends JpaRepository<Usuario, Long>{
-	@Query("SELECT u FROM Usuario u WHERE u.email = ?1")
+public interface IUsuario extends JpaRepository<Usuario, Integer>{
+	//@Query("SELECT u FROM Usuario u WHERE u.email = ?1")
 	Usuario findByEmail(String email);
 	
 	@Query("SELECT u FROM Usuario u WHERE " +

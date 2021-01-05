@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.qyf.interfaceService.ICoordinadorServ;
 import com.qyf.model.Coordinador;
+import com.qyf.model.Docente;
 import com.qyf.repository.ICoordinador;
 
 @Service
@@ -17,9 +18,16 @@ public class CoordService implements ICoordinadorServ {
 	
 	@Override
 	public List<Coordinador> listar() {
+		
 		return data.findAll();
 	}
 
+	@Override
+	public Coordinador listarUsuario(Docente d) {
+		
+		return data.findByDocente(d);
+	}
+	
 	@Override
 	public int guardar(Coordinador c) {
 		int res = 0;

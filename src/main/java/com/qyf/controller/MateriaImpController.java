@@ -19,7 +19,6 @@ import com.qyf.interfaceService.IMateriaImpServ;
 import com.qyf.interfaceService.IMateriaServ;
 import com.qyf.model.Ciclo;
 import com.qyf.model.Coordinador;
-import com.qyf.model.Curso;
 import com.qyf.model.Materia;
 import com.qyf.model.Materia_Imp;
 
