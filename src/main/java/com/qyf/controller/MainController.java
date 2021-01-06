@@ -8,7 +8,7 @@ import com.qyf.interfaceService.IMainService;
 
 @Controller
 public class MainController {
-	@Autowired
+/*@Autowired
 	private IMainService main;
 	
 	@GetMapping("/")
@@ -17,5 +17,5 @@ public class MainController {
 		main.inicializar();
 		
 		return "index";
-	}
+	}*/
 }
