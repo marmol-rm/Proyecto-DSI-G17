@@ -12,19 +12,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.qyf.interfaceService.IMainService;
 import com.qyf.interfaceService.IUsuarioServ;
 import com.qyf.model.Usuario;
 
 @Controller
 public class UsuarioController {
-	
+	@Autowired
+	private IMainService mainservice;
 	@Autowired
 	private IUsuarioServ usuarios;
 	
 	@GetMapping("/usuarios")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Usuario> lista = usuarios.listar(palabra);
-		//lista.remove(0);
+		mainservice.inicializar();
+		lista.remove(0);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
 		
