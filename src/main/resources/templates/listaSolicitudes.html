@@ -66,7 +66,7 @@
 					<td th:text="${v.getFecha_solicitud()}"></td>
 					<td th:text="${v.getEstadoSol()}"></td>
 					<td>
-					<a class="btn btn-primary">Revisar</a>
+					<a class="btn btn-primary" th:href="@{/solicitudes/revisar/}+${v.getId_solicitud()}">Revisar</a>
 					<a class="btn btn-danger" th:onclick="eliminarSolicitud([[${v.id_solicitud}]])">Eliminar</a>
 					</td>
 				</tr>

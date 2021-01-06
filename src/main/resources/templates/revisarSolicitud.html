@@ -42,6 +42,9 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
+					<input type="hidden" th:value="${id}" th:field="*{id_solicitud}" class="form-control"/>
+				</div>
+				<div class="form-group">
 					<h5>Tipo de solicitud:</h5>
 					<select th:field="*{tipo.id_tipo}" class="form-control">
 						<option value=0>Asigne el tipo...</option>
@@ -60,7 +63,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<h5>Evaluacion relacionada:</h5>
+					<h5>RESOLUCION:</h5>
 					<select th:field="*{estado}" class="form-control">
 						<option value=0>Seleccione una opción...</option>
 						<option value=1>Aprobada</option>

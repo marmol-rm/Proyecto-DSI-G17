@@ -58,7 +58,7 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a class="btn btn-danger" th:onclick="eliminarEvaluacion([[${id_m}]],[[${id_ev}]])">Eliminar</a>
+				<a th:href="@{/materia-imp/}+${id_m}+@{/evaluaciones}" class="btn btn-danger">Cancelar</a>
 			</div>
 	  <div class="col"></div>
 		</form>

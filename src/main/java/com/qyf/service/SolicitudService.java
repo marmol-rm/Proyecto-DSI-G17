@@ -2,6 +2,7 @@ package com.qyf.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,8 @@ public class SolicitudService implements ISolicitudServ {
 
 	@Override
 	public int guardar(Solicitud solicitud) {
-		solicitud.setEstado(1);
+		if(solicitud.getEstado() == 0)
+			solicitud.setEstado(0);
 		solicitud.setFecha_solicitud(LocalDate.now().toString());
 		Solicitud s = data.save(solicitud);
 		
@@ -49,5 +51,11 @@ public class SolicitudService implements ISolicitudServ {
 	public List<Tipo_Solicitud> tipos() {
 
 		return t_data.findAll();
+	}
+
+	@Override
+	public Optional<Solicitud> listarId(int id) {
+		
+		return data.findById(id);
 	}
 }

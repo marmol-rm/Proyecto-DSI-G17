@@ -48,17 +48,19 @@ public class SolicitudController {
 		
 		return "agregarSolicitud";
 	}
-	/*
-	@GetMapping("/departamentos/editar/{id}")
+	
+	@GetMapping("/solicitudes/revisar/{id}")
 	public String form_editar(@PathVariable int id, Model model) {
-		Optional<Departamento> depto = departamentos.listarId(id);
-		List<Jefes_Depto> lista_jefes = jefes.listar();
-		model.addAttribute("depto", depto);
-		model.addAttribute("jefes", lista_jefes);
+		Optional<Solicitud> s = solicitudes.listarId(id);
+		model.addAttribute("solicitud", s);
+		List<Tipo_Solicitud> lista_tipos = solicitudes.tipos();
+		List<Evaluacion> lista_ev = evaluaciones.listar(null);
+		model.addAttribute("tipos", lista_tipos);
+		model.addAttribute("evaluaciones", lista_ev);
 		
-		return "editarDepartamento";
+		return "revisarSolicitud";
 	}
-	*/
+	
 	@PostMapping("/saveSolicitud")
 	public String guardar(@Validated Solicitud sol, Model model) {
 		if(sol.getTipo().getId_tipo() != 0 &&

@@ -72,7 +72,7 @@
 			</div>
 			<div class="card-footer">
 				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${id_c}]],[[${id_m}]])">Eliminar</a><br/><br/>
+				<a th:href="@{/ciclos/}+${id_c}+@{/materias-imp}" class="btn btn-danger">Cancelar</a><br/><br/>
 				<a th:href="@{/ciclos/}+${id_c}+@{/editar-materia-imp/}+${id_m}+@{/contrasena}">Cambiar contraseña del curso</a>
 			</div>
 		</form>
