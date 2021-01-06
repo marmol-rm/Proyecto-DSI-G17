@@ -3,11 +3,9 @@ package com.qyf.interfaceService;
 import java.util.List;
 import java.util.Optional;
 
-import com.qyf.model.Role;
 import com.qyf.model.Usuario;
 
 public interface IUsuarioServ {
-	public void iniciarAdmin(Role role);
 	public String encriptar(String password);
 	public void asignarRole(int role, Usuario user);
 	public List<Usuario> listar(String key);

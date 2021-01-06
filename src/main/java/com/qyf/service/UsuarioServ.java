@@ -12,7 +12,6 @@ import com.qyf.model.Coordinador;
 import com.qyf.model.Docente;
 import com.qyf.model.Estudiante;
 import com.qyf.model.Jefes_Depto;
-import com.qyf.model.Role;
 import com.qyf.model.Usuario;
 import com.qyf.repository.IUsuario;
 
@@ -43,16 +42,6 @@ public class UsuarioServ implements IUsuarioServ{
 	public Optional<Usuario> listarId(int id) {
 
 		return data.findById(id);
-	}
-	
-	@Override
-	public void iniciarAdmin(Role r) {
-		long vacio = data.count();
-		if(vacio == 0) {
-			String pass = this.encriptar("sysadmin");
-			Usuario admin = new Usuario("admin",pass,1,r);
-			data.save(admin);
-		}
 	}
 	
 	@Override

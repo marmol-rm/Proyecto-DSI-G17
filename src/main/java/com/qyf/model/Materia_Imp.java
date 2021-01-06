@@ -22,13 +22,13 @@ public class Materia_Imp {
 	@Column(length = 25)
 	private String temp_pass;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_materia")
+	@JoinColumn(name="id_materia", unique = true)
 	private Materia materia;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_ciclo")
 	private Ciclo ciclo;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_catedra")
+	@JoinColumn(name="id_catedra", unique = true)
 	private Coordinador coordinador;
 	
 	public String getPass() {

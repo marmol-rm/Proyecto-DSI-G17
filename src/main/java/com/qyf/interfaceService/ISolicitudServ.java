@@ -6,7 +6,6 @@ import com.qyf.model.Solicitud;
 import com.qyf.model.Tipo_Solicitud;
 
 public interface ISolicitudServ {
-	public void inicializar();
 	public List<Solicitud> listar(String key);
 	public List<Tipo_Solicitud> tipos();
 	public int guardar(Solicitud s);

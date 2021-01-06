@@ -17,7 +17,7 @@ public class MateriaImpServ implements IMateriaImpServ{
 	
 	@Override
 	public List<Materia_Imp> listar(String key) {
-		long n = data.count();
+		//long n = data.count();
 			if(key!=null)
 				return data.findAll(key);
 			else

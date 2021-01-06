@@ -20,24 +20,6 @@ public class SolicitudService implements ISolicitudServ {
 	ISolicitud data;
 	
 	@Override
-	public void inicializar() {
-		long n = t_data.count();
-		
-		if(n == 0) {
-			Tipo_Solicitud rep = new Tipo_Solicitud("Solicitud de evaluacion repetida");
-			t_data.save(rep);
-			Tipo_Solicitud d = new Tipo_Solicitud("Solicitud de evaluacion diferida");
-			t_data.save(d);
-			Tipo_Solicitud rev = new Tipo_Solicitud("Solicitud de revision de evaluacion");
-			t_data.save(rev);
-			Tipo_Solicitud c = new Tipo_Solicitud("Solicitud de cambio de fecha de evaluacion");
-			t_data.save(c);
-		}
-		
-		return;
-	}
-	
-	@Override
 	public List<Solicitud> listar(String key) {
 		if(key != null)
 			return data.findAll(key);

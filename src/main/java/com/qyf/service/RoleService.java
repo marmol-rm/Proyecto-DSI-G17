@@ -16,21 +16,6 @@ public class RoleService implements IRoleService {
 	private IRole data;
 
 	@Override
-	public void inicializar() {
-		long vacio = data.count();
-		if(vacio == 0) {
-			Role e = new Role("Estudiante","Rol de estudiante");
-			data.save(e);
-			Role c = new Role("Coordinador","Rol del coordinador de catedra");
-			data.save(c);
-			Role j = new Role("Jefe de Departamento","Rol del jefe de departamento");
-			data.save(j);
-			Role a = new Role("Admin","Rol de administrador del sistema");
-			data.save(a);
-		}
-	}
-
-	@Override
 	public List<Role> listar() {
 
 		return data.findAll();

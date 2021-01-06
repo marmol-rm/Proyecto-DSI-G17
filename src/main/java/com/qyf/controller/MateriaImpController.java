@@ -37,16 +37,20 @@ public class MateriaImpController {
 	
 	@RequestMapping("/ciclos/{id}/materias-imp")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, 
-			 @PathVariable Integer id, Model model) {
+			 @PathVariable int id, Model model) {
 		List<Materia_Imp> lista = impartidas.listar(palabra);
 		if(!lista.isEmpty()) {
-			for(int i = 0;i < lista.size();i++) { //Quita las materias que no pertenecen al ciclo
-				if(lista.get(i).getCiclo().getId_ciclo() != id)
-					lista.remove(i);
+			int i = 0;
+			for(i = 0;i < lista.size();i++) { //Quita las materias que no pertenecen al ciclo
+				if(lista.get(i).getCiclo().getId_ciclo().intValue() != id) {
+					if(lista.size() > 2)
+						lista.remove(i);
+				}
 			}
+			//System.out.print(lista.size());
+			model.addAttribute("materias", lista);
 		}
 		model.addAttribute("buscar", palabra);
-		model.addAttribute("materias", lista);
 		
 		return "listaMateriasImp";
 	}

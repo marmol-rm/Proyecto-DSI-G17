@@ -4,25 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.qyf.interfaceService.IRoleService;
-import com.qyf.interfaceService.ISolicitudServ;
-import com.qyf.interfaceService.IUsuarioServ;
+import com.qyf.interfaceService.IMainService;
 
 @Controller
 public class MainController {
 	@Autowired
-	private IRoleService roles;
-	@Autowired
-	private IUsuarioServ users;
-	@Autowired
-	private ISolicitudServ solicitudes;
+	private IMainService main;
 	
 	@GetMapping("/")
 	public String inicio() {
-		roles.inicializar(); //Crea los roles si no estan
-		solicitudes.inicializar();
-		//Crea un usuario por defecto
-		users.iniciarAdmin(roles.listarId(4).get());
+		//Inicializa valores fijos en BD
+		main.inicializar();
 		
 		return "index";
 	}
