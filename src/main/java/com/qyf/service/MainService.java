@@ -48,7 +48,7 @@ public class MainService implements IMainService {
 		}
 		
 		n = users.count();
-		if(n != 0) { //Crea el usuario admin
+		if(n == 0) { //Crea el usuario admin
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			String pass = encoder.encode("sysadmin");
 			Usuario admin = new Usuario("admin",pass,1,roles.findById(4).get());
