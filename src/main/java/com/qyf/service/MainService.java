@@ -24,7 +24,7 @@ public class MainService implements IMainService {
 	@Override
 	public void inicializar() {
 		long n = roles.count();
-		if(n != 0) { //Crea roles
+		if(n == 0) { //Crea roles
 			Role e = new Role("Estudiante","Rol de estudiante");
 			roles.save(e);
 			Role c = new Role("Coordinador","Rol del coordinador de catedra");
@@ -36,7 +36,7 @@ public class MainService implements IMainService {
 		}
 		
 		n = tipos_sol.count();
-		if(n != 0) { //Crea tipos de solicitud
+		if(n == 0) { //Crea tipos de solicitud
 			Tipo_Solicitud rep = new Tipo_Solicitud("Solicitud de evaluacion repetida");
 			tipos_sol.save(rep);
 			Tipo_Solicitud d = new Tipo_Solicitud("Solicitud de evaluacion diferida");
