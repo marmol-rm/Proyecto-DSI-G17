@@ -32,7 +32,7 @@ public class UsuarioServ implements IUsuarioServ{
 	@Override
 	public List<Usuario> listar(String key) {
 		if(key!=null) {
-			return (List<Usuario>) data.findAll(key);
+			return data.findAll(key);
 		}
 		else
 			return data.findAll();
