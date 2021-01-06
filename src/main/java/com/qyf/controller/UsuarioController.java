@@ -24,7 +24,7 @@ public class UsuarioController {
 	@GetMapping("/usuarios")
 	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
 		List<Usuario> lista = usuarios.listar(palabra);
-		lista.remove(0);
+		//lista.remove(0);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
 		
