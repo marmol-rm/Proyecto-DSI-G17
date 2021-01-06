@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Editar Materia Impartida</title>
+<title>Agregar Departamento</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -34,55 +34,48 @@
   </span>
 </nav>
 		<div class="container mt-5">
-		<div class="col-lg-5">
-		<form th:action="@{/saveMateriaImp}" th:object=${materia} method="POST">
+		<div class="col-sm-5">
+		<form th:action="@{/saveSolicitud}" th:object=${solicitud} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Editar Materia Impartida</h3>
-				<a th:href="@{/materia-imp/}+${id_m}+@{/evaluaciones}">Evaluaciones</a>
+				<h3>Nueva Solicitud</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<input type="hidden" th:field="*{id_materia_imp}" th:value="${id_m}" class="form-control"/>
-				</div>
-				<div class="form-group">
-					<input type="hidden" th:field="*{ciclo.id_ciclo}" th:value="${id_c}" class="form-control"/>
-				</div>
-				<div class="form-group">
-					<h5>Materia:</h5>
-					<select th:field="*{materia.id_materia}" class="form-control">
-						<option value=0>Seleccione la materia...</option>
-						<option th:each="v:${materias}"  
-						th:value="${v.getId_materia()}" th:text="${v.getNombre_materia()}">
+					<h5>Tipo de solicitud:</h5>
+					<select th:field="*{tipo.id_tipo}" class="form-control">
+						<option value=0>Asigne el tipo...</option>
+						<option th:each="v:${tipos}"  
+						th:value="${v.getId_tipo()}" th:text="${v.getDescripcion()}">
 						</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<h5>Docente coordinador:</h5>
-					<select th:field="*{coordinador.id_catedra}" class="form-control">
-						<option value=0>Seleccione el coordinador...</option>
-						<option th:each="v:${catedra}"  
-						th:value="${v.getId_catedra()}" th:text="${v.getNombre_completo()}">
+					<h5>Evaluacion relacionada:</h5>
+					<select th:field="*{evaluacion.id_evaluacion}" class="form-control">
+						<option value=0>Seleccione la evaluacion...</option>
+						<option th:each="v:${evaluaciones}"  
+						th:value="${v.getId_evaluacion()}" th:text="${v.getEvaluacion()}">
 						</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="hidden" th:field="*{pass}" th:value="${pass}" class="form-control"/>
+					<h5>Evaluacion relacionada:</h5>
+					<select th:field="*{estado}" class="form-control">
+						<option value=0>Seleccione una opción...</option>
+						<option value=1>Aprobada</option>
+						<option value=2>Denegada</option>
+					</select>
 				</div>
 			</div>
 			<div class="card-footer">
-				<input type="submit" value="Guardar" class="btn btn-primary" />
-				<a class="btn btn-danger" th:onclick="eliminarMateriaImp([[${id_c}]],[[${id_m}]])">Eliminar</a><br/><br/>
-				<a th:href="@{/ciclos/}+${id_c}+@{/editar-materia-imp/}+${id_m}+@{/contrasena}">Cambiar contraseña del curso</a>
+				<input type="submit" value="Guardar" class="btn btn-success"/>
+				<a href="/solicitudes" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 		<br>
 		</div>
-		<div class="col"></div>
 	</div>
 	<script src="http://localhost:8081/funciones.js" language="javascript"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-	crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

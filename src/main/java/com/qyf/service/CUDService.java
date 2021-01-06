@@ -9,7 +9,6 @@ import com.qyf.model.CustomUserDetails;
 import com.qyf.model.Usuario;
 
 public class CUDService implements UserDetailsService {
-	
 	@Autowired
 	private UsuarioServ service;
 	

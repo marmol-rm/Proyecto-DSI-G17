@@ -10,6 +10,29 @@
 <link rel="stylesheet" href="http://localhost:8081/style.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+  	<img src="http://localhost:8081/logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Inicio <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/usuarios">Usuarios</a>
+      <a class="nav-item nav-link" href="/departamentos">Departamentos</a>
+      <a class="nav-item nav-link" href="/materias">Materias</a>
+      <a class="nav-item nav-link" href="/ciclos">Gestion de Ciclo</a>
+      <a class="nav-item nav-link" href="/solicitudes">Solicitudes</a>
+    </div>
+  </div>
+  <span class="navbar-text">
+  SISTEMA DE GESTION DE SOLICITUDES ACADEMICAS &nbsp;&nbsp;&nbsp;
+    <a href="/logout">Salir</a>
+  </span>
+</nav>
 		<div class="container mt-5">
 		<div class="col-sm-5">
 		<form th:action="@{/saveUser}" th:object=${user} method="POST">
@@ -29,7 +52,7 @@
 				</div>
 				<div class="form-group">
 					<h5>E-mail:</h5>
-					<input required th:field="*{email}" type="email" class="form-control"/>
+					<input required th:field="*{email}" type="email" placeholder="...@ues.edu.sv" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<h5>Nombres:</h5>

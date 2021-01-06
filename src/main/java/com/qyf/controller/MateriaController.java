@@ -55,7 +55,10 @@ public class MateriaController {
 	
 	@PostMapping("/saveMateria")
 	public String guardar(@Validated Materia materia, Model model) {
-		materias.guardar(materia);
+		if(materia.getCodigo().length() == 6 &&
+			materia.getDepartamento().getId_depto() != 0)
+			materias.guardar(materia);
+		
 		return "redirect:/materias";
 	}
 	

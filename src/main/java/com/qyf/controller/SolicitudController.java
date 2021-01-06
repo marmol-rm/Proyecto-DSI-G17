@@ -61,7 +61,9 @@ public class SolicitudController {
 	*/
 	@PostMapping("/saveSolicitud")
 	public String guardar(@Validated Solicitud sol, Model model) {
-		solicitudes.guardar(sol);
+		if(sol.getTipo().getId_tipo() != 0 &&
+			sol.getEvaluacion().getId_evaluacion() != 0)
+			solicitudes.guardar(sol);
 		
 		return "redirect:/solicitudes";
 	}

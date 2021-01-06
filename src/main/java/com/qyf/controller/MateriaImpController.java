@@ -102,7 +102,9 @@ public class MateriaImpController {
 	@PostMapping("/saveMateriaImp")
 	public String guardar(@Validated Materia_Imp m, Model model) {
 		c = m.getCiclo().getId_ciclo().toString();
-		impartidas.guardar(m);
+		if(m.getMateria().getId_materia() != 0 &&
+			m.getCoordinador().getId_catedra() != 0)
+			impartidas.guardar(m);
 		
 		return "redirect:/ciclos/"+ c +"/materias-imp";
 	}

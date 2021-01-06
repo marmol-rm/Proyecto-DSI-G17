@@ -51,7 +51,8 @@ public class DepartamentoController {
 	
 	@PostMapping("/saveDepto")
 	public String guardar(@Validated Departamento depto, Model model) {
-		departamentos.guardar(depto);
+		if(depto.getJefe().getId_jefe() != 0)
+			departamentos.guardar(depto);
 		
 		return "redirect:/departamentos";
 	}

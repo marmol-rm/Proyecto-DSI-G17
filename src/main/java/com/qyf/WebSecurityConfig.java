@@ -18,7 +18,6 @@ import com.qyf.service.CUDService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
-	
 	//@Autowired
 	//private DataSource datasource;
 	
@@ -48,10 +47,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/usuarios/**").authenticated()
-		.anyRequest().permitAll().and().formLogin()
+		.antMatchers("/usuarios/**",
+				"/solicitudes/**",
+				"/departamentos/**",
+				"/materias/**",
+				"/ciclos/**",
+				"/materias-imp/**").authenticated().and()
+		.formLogin()
 		.usernameParameter("email").defaultSuccessUrl("/")
-		.permitAll()
-		.and().logout().logoutSuccessUrl("/").permitAll();	
+		.permitAll().and()
+		.logout().logoutSuccessUrl("/").permitAll();	
 	}
 }
