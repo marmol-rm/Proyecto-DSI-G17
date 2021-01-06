@@ -1,5 +1,9 @@
 package com.qyf;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 //import javax.sql.DataSource;
 
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +22,8 @@ import com.qyf.service.CUDService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
-	//@Autowired
-	//private DataSource datasource;
+	@Autowired
+	private DataSource datasource;
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
