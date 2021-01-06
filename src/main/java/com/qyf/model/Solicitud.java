@@ -36,13 +36,13 @@ public class Solicitud {
 	public String getEstadoSol() {
 		String estado = "";
 		switch(this.estado) {
-			case 1:
+			case 0:
 				estado = "Pendiente";
 			break;
-			case 2:
+			case 1:
 				estado = "Aceptada";
 			break;
-			case 3:
+			case 2:
 				estado = "Denegada";
 			break;
 		}

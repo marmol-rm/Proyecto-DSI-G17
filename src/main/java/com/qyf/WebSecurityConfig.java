@@ -48,11 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/usuarios/**",
-				"/solicitudes/**",
-				"/departamentos/**",
-				"/materias/**",
-				"/ciclos/**",
-				"/materias-imp/**").authenticated().and()
+					"/solicitudes/**",
+					"/departamentos/**",
+					"/materias/**",
+					"/ciclos/**",
+					"/materia-imp/**").authenticated().and()
 		.formLogin()
 		.usernameParameter("email").defaultSuccessUrl("/")
 		.permitAll().and()
