@@ -22,19 +22,14 @@ public class UsuarioController {
 	private IUsuarioServ usuarios;
 	
 	@GetMapping("/usuarios")
-	public String form_consultar(@RequestParam(value="buscar", required=false) String palabra, Model model) {
+	public String form_consultar(@RequestParam(value="buscar",
+	required=false) String palabra, Model model) {
 		List<Usuario> lista = usuarios.listar(palabra);
 		lista.remove(0);
 		model.addAttribute("buscar",palabra);
 		model.addAttribute("usuarios", lista);
 		
 		return "listaUsuarios";
-	}
-	
-	@GetMapping("/usuarios/{id}/recuperarContrasena")
-	public String recuperar_contrasena(@PathVariable int id, Model model) {
-		
-		return "recuperarContrasena";
 	}
 	
 	@GetMapping("/usuarios/registro")
@@ -52,6 +47,12 @@ public class UsuarioController {
 		return "editarUsuario";
 	}
 	
+	@GetMapping("/usuarios/{id}/recuperarContrasena")
+	public String recuperar_contrasena(@PathVariable int id, Model model) {
+		
+		return "recuperarContrasena";
+	}
+	
 	@PostMapping("/saveUser")
 	public String registro(@Validated Usuario user) {		
 		int r = user.getRole().getId_rol();
@@ -59,8 +60,15 @@ public class UsuarioController {
 			String encodedPass = usuarios.encriptar(user.getPassword());
 			user.setPassword(encodedPass); //Se guarda el password encriptado
 			usuarios.guardar(user); //Guarda el usuario
-			usuarios.asignarRole(r, user); //(aun no funciona bien)
+			usuarios.asignarRole(r, user); //Le asigna el role (aun no funciona bien)
 		}
+		
+		return "redirect:/usuarios";
+	}
+	
+	@PostMapping("/editUser")
+	public String editar(@Validated Usuario user) {		
+		usuarios.guardar(user); //Guarda el usuario
 		
 		return "redirect:/usuarios";
 	}
