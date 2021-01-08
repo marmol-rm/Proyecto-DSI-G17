@@ -30,8 +30,8 @@ public class SolicitudService implements ISolicitudServ {
 
 	@Override
 	public int guardar(Solicitud solicitud) {
-		if(solicitud.getEstado() == 0)
-			solicitud.setEstado(0);
+		int e = solicitud.getEstado();
+		if(e != 1 && e != 2) solicitud.setEstado(0);
 		solicitud.setFecha_solicitud(LocalDate.now().toString());
 		Solicitud s = data.save(solicitud);
 		

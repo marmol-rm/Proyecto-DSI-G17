@@ -198,7 +198,7 @@ function eliminarSolicitud(id) {
       }
     }).then((ok)=>{
       if(ok){
-        location.href="/solicitudes";
+        location.href="/solicitudes/lista-solicitudes";
       }
     });
     swal("Eliminado!", {

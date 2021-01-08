@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Agregar Departamento</title>
+<title>Revisar Solicitud</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -35,19 +35,17 @@
 </nav>
 		<div class="container mt-5">
 		<div class="col-sm-5">
-		<form th:action="@{/saveSolicitud}" th:object=${solicitud} method="POST">
+		<form th:action="@{/saveRevision}" th:object=${solicitud} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Nueva Solicitud</h3>
+				<h3>Revisión</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
 					<input type="hidden" th:value="${id}" th:field="*{id_solicitud}" class="form-control"/>
 				</div>
 				<div class="form-group">
-					<h5>Tipo de solicitud:</h5>
-					<select th:field="*{tipo.id_tipo}" class="form-control">
-						<option value=0>Asigne el tipo...</option>
+					<select hidden="" th:field="*{tipo.id_tipo}" class="form-control">
 						<option th:each="v:${tipos}"  
 						th:value="${v.getId_tipo()}" th:text="${v.getDescripcion()}">
 						</option>

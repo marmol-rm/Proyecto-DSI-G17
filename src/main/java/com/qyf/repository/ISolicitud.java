@@ -13,6 +13,6 @@ public interface ISolicitud extends JpaRepository<Solicitud, Integer> {
 	
 	@Query("SELECT s FROM Solicitud s WHERE "
 			+ "CONCAT(s.tipo.descripcion,"
-			+ "s.fecha_solicitud,s.estado) LIKE %?1%")
+			+ "s.fecha_solicitud) LIKE %?1%")
 	public List<Solicitud> findAll(String key);
 }

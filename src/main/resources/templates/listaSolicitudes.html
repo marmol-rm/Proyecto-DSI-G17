@@ -7,12 +7,12 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="http://localhost:8081/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand" href="/">
-  	<img src="logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
+  	<img src="http://localhost:8081/logo.png" width="40" height="40" alt="Gestion de solicitudes academicas">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
   aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
 	<div class="row">
   <div class="col"></div>
   <div class="col">
-  	<form th:action="@{/solicitudes}">
+  	<form th:action="@{/solicitudes/lista-solicitudes}">
       	<input name="buscar" th:value="${buscar}" type="text" placeholder="Buscar..." size="30%">
       	<button type="submit" class="btn btn-success">Buscar</button>
     </form>
@@ -75,13 +75,13 @@
         <br/>
         <div class="row">
 	  <div class="col"></div>
-	  <div class="col"><a th:href="@{/solicitudes/agregar}" class="btn btn-success">+Crear</a></div>
+	  <div class="col"><!-- <a th:href="@{/solicitudes/agregar}" class="btn btn-success">+Crear</a> --></div>
 	  <div class="col"></div>
 	</div>
 	<br>
 	<br>
 	</div>
-	<script src="funciones.js" language="javascript"></script>
+	<script src="http://localhost:8081/funciones.js" language="javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

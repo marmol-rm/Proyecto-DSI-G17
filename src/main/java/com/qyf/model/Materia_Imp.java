@@ -28,7 +28,7 @@ public class Materia_Imp {
 	@JoinColumn(name="id_ciclo")
 	private Ciclo ciclo;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_catedra", unique = true)
+	@JoinColumn(name="id_catedra")
 	private Coordinador coordinador;
 	
 	public String getPass() {

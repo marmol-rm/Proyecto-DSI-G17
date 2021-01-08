@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" lang="es">
-<title>Nueva Solicitud</title>
-<link rel="stylesheet"
+<meta charset="UTF-8">
+<title>Inicio</title>
+	<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="http://localhost:8081/style.css">
+	<link rel="stylesheet" href="http://localhost:8081/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -30,40 +30,42 @@
   </div>
   <span class="navbar-text">
   SISTEMA DE GESTION DE SOLICITUDES ACADEMICAS &nbsp;&nbsp;&nbsp;
-    <a href="/logout">Salir</a>
+  <a href="/logout">Salir</a>
   </span>
 </nav>
-		<div class="container mt-5">
-		<div class="col-sm-5">
-		<form th:action="@{/saveDif}" th:object=${solicitud} method="POST">
-			<div class="card"></div>
-			<div class="card-header">
-				<h4>Nueva Solicitud de Evaluación Diferida</h4>
-			</div>
-			<div class="card-body">
-				<div class="form-group">
-					<h5>Evaluación relacionada:</h5>
-					<select th:field="*{evaluacion.id_evaluacion}" class="form-control">
-						<option value=0>Seleccione la evaluacion...</option>
-						<option th:each="v:${evaluaciones}"  
-						th:value="${v.getId_evaluacion()}" th:text="${v.getEvaluacion()}">
-						</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<h5>No pude asistir debido  a:</h5>
-					<input type="text" placeholder="Escriba aquí su justificación..." 
-					class="form-control"/>
-				</div>
-			</div>
-			<div class="card-footer">
-				<input type="submit" value="Enviar" class="btn btn-success"/>
-				<a href="/solicitudes" class="btn btn-danger">Cancelar</a>
-			</div>
-		</form>
-		<br>
-		</div>
+	<div class="row mt-3">
+	  <div class="col"></div>
+	  <div class="col">
+		<h2>Seleccione el tipo de solicitud:</h2>
+	  </div>
+	<div class="col"></div>
+	</div>
+	<br/>
+	<div class="row">
+  <div class="col"></div>
+  <div class="col">
+  <div class="grid-container">
+	  <div class="grid-item"><a href="/solicitudes/1/agregar" 
+	   class="btn btn-primary">Repetido</a></div>
+	  <div class="grid-item"><br/></div>
+	  <div class="grid-item"><a href="/solicitudes/2/agregar" 
+	   class="btn btn-primary">Diferido</a></div>
+	  <div class="grid-item"><br/></div>
+	  <div class="grid-item"><a href="/solicitudes/3/agregar" 
+	   class="btn btn-primary">Revision</a></div>
+	  <div class="grid-item"><br/></div>
+	  <div class="grid-item"><a href="/solicitudes/4/agregar" 
+	   class="btn btn-primary">Cambio de fecha</a></div>
+	  <div class="grid-item"><br/></div>
+	  <div class="grid-item">
+	  	<a href="/solicitudes/lista-solicitudes">Ver Solicitudes enviadas</a>
+	  </div>
+	</div>
+  </div>
+  <div class="col"></div>
 	</div>
 	<script src="http://localhost:8081/funciones.js" language="javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
 </body>
 </html>
