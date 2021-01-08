@@ -32,10 +32,19 @@ public class UsuarioServ implements IUsuarioServ{
 	@Override
 	public List<Usuario> listar(String key) {
 		if(key!=null) {
-			return data.findAll(key);
+			List<Usuario> lista = data.findAll(key);
+			Usuario u = data.findById(1).get();
+			if(lista.contains(u))
+				lista.remove(u);
+			
+			return lista;
 		}
-		else
-			return data.findAll();
+		else {
+			List<Usuario> lista = data.findAll();
+			lista.remove(0);
+			
+			return lista;
+		}
 	}
 
 	@Override
