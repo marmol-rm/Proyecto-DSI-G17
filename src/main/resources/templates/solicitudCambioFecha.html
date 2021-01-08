@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" lang="es">
-<title>Revisar Solicitud</title>
+<title>Nueva Solicitud</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -35,24 +35,14 @@
 </nav>
 		<div class="container mt-5">
 		<div class="col-sm-5">
-		<form th:action="@{/saveRevision}" th:object=${solicitud} method="POST">
+		<form th:action="@{/saveCambioF}" th:object=${solicitud} method="POST">
 			<div class="card"></div>
 			<div class="card-header">
-				<h3>Revisión</h3>
+				<h4>Nueva Solicitud de Cambio de Fecha</h4>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<input type="hidden" th:value="${id}" th:field="*{id_solicitud}" class="form-control"/>
-				</div>
-				<div class="form-group">
-					<select hidden="" th:field="*{tipo.id_tipo}" class="form-control">
-						<option th:each="v:${tipos}"  
-						th:value="${v.getId_tipo()}" th:text="${v.getDescripcion()}">
-						</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<h5>Evaluacion relacionada:</h5>
+					<h5>Evaluación relacionada:</h5>
 					<select th:field="*{evaluacion.id_evaluacion}" class="form-control">
 						<option value=0>Seleccione la evaluacion...</option>
 						<option th:each="v:${evaluaciones}"  
@@ -61,17 +51,13 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<h5>RESOLUCION:</h5>
-					<select th:field="*{estado}" class="form-control">
-						<option value=0>Seleccione una opción...</option>
-						<option value=1>Aprobada</option>
-						<option value=2>Denegada</option>
-					</select>
+					<h5>Fecha propuesta por los estudiantes:</h5>
+					<input type="date" pattern="dd-MM-YYYY" class="form-control"/>
 				</div>
 			</div>
 			<div class="card-footer">
-				<input type="submit" value="Guardar" class="btn btn-success"/>
-				<a href="/solicitudes/lista-solicitudes" class="btn btn-danger">Cancelar</a>
+				<input type="submit" value="Enviar" class="btn btn-success"/>
+				<a href="/solicitudes" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 		<br>
