@@ -68,7 +68,7 @@
 					<td th:text="${v.getRole().getNombre()}"></td>
 					<td>
 					<a class="btn btn-primary" th:href="@{/usuarios/editar/}+${v.id_user}">Editar</a>
-					<a class="btn btn-danger" th:onclick="eliminarUsuario([[${v.id_user}]])">Eliminar</a>
+					<!-- <a class="btn btn-danger" th:onclick="eliminarUsuario([[${v.id_user}]])">Eliminar</a> -->
 					</td>
 				</tr>
 			</tbody>
