@@ -46,7 +46,7 @@
 					<select th:field="*{evaluacion.id_evaluacion}" class="form-control">
 						<option value=0>Seleccione la evaluacion...</option>
 						<option th:each="v:${evaluaciones}"  
-						th:value="${v.getId_evaluacion()}" th:text="${v.getEvaluacion()}">
+						th:value="${v.getId_evaluacion()}" th:text="${v.getEv()}">
 						</option>
 					</select>
 				</div>

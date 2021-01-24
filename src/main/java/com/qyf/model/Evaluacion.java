@@ -29,6 +29,10 @@ public class Evaluacion {
 	public Evaluacion() {
 		super();
 	}
+	
+	public String getEv() {
+		return this.evaluacion + " - " + this.materia.getMateria().getNombre_materia();
+	}
 
 	public int getId_evaluacion() {
 		return id_evaluacion;
